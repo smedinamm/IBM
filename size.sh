@@ -48,7 +48,13 @@ export ADMIN_REFRESH_PERIOD=1
 
 oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"TOKEN_EXPIRY_TIME\": \"${USER_EXPIRY_TIME}\"}}"
 oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"ADMIN_TOKEN_EXPIRY_TIME\": \"${ADMIN_EXPIRY_TIME}\"}}"
-oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"TOKEN_REFRESH_PERIOD": \"${USER_REFRESH_PERIOD}\"}}"
-oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"ADMIN_TOKEN_REFRESH_PERIOD": \"${ADMIN_REFRESH_PERIOD}\"}}"
+oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"TOKEN_REFRESH_PERIOD\": \"${USER_REFRESH_PERIOD}\"}}"
+oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"ADMIN_TOKEN_REFRESH_PERIOD\": \"${ADMIN_REFRESH_PERIOD}\"}}"
+
+oc delete pods --namespace=${PROJECT_CPD_INST_OPERANDS} -l component=usermgmt
+
+export SESSION_LIMIT=<number-of-sessions>
+
+oc patch configmap product-configmap --namespace=${PROJECT_CPD_INST_OPERANDS} --type=merge --patch="{\"data\": {\"CONCURRENT_SESSIONS_PER_USER\": \"${SESSION_LIMIT}\"}}"
 
 oc delete pods --namespace=${PROJECT_CPD_INST_OPERANDS} -l component=usermgmt
