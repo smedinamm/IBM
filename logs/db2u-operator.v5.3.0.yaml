@@ -1,0 +1,2174 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[{"apiVersion": "db2u.databases.ibm.com/v1", "kind": "Db2uCluster",
+      "metadata": {"name": "db2ucluster-sample"}, "spec": {"account": {"privileged":
+      true}, "environment": {"dbType": "db2oltp"}, "license": {"accept": false}, "size":
+      1, "storage": [{"name": "meta", "spec": {"accessModes": ["ReadWriteMany"], "resources":
+      {"requests": {"storage": "50Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"},
+      "type": "create"}, {"name": "data", "spec": {"accessModes": ["ReadWriteOnce"],
+      "resources": {"requests": {"storage": "100Gi"}}, "storageClassName": "ocs-storagecluster-ceph-rbd"},
+      "type": "template"}, {"name": "backup", "spec": {"accessModes": ["ReadWriteMany"],
+      "resources": {"requests": {"storage": "100Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"},
+      "type": "create"}, {"name": "tempts", "spec": {"accessModes": ["ReadWriteOnce"],
+      "resources": {"requests": {"storage": "10Gi"}}, "storageClassName": "ocs-storagecluster-ceph-rbd"},
+      "type": "template"}, {"name": "archivelogs", "spec": {"accessModes": ["ReadWriteOnce"],
+      "resources": {"requests": {"storage": "25Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"},
+      "type": "create"}], "version": "11.5.9.0"}}, {"apiVersion": "db2u.databases.ibm.com/v1",
+      "kind": "Db2uInstance", "metadata": {"name": "db2uinstance-sample"}, "spec":
+      {"account": {"securityConfig": {"privilegedSysctlInit": true}}, "environment":
+      {"databases": [{"name": "BLUDB"}], "dbType": "db2wh", "partitionConfig": {"total":
+      2, "volumePerPartition": true}}, "license": {"accept": false}, "nodes": 1, "storage":
+      [{"name": "meta", "spec": {"accessModes": ["ReadWriteMany"], "resources": {"requests":
+      {"storage": "50Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"}, "type":
+      "create"}, {"name": "data", "spec": {"accessModes": ["ReadWriteOnce"], "resources":
+      {"requests": {"storage": "100Gi"}}, "storageClassName": "ocs-storagecluster-ceph-rbd"},
+      "type": "template"}, {"name": "backup", "spec": {"accessModes": ["ReadWriteMany"],
+      "resources": {"requests": {"storage": "100Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"},
+      "type": "create"}, {"name": "tempts", "spec": {"accessModes": ["ReadWriteOnce"],
+      "resources": {"requests": {"storage": "10Gi"}}, "storageClassName": "ocs-storagecluster-ceph-rbd"},
+      "type": "template"}, {"name": "archivelogs", "spec": {"accessModes": ["ReadWriteOnce"],
+      "resources": {"requests": {"storage": "25Gi"}}, "storageClassName": "ocs-storagecluster-cephfs"},
+      "type": "create"}], "version": "11.5.9.0"}}, {"apiVersion": "db2ubnr.databases.ibm.com/v1alpha1",
+      "kind": "Db2uBackup", "metadata": {"name": "db2ubackup-test"}, "spec": {"databaseBackup":
+      {"backupTarget": {"vendor": "disk"}, "dbName": "BLUDB", "type": "offline"},
+      "db2uName": "db2u-test"}}, {"apiVersion": "db2ulog.databases.ibm.com/v1alpha1",
+      "kind": "Db2uLogStream", "metadata": {"name": "db2ulogstream-test"}, "spec":
+      {"configurations": [{"connection": "cp4d", "format": "cadf", "type": "audit"}],
+      "connections": {"cp4d": {"authType": "tls", "credentials": "db2oltp-internal-tls",
+      "endpoint": "https://zen-audit-svc.zen:9880/records"}}}}, {"apiVersion": "db2ubnr.databases.ibm.com/v1alpha1",
+      "kind": "Db2uRestore", "metadata": {"name": "db2urestore-test"}, "spec": {"db2uBackup":
+      "db2ubackup-test", "db2uName": "db2u-test"}}]'
+    capabilities: Seamless Upgrades
+    categories: Database
+    certified: "false"
+    containerImage: icr.io/cpopen/db2u-operator@sha256:6ae3d5c06903528db1c0bd4e9b7692ac67bf6c951d2098b84a3e7c8f97ec84c3
+    createdAt: "2024-04-08 19:34:40.438094"
+    description: The IBM® Db2U Operator allows to deploy IBM Db2
+    olm.operatorGroup: common-service
+    olm.operatorNamespace: cp4d
+    olm.skipRange: '>=2.0.0 <5.3.0'
+    olm.targetNamespaces: cp4d
+    operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"BigSQL","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uCluster","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uEngine","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uHadr","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uInstance","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Formation","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"FormationLock","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2ubnr.databases.ibm.com","kind":"Db2uBackup","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2ubnr.databases.ibm.com","kind":"Db2uRestore","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2ulog.databases.ibm.com","kind":"Db2uLogStream","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"db2u-operator","version":"5.3.0"}}]}'
+    operators.openshift.io/infrastructure-features: '["disconnected"]'
+    operators.operatorframework.io/builder: operator-sdk-v1.14.0+git
+    operators.operatorframework.io/internal-objects: '["formationlocks.db2u.databases.ibm.com",
+      "formations.db2u.databases.ibm.com", "bigsqls.db2u.databases.ibm.com", "db2uhadrs.db2u.databases.ibm.com",
+      "db2uhelmmigrations.db2u.databases.ibm.com","db2uengines.db2u.databases.ibm.com"]'
+    operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
+    productChargedContainers: All
+    productID: 7f8ef284fc874e1f8e66ac8664d973a8
+    productMetric: FREE
+    productName: IBM Db2U
+    productVersion: 11.5.9.0
+  creationTimestamp: "2024-09-24T01:36:45Z"
+  generation: 1
+  labels:
+    operatorframework.io/arch.amd64: supported
+    operatorframework.io/arch.ppc64le: supported
+    operatorframework.io/arch.s390x: supported
+    operatorframework.io/os.linux: supported
+    operators.coreos.com/db2u-operator.cp4d: ""
+  name: db2u-operator.v5.3.0
+  namespace: cp4d
+  resourceVersion: "351826156"
+  uid: 42b5819c-c9ba-438c-b28f-dc82f8c46ddc
+spec:
+  apiservicedefinitions: {}
+  cleanup:
+    enabled: false
+  customresourcedefinitions:
+    owned:
+    - description: 'BigSQL is the Schema for the BigSQLs API. Documentation for additional
+        information check: https://ibm.biz/BdqNGJ. This product is not deployable
+        standalone and it is part of the LICCR already accepted'
+      displayName: BigSQL
+      kind: BigSQL
+      name: bigsqls.db2u.databases.ibm.com
+      resources:
+      - kind: ConfigMap
+        name: ""
+        version: v1
+      specDescriptors:
+      - displayName: Mode
+        path: mode
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - displayName: Size
+        path: size
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:number
+      - displayName: Version
+        path: version
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      statusDescriptors:
+      - description: Indicates if the Db2u Helm migration was successful.
+        displayName: State
+        path: state
+        x-descriptors:
+        - urn:alm:descriptor:text
+      version: v1alpha1
+    - description: 'Db2uCluster is the API for deploying Db2. Documentation for additional
+        information check: https://ibm.biz/BdqNGJ. License By installing this product
+        you accept the license terms https://ibm.biz/BdqNGh.'
+      displayName: Db2u Cluster
+      kind: Db2uCluster
+      name: db2uclusters.db2u.databases.ibm.com
+      resources:
+      - kind: ConfigMap
+        name: ""
+        version: v1
+      specDescriptors:
+      - displayName: Account
+        path: account
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - displayName: Image Pull Secrets
+        path: account.imagePullSecrets[0]
+        x-descriptors:
+        - urn:alm:descriptor:io.kubernetes:Secret
+      - displayName: Version
+        path: version
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - displayName: Size
+        path: size
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:number
+      - displayName: License
+        path: license
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - description: License agreement https://ibm.biz/BdqNGh must be accepted during
+          install of this product (required).
+        displayName: License
+        path: license.accept
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:checkbox
+      - displayName: Environment
+        path: environment
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - displayName: Database Type
+        path: environment.dbType
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:select:db2oltp
+        - urn:alm:descriptor:com.tectonic.ui:select:db2wh
+      - displayName: Storage
+        path: storage
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - description: Name of the StorageClass required by the persistent volume claim.
+        displayName: Storage Class
+        path: storage[0].spec.storageClassName
+        x-descriptors:
+        - urn:alm:descriptor:io.kubernetes:StorageClass
+      - displayName: Volume Sources
+        path: volumeSources
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:hidden
+      - displayName: Qrep
+        path: addOns.qrep
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:hidden
+      statusDescriptors:
+      - description: Indicates if the Db2u Cluster deployment was successful.
+        displayName: State
+        path: state
+        x-descriptors:
+        - urn:alm:descriptor:text
+      version: v1
+    - description: ' Db2uEngine is the API for managing the db2u pods Internal objects.  Documentation
+        for additional information check: https://ibm.biz/BdqNGJ.  This product is
+        not deployable standalone and it is part of the LICCR already accepted.'
+      displayName: Db2u Engine
+      kind: Db2uEngine
+      name: db2uengines.db2u.databases.ibm.com
+      resources:
+      - kind: PersistentVolumeClaim
+        name: ""
+        version: v1
+      - kind: Pod
+        name: ""
+        version: v1
+      version: v1alpha1
+    - description: 'Db2uHadr is the API for configuring HADR between 2 Db2 deployments.
+        Documentation for additional information check: https://ibm.biz/BdqNGJ. This
+        product is not deployable standalone and it is part of the LICCR already accepted'
+      displayName: Db2u HADR
+      kind: Db2uHadr
+      name: db2uhadrs.db2u.databases.ibm.com
+      resources:
+      - kind: Db2uCluster
+        name: ""
+        version: v1
+      specDescriptors:
+      - displayName: Primary instance
+        path: primary
+      - displayName: Standby instance
+        path: standby
+      statusDescriptors:
+      - description: Indicates if the Db2u HADR setup was successful.
+        displayName: State
+        path: state
+        x-descriptors:
+        - urn:alm:descriptor:text
+      version: v1alpha1
+    - description: 'Db2uInstance is the new generation API for managing lifecycle
+        of Db2 on Kubernetes platforms. Note: - For new deployments, it is highly
+        recommended to use Db2uInstance instead of Db2uCluster which will be deprecated
+        in the future. - Today, your existing Db2uCluster instances cannot be upgraded
+        to Db2uInstance. Documentation for additional information check: https://ibm.biz/BdqNGJ.
+        License By installing this product you accept the license terms https://ibm.biz/BdqNGh.'
+      displayName: Db2u Instance
+      kind: Db2uInstance
+      name: db2uinstances.db2u.databases.ibm.com
+      resources:
+      - kind: ConfigMap
+        name: ""
+        version: v1
+      - kind: Deployment
+        name: ""
+        version: v1
+      - kind: Job
+        name: ""
+        version: v1
+      - kind: PersistentVolumeClaim
+        name: ""
+        version: v1
+      - kind: StatefulSet
+        name: ""
+        version: v1
+      specDescriptors:
+      - displayName: Qrep
+        path: addOns.qrep
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:hidden
+      - displayName: Database Type
+        path: environment.dbType
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:select:db2wh
+        - urn:alm:descriptor:com.tectonic.ui:select:db2oltp
+      statusDescriptors:
+      - displayName: State
+        path: state
+        x-descriptors:
+        - urn:alm:descriptor:text
+      version: v1
+    - description: FormationLock is used by the Recipe system to gate execution of
+        Recipes. See the recipes package for more details on semantics. Internal objects
+        This product is not deployable standalone and it is part of the LICCR already
+        accepted
+      displayName: FormationLock
+      kind: FormationLock
+      name: formationlocks.db2u.databases.ibm.com
+      resources:
+      - kind: Formation
+        name: ""
+        version: ""
+      version: v1
+    - description: Formation represents an instance of a database managed by CDCP.
+        The Formation and its fields are the primary public API of CDCP. Internal
+        objects This product is not deployable standalone and it is part of the LICCR
+        already accepted
+      displayName: Formation
+      kind: Formation
+      name: formations.db2u.databases.ibm.com
+      resources:
+      - kind: ConfigMap
+        name: ""
+        version: v1
+      version: v1
+    - description: Db2uBackup is the API to perform a database backup for a Db2 or
+        Db2 Warehouse deployment.
+      displayName: Db2u Backup
+      kind: Db2uBackup
+      name: db2ubackups.db2ubnr.databases.ibm.com
+      specDescriptors:
+      - description: 'Vendor for the backup target. "disk" (default): backup to ${BACKUPDIR}
+          path within db2 engine container'
+        displayName: Backup Vendor
+        path: databaseBackup.backupTarget.vendor
+      - description: Name of the database to backup
+        displayName: Db Name
+        path: databaseBackup.dbName
+      - description: Name of the Db2uCluster CR containing database to backup
+        displayName: Db2uName
+        path: db2uName
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - description: 'Vendor for the backup target. "disk" (default): backup to ${BACKUPDIR}
+          path within db2 engine container'
+        displayName: Backup Vendor
+        path: schemaBackup.backupTarget.vendor
+      - description: Optional database backup configuration
+        displayName: Database
+        path: databaseBackup
+      - description: Backup vendor-specific options (not currently supported)
+        displayName: Vendor Opts
+        path: databaseBackup.backupTarget.vendorOpts
+      - description: 'Backup type, valid values are: online | offline | incremental'
+        displayName: Backup Type
+        path: databaseBackup.type
+      - description: Backup vendor-specific options (not currently supported)
+        displayName: Vendor Opts
+        path: schemaBackup.backupTarget.vendorOpts
+      - description: Backup location and any vendor-specific options
+        displayName: Backup Target
+        path: databaseBackup.backupTarget
+      - description: Backup path (not currently supported)
+        displayName: Path
+        path: databaseBackup.backupTarget.path
+      - description: Backup path (not currently supported)
+        displayName: Path
+        path: schemaBackup.backupTarget.path
+      version: v1alpha1
+    - description: Db2uLogStream is the Schema for the db2ulogstreams API
+      displayName: Db2u Log Stream
+      kind: Db2uLogStream
+      name: db2ulogstreams.db2ulog.databases.ibm.com
+      version: v1alpha1
+    - description: Db2uRestore is the API to perform a database restore for a Db2
+        or Db2 Warehouse deployment.
+      displayName: Db2u Restore
+      kind: Db2uRestore
+      name: db2urestores.db2ubnr.databases.ibm.com
+      specDescriptors:
+      - description: Name of the Db2uCluster CR containing database where the backup
+          was taken/will be restored to
+        displayName: Db2uName
+        path: db2uName
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - description: Rollforward option (not currently supported)
+        displayName: Roll Forward Value
+        path: restoreConfiguration.rollForwardOpts.rollForwardTo
+      - description: Name of the Db2uBackup CR instance to restore from
+        displayName: Db2uBackup
+        path: db2uBackup
+        x-descriptors:
+        - urn:alm:descriptor:com.tectonic.ui:text
+      - description: If specified, the additional configurations for the restore operation
+          (not currently supported)
+        displayName: Restore Configuration
+        path: restoreConfiguration
+      version: v1alpha1
+  description: "IBM® Db2 provides advanced data management and analytics capabilities
+    for transactional workloads. Db2 has no processor, memory, or database size limits,
+    which makes it ideal for any size workload. The Db2 operator enables you to create
+    these databases in your Red Hat OpenShift cluster so that you can govern the data
+    and use it for more in-depth analysis.\nIBM Db2 is the recommended database in
+    the following situations:\n\n- You need your transactional data to be governed,
+    such as data from a website, bank, or retail store.\n- You want to create a replica
+    of your transactional database so that you can run analytics without impacting
+    regular business operations.\n- You need to ensure the integrity of your data
+    by using an ACID-compliant database.\n- You need a low-latency database.\n- You
+    need real-time insight into your business operations.\n\n# Name\n\nIBM® Db2U Operator\n\n#
+    Introduction\n\n## Summary\n\nIBM® Db2 Database is an AI-infused, cost-effective
+    data management system with proven performance and scalability, available both
+    on premises and on the cloud. The Db2 container and operator have a strong focus
+    on quality & architecture, performance, security, and deployment time.\n\n- Powered
+    by AI–Machine learning algorithms help to provide significantly faster query speed
+    improvements.–Machine learning algorithms are used to score queries and provide
+    confidence-based results for faster insights.\n- Built for AI–Support for PYTHON,
+    GO, JSON, and Jupyter Notebooks allows data scientists to use the most innovative
+    tools available.–Data federation lets mission-critical data stay in place while
+    running operations, fueling new insights with less hassle\n\nRefer to the [IBM
+    Db2 Material](https://www.ibm.com/analytics/db2) for more information.\n\n## Features\n\nThe
+    IBM® Db2U Operator allows to deploy IBM Db2. \n\n* [Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2u_11-5-5.html)\n*
+    [Software-defined certified storage for Db2](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-cert-storage.html)\n*
+    Supports an HADR (High availability disaster recovery) configuration\n* Includes
+    REST & Graph capability\n* IBM® Db2 version 11.5.9.0\n\n## Documentation\n\nSee
+    the [Db2 Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2u_11-5-5.html)\n\n##
+    License\n\nBy installing this product you accept the [license terms](https://ibm.biz/BdqNGh)\n\n#
+    Details\n\n## Prerequisites\n\nIBM® Db2 requires a storage solution. Example of
+    applicable solutions:\n- [NFS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-nfs-storage.html)\n-
+    Red Hat OpenShift Container Storage 4.5\n- IBM Spectrum Scale CSI 2.1 or higher\n-
+    Portworx 2.5.5 or 2.5.6\n\n[Complete list for Db2 Certified Storage solutions](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-cert-storage.html)\n\n##
+    Resources Required\n\nMinimum scheduling capacity:\n\n#### IBM® Db2U Operator\n\n|
+    Software  | Memory (GB) | CPU (cores) | Disk (GB) | Nodes |\n| --------- | -----------
+    | ----------- | --------- | ----- |\n| Db2 Operator| 512Mi     |    500m     |
+    \          |   1   |\n| **Total** |   512Mi     |   500m      |           |       |\n\n\n####
+    IBM® Db2 - Operand\n\nWith every Db2 deployment, several Jobs will be deployed
+    and configure Db2, this configuration capacity is only applicable during the time
+    within which Db2 is deployed (a few minutes):\n- 1.7 CPU\n- 2 Gi\n\nThe smallest
+    possible configuration for the Db2 deployment is:\n\n| Software  | Memory (GB)
+    | CPU (cores) | Disk (GB) | Nodes |\n| --------- | ----------- | ----------- |
+    --------- | ----- |\n| Db2                   | 4Gi     |    0.5     |   100GB
+    \ |   1   |\n| Authentication (ldap) | 1Gi     |    1     |          |   1   |\n|
+    Etcd                  | 512Mi   |    0.5     |          |   1   |\n| Tools                 |
+    512Mi   |    0.5     |          |   1   |\n| **Total**             | 6Gi     |
+    \   2.5     |          |       |\n\nMore information about the different licenses
+    and consideration for deployment have been documented in the [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.licensing.doc/doc/c0058536.html)\n\n#
+    Installing\n\nThese instructions are for installing Db2U from the Red Hat Marketplace,
+    as well as in an air-gapped or on-prem installation.\n\n## To install the Db2U
+    Operator from the Red Hat Marketplace\n\n- You can find installation guidance
+    in the [Db2 install documentation](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/t_db2u_install_from_RHM.html)\n\n##
+    To install the Db2U Operator from the IBM Operator Catalog\n\nYou can install
+    the Db2U Operator from the IBM Operator Catalog. However, in order to pull the
+    Db2 container images, you need to configure the access to the IBM Container Entitled
+    Registry.\n\n### 1. Retrieve an entitled key from the Entitled registry\n\n- Log
+    into [MyIBM](https://myibm.ibm.com/products-services/containerlibrary)\n- Copy
+    the `Entitled Key`\n\n### 2. Create an Image Pull Secret using the Entitled Key\n\n```bash\n#\n##
+    Set the variables to the correct values\n#\n## Use cp for the value of the docker-username
+    field\n#\nENTITLEDKEY=\"Use the Entitled Key value from Step 1\"\nEMAIL=\"Use
+    the email value\"\nNAMESPACE=\"Use the targeted namespace value\"\nCASE_NAME=ibm-db2uoperator\n\noc
+    create secret docker-registry ibm-registry   \\\n    --docker-server=cp.icr.io
+    \                  \\\n    --docker-username=cp                        \\\n    --docker-password=${ENTITLEDKEY}
+    \           \\\n    --docker-email=${EMAIL}                     \\\n    --namespace=${NAMESPACE}\n```\n\n###
+    3. Modify the OpenShift Global Image Pull Secret (Optional)\n\n```bash\n#\n##
+    Set the variable to the correct value\n#\nNAMESPACE=\"Use the targeted namespace
+    value\"\n\necho $(oc get secret pull-secret -n openshift-config --output=\"jsonpath={.data.\\.dockerconfigjson}\"
+    | base64 --decode; \\\noc get secret ibm-registry -n ${NAMESPACE} --output=\"jsonpath={.data.\\.dockerconfigjson}\"
+    | base64 --decode) | \\\njq -s '.[0] * .[1]' > dockerconfig_merged\n\noc set data
+    secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=dockerconfig_merged\n```\n\nNOTE:\nThis
+    step requires cluster administrator privileges. Once the global pull secret has
+    been modified, OpenShift will propagate the update to the entire cluster. Before
+    deploying Db2, all OpenShift workers need to be in a Ready state. \n\nAlternatively,
+    use the image pull secret directly, when deploying Db2.\n\n### 4. Reference the
+    IBM Entitled Registry Image Pull Secret (Alternative)\n\nRather than configuring
+    the global image pull secret, you may also directly supply the image pull secret
+    (`ibm-registry`) to the [Db2Ucluster API] (https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2ucluster_api.html).\n\nExample:\n```\naccount:\n
+    \ privileged: true\n  imagePullSecrets:\n    - ibm-registry\n```\n\nNOTE:\n[More
+    information about the Db2Ucluster API](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2ucluster_api.html)
+    \  \n\n## To install the Db2U Operator using the command-line\n\n### Prerequisite:
+    IBM Cloud Pak CLI (cloudctl)\n\nThe following steps help install the Db2U operator
+    using the [IBM Cloud Pak CLI (cloudctl)](https://www.ibm.com/support/knowledgecenter/en/SSHKN6/cloudctl/landing_cloudctl.html).\n\n[Installing
+    IBM Cloud Pak CLI (cloudctl)](https://www.ibm.com/support/knowledgecenter/en/SSHKN6/cloudctl/3.x.x/install_cli.html)\n\nThe
+    IBM Cloud Pak CLI (cloudctl) is a tool with significant benefits around airgap
+    for [case management](https://www.ibm.com/support/knowledgecenter/SSHKN6/cloudctl/3.2.4/cli_case_commands.html).
+    It provides a common framework for IBM operators around a consistent and optimized
+    airgap install experience via bastion, non-bastion or portable storage.\n\n###
+    1. Retrieve an entitled key from the Entitled registry\n\n- Log into [MyIBM](https://myibm.ibm.com/products-services/containerlibrary)\n-
+    Copy the `Entitled Key`\n\n### 2. Create an Image Pull Secret using the Entitled
+    Key\n\n```bash\n#\n## Set the variables to the correct values\n#\n## Use cp for
+    the value of the docker-username field\n#\nENTITLEDKEY=\"Use the Entitled Key
+    value from Step 1\"\nEMAIL=\"Use the email value\"\nNAMESPACE=\"Use the targeted
+    namespace value\"\nSTORAGECLASS=\"Use the storage class name\"\n\noc create secret
+    docker-registry ibm-registry   \\\n    --docker-server=cp.icr.io                   \\\n
+    \   --docker-username=cp                        \\\n    --docker-password=${ENTITLEDKEY}
+    \           \\\n    --docker-email=${EMAIL}                     \\\n    --namespace=${NAMESPACE}\n```\n\n###
+    3. Modify the OpenShift Global Image Pull Secret (Optional)\n\n```bash\n#\n##
+    Set the variable to the correct value\n#\nNAMESPACE=\"Use the targeted namespace
+    value\"\n\necho $(oc get secret pull-secret -n openshift-config --output=\"jsonpath={.data.\\.dockerconfigjson}\"
+    | base64 --decode; \\\noc get secret ibm-registry -n ${NAMESPACE} --output=\"jsonpath={.data.\\.dockerconfigjson}\"
+    | base64 --decode) | \\\njq -s '.[0] * .[1]' > dockerconfig_merged\n\noc set data
+    secret/pull-secret -n openshift-config --from-file=.dockerconfigjson=dockerconfig_merged\n```\n\nNOTE:\nThis
+    step requires cluster administrator privileges. Once the global pull secret has
+    been modified, OpenShift will propagate the update to the entire cluster. Before
+    deploying Db2, all OpenShift workers need to be in a Ready state. \n\nAlternatively,
+    use the image pull secret directly, when deploying Db2.\n\n### 4. Reference the
+    IBM Entitled Registry Image Pull Secret (Alternative)\n\nRather than configuring
+    the global image pull secret, you may also directly supply the image pull secret
+    (`ibm-registry`) to the Db2Ucluster API.\n\nExample:\n```\naccount:\n  privileged:
+    true\n  imagePullSecrets:\n    - ibm-registry\n```\n\n### 4. Install IBM Db2U
+    catalog\n\n```bash\ncloudctl case launch                 \\\n    --case ${CASE_NAME}
+    \             \\\n    --namespace ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup
+    \   \\\n    --action installCatalog          \\\n    --tolerance 1\n```\n\n###
+    5. Install the Db2U operator via command line\n\n```bash\ncloudctl case launch
+    \                \\\n    --case ${CASE_NAME}              \\\n    --namespace
+    ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    installOperatorNative   \\\n    --tolerance 1\n```\n\n### 6. Deploy Db2\n\nTo
+    deploy Db2, [the Db2uCluster API is required](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2ucluster_api.html).
+    More information about the API is located in the Db2 knowledge center.\n\n## In
+    Air-Gapped OpenShift Cluster With a Bastion\n\n### 1. Prepare Bastion Host\n\n*
+    Logon to the bastion machine\n* Verify that the bastion machine has access\n  *
+    to public internet (to download CASE and images)\n  * a target image registry
+    ( where the images will be mirrored)\n  * a target openshift cluster to install
+    the operator\n* Download and install dependent command line tools\n  * [oc](https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)
+    - To interact with Openshift Cluster\n  * [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli)
+    - To download and install CASE\n\nAll the following steps should be run from the
+    bastion machine.\n\n### 2. Download CASE\n\n* Set up environment variables\n\n
+    \   Review the following parameters for your environment and then run the following
+    commands to set up the environment.\n\n    ```bash\n    export NS=<Namespace of
+    target installation on OpenShift cluster>\n    export CASE_NAME=ibm-db2uoperator\n
+    \   export CASE_VERSION=5.6.4\n    export CASE_ARCHIVE=${CASE_NAME}-${CASE_VERSION}.tgz\n
+    \   export OFFLINEDIR=/tmp/cases\n    export OFFLINECASE=${OFFLINEDIR}/${CASE_NAME}\n
+    \   export CASEPATH=\"https://github.com/IBM/cloud-pak/raw/master/repo/case/${CASE_ARCHIVE}\"\n\n
+    \   # Details of the source registry to copy from\n    export EXTERNAL_REGISTRY=cp.icr.io\n
+    \   export EXTERNAL_REGISTRY_USER=cp\n    export EXTERNAL_REGISTRY_PASSWORD=\"actualkey\"
+    # Actual entitlement key goes here\n\n    # Details of the target registry to
+    copy to\n    export TARGET_REGISTRY_HOST=\"\"          # Target registry host\n
+    \   export TARGET_REGISTRY_PORT=5000        # Target registry port number\n    export
+    TARGET_REGISTRY=${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\n    export TARGET_REGISTRY_USER=\"user\"
+    \     # Actual username goes here\n    export TARGET_REGISTRY_PASSWORD=\"key\"
+    \  # Actual API Key goes here\n\n    # Details of the storage class for the deployment\n
+    \   export STORAGECLASS=\"Use the storage class name\"\n    ```\n\n* Create a
+    directory to save the CASE to a local directory\n\n    ```bash\n    $ mkdir ${OFFLINEDIR}\n
+    \   ```\n\n* Run\n\n    ```bash\n    $ cloudctl case save --case ${CASEPATH} --outputdir
+    ${OFFLINEDIR}\n    Downloading and extracting the CASE ...\n    - Success\n    Retrieving
+    CASE version ...\n    - Success\n    Validating the CASE ...\n    - Success\n
+    \   Creating inventory ...\n    - Success\n    Finding inventory items\n    -
+    Success\n    Resolving inventory items ...\n    Parsing inventory items\n    -
+    Success\n    ```\n\n* Verify the CASE and images csv has been downloaded\n\n    ```bash\n
+    \   $ ls ${OFFLINEDIR}\n    total 128K\n    drwxr-xr-x 2 root root    6 Jan 20
+    11:10 charts/\n    -rw-r--r-- 1 root root 116K Jan 20 11:10 ibm-db2uoperator-5.6.4.tgz\n
+    \   -rw-r--r-- 1 root root   32 Jan 20 11:10 ibm-db2uoperator-5.6.4-charts.csv\n
+    \   -rw-r--r-- 1 root root 5.2K Jan 20 11:10 ibm-db2uoperator-5.6.4-images.csv\n
+    \   ```\n\n* Extract the CASE\n\n```bash\ncd ${OFFLINEDIR}\ntar -xvzf ${CASE_ARCHIVE}\n```\n\n###
+    3. Configure Registry Auth\n\n#### 1. Create auth secret for the source image
+    registry\n\n    Create registry secret for source image registry (if the registry
+    is public which doesn't require credentials, this step can be skipped)\n\n    ```bash\n
+    \   $ cloudctl case launch              \\\n        --case ${OFFLINECASE}           \\\n
+    \       --namespace ${NS}               \\\n        --inventory db2uOperatorSetup
+    \  \\\n        --action configure-creds-airgap \\\n        --args \"--registry
+    ${EXTERNAL_REGISTRY} --user ${EXTERNAL_REGISTRY_USER} --pass ${EXTERNAL_REGISTRY_PASSWORD}\"\n
+    \   ```\n\n#### 2. Create auth secret for target image registry\n\n    ```bash\n
+    \   $ cloudctl case launch              \\\n        --case ${OFFLINECASE}           \\\n
+    \       --namespace ${NS}               \\\n        --inventory db2uOperatorSetup
+    \  \\\n        --action configure-creds-airgap \\\n        --args \"--registry
+    ${TARGET_REGISTRY} --user ${TARGET_REGISTRY_USER} --pass ${TARGET_REGISTRY_PASSWORD}\"\n
+    \   ```\n\n    The credentials are now saved to `~/.airgap/secrets/<registry-name>.json`\n\n###
+    4. Mirror Images\n\nIn this step, images from the saved CASE (images.csv) are
+    copied to the target registry in the airgap environment\n\n```bash\n$ cloudctl
+    case launch               \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NS}                \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    mirror-images           \\\n    --args \"--registry ${TARGET_REGISTRY} --inputDir
+    ${OFFLINEDIR}\"\n```\n\n### 5. Configure Cluster for Airgap\n\nThose steps do
+    the following:\n* Create a global image pull secret for the target registry (this
+    step can be skipped if target registry is unauthenticated)\n* Create an imagesourcecontentpolicy\n\nWARNING:\n\n*
+    Cluster resources must adjust to the new pull secret, which can temporarily limit
+    the usability of the cluster. Authorization credentials are stored in $HOME/.airgap/secrets
+    and /tmp/airgap* to support this action\n\n* Applying an imagesourcecontentpolicy
+    triggers each worker node to restart.\n\n    ```bash\n    $ cloudctl case launch
+    \               \\\n        --case ${OFFLINECASE}             \\\n        --namespace
+    ${NS}                 \\\n        --inventory db2uOperatorSetup     \\\n        --action
+    configure-cluster-airgap \\\n        --args \"--registry ${TARGET_REGISTRY} --inputDir
+    ${OFFLINEDIR}\"\n    ```\n\n* (Optional) Add the target registry to the cluster
+    insecureRegistries list if the target registry isn't secured by a certificate.
+    All the nodes will restart, one at a time, after the following command:\n\n    ```bash\n
+    \   $ oc patch image.config.openshift.io/cluster --type=merge -p \"{\\\"spec\\\":{\\\"registrySources\\\":{\\\"insecureRegistries\\\":[\\\"${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\\\",
+    \\\"${TARGET_REGISTRY_HOST}\\\"]}}}\"\n    ```\n\n### 6. Install Catalog Source\n\n```bash\ncloudctl
+    case launch                 \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    installCatalog          \\\n    --tolerance 1\n```\n\n### 7. Install Db2U Operator\n\n```bash\ncloudctl
+    case launch                 \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    installOperatorNative   \\\n    --tolerance 1\n```\n\n### 8. Deploy Db2\n\nTo
+    deploy Db2, [the Db2uCluster API is required](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2ucluster_api.html).
+    More information about the API is located in the Db2 knowledge center.\n\n## In
+    Air-Gapped OpenShift Cluster Without a Bastion\n\n### 1. Prepare a portable device\n\nPrepare
+    a portable device (such as laptop) that be used to download the case and images
+    can be carried into the air gapped environment\n* Verify that the portable device
+    has access\n  * to public internet (to download CASE and images)\n  * a target
+    image registry ( where the images will be mirrored)\n  * a target openshift cluster
+    to install the operator\n* Download and install dependent command line tools\n
+    \ * [oc](https://docs.openshift.com/container-platform/4.5/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)
+    - To interact with Openshift Cluster\n  * [cloud-pak-cli](https://github.com/IBM/cloud-pak-cli)
+    - To download and install CASE\n\nAll the following steps should be run from the
+    portable device\n\n### 2. Download CASE\n\n* Set up environment variables\n\n
+    \   Review the following parameters for your environment and then run the following
+    commands to set up the environment.\n\n    ```bash\n    export NS=<Namespace of
+    target installation on OpenShift cluster>\n    export CASE_NAME=ibm-db2uoperator\n
+    \   export CASE_VERSION=5.6.4\n    export CASE_ARCHIVE=${CASE_NAME}-${CASE_VERSION}.tgz\n
+    \   export OFFLINEDIR=/tmp/cases\n    export OFFLINECASE=${OFFLINEDIR}/${CASE_NAME}\n
+    \   export CASEPATH=\"https://github.com/IBM/cloud-pak/raw/master/repo/case/${CASE_ARCHIVE}\"\n\n
+    \   # Details of the source registry to copy from\n    export EXTERNAL_REGISTRY=cp.icr.io\n
+    \   export EXTERNAL_REGISTRY_USER=cp\n    export EXTERNAL_REGISTRY_PASSWORD=\"actualkey\"
+    # Actual entitlement key goes here\n\n    # Details of the target registry to
+    copy to\n    export TARGET_REGISTRY_HOST=\"\"          # Target registry host\n
+    \   export TARGET_REGISTRY_PORT=5000        # Target registry port number\n    export
+    TARGET_REGISTRY=${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\n    export TARGET_REGISTRY_USER=\"user\"
+    \     # Actual username goes here\n    export TARGET_REGISTRY_PASSWORD=\"key\"
+    \  # Actual API Key goes here\n\n    # Details of the storage class for the deployment\n
+    \   export STORAGECLASS=\"Use the storage class name\"\n    ```\n\n* Create a
+    directory to save the CASE to a local directory\n\n    ```bash\n    $ mkdir ${OFFLINEDIR}\n
+    \   ```\n\n* Run\n\n    ```bash\n    $ cloudctl case save --case ${CASEPATH} --outputdir
+    ${OFFLINEDIR}\n    Downloading and extracting the CASE ...\n    - Success\n    Retrieving
+    CASE version ...\n    - Success\n    Validating the CASE ...\n    - Success\n
+    \   Creating inventory ...\n    - Success\n    Finding inventory items\n    -
+    Success\n    Resolving inventory items ...\n    Parsing inventory items\n    -
+    Success\n    ```\n\n* Verify the CASE and images csv has been downloaded\n\n    ```bash\n
+    \   $ ls ${OFFLINEDIR}\n    total 128K\n    drwxr-xr-x 2 root root    6 Jan 20
+    11:10 charts/\n    -rw-r--r-- 1 root root 116K Jan 20 11:10 ibm-db2uoperator-5.6.4.tgz\n
+    \   -rw-r--r-- 1 root root   32 Jan 20 11:10 ibm-db2uoperator-5.6.4-charts.csv\n
+    \   -rw-r--r-- 1 root root 5.2K Jan 20 11:10 ibm-db2uoperator-5.6.4-images.csv\n
+    \   ```\n\n* Extract the CASE\n\n```bash\ncd ${OFFLINEDIR}\ntar -xvzf ${CASE_ARCHIVE}\n```\n\n###
+    3. Copy the images to the local container registry on the portable device\n\n*
+    Set up environment variables\n\n    Review the following parameters for your environment
+    and then run the following commands to set up the environment.\n\n    ```bash\n
+    \   export NS=<Namespace of target installation on OpenShift cluster>\n    export
+    CASE_NAME=ibm-db2uoperator\n    export CASE_VERSION=5.6.4\n    export CASE_ARCHIVE=${CASE_NAME}-${CASE_VERSION}.tgz\n
+    \   export OFFLINEDIR=/tmp/cases\n    export OFFLINECASE=${OFFLINEDIR}/${CASE_NAME}\n
+    \   export CASEPATH=\"https://github.com/IBM/cloud-pak/raw/master/repo/case/${CASE_ARCHIVE}\"\n\n
+    \   # Details of the source registry to copy from\n    export EXTERNAL_REGISTRY=cp.icr.io\n
+    \   export EXTERNAL_REGISTRY_USER=cp\n    export EXTERNAL_REGISTRY_PASSWORD=\"actualkey\"
+    # Actual entitlement key goes here\n\n    # Details of the intermediate registry
+    if not using a Bastion server\n    export PORTABLE_REGISTRY_HOST=localhost\n    export
+    PORTABLE_REGISTRY_PORT=5000\n    export PORTABLE_REGISTRY=${PORTABLE_REGISTRY_HOST}:${PORTABLE_REGISTRY_PORT}\n
+    \   export PORTABLE_REGISTRY_USER=\"user\"      # Actual username goes here\n
+    \   export PORTABLE_REGISTRY_PASSWORD=\"key\"   # Actual API Key goes here\n    export
+    PORTABLE_REGISTRY_PATH=${OFFLINEDIR}/registry\n    export PORTABLE_STORAGE_LOCATION=\"\"
+    \      # Override\n\n    # Details of the target registry to copy to\n    export
+    TARGET_REGISTRY_HOST=\"\"          # Target registry host\n    export TARGET_REGISTRY_PORT=5000
+    \       # Target registry port number\n    export TARGET_REGISTRY=${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\n
+    \   export TARGET_REGISTRY_USER=\"user\"      # Actual username goes here\n    export
+    TARGET_REGISTRY_PASSWORD=\"key\"   # Actual API Key goes here\n    ```\n\n* Set
+    the source and target registries\n\n    ```bash\n    export SOURCE_REGISTRY=${EXTERNAL_REGISTRY}\n
+    \   export SOURCE_REGISTRY_USER=${EXTERNAL_REGISTRY_USER}\n    export SOURCE_REGISTRY_PASS=${EXTERNAL_REGISTRY_PASSWORD}\n\n
+    \   export TARGET_REGISTRY=${PORTABLE_REGISTRY}\n    export TARGET_REGISTRY_USER=${PORTABLE_REGISTRY_USER}\n
+    \   export TARGET_REGISTRY_PASS=${PORTABLE_REGISTRY_PASSWORD}\n    ```\n\n* Initialize
+    the Docker registry by running the following command:\n\n    ```bash\n    cloudctl
+    case launch              \\\n        --case ${OFFLINECASE}         \\\n        --inventory
+    db2uOperatorSetup \\\n        --action init-registry        \\\n        --args
+    \"--registry $PORTABLE_REGISTRY_HOST --user $PORTABLE_REGISTRY_USER --pass $PORTABLE_REGISTRY_PASSWORD
+    --dir $PORTABLE_REGISTRY_PATH\"\n    ```\n\n    * Start the Docker registry by
+    running the following command:\n\n    ```bash\n    cloudctl case launch              \\\n
+    \       --case ${OFFLINECASE}         \\\n        --inventory db2uOperatorSetup
+    \\\n        --action start-registry       \\\n        --args \"--registry $PORTABLE_REGISTRY
+    --user $PORTABLE_REGISTRY_USER --pass $PORTABLE_REGISTRY_PASSWORD --dir $PORTABLE_REGISTRY_PATH\"\n
+    \   ```\n\n### 4. Configure Registry Auth\n\n1. Create an auth secret for the
+    source image registry\n\n    Create a registry secret for the source image registry
+    (if the registry is public which doesn't require credentials, this step can be
+    skipped)\n\n    ```bash\n    $ cloudctl case launch              \\\n        --case
+    ${OFFLINECASE}           \\\n        --namespace ${NS}               \\\n        --inventory
+    db2uOperatorSetup   \\\n        --action configure-creds-airgap \\\n        --args
+    \"--registry ${EXTERNAL_REGISTRY} --user ${EXTERNAL_REGISTRY_USER} --pass ${EXTERNAL_REGISTRY_PASSWORD}\"\n
+    \   ```\n\n2. Create an auth secret for target image registry\n\n    ```bash\n
+    \   $ cloudctl case launch              \\\n        --case ${OFFLINECASE}           \\\n
+    \       --namespace ${NS}               \\\n        --inventory db2uOperatorSetup
+    \  \\\n        --action configure-creds-airgap \\\n        --args \"--registry
+    ${TARGET_REGISTRY} --user ${TARGET_REGISTRY_USER} --pass ${TARGET_REGISTRY_PASSWORD}\"\n
+    \   ```\n\n### 5. Mirror Images\n\nIn this step, images from the saved CASE (images.csv)
+    are copied to the target registry in the airgap environment\n\n```bash\n$ cloudctl
+    case launch               \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NS}                \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    mirror-images           \\\n    --args \"--registry ${TARGET_REGISTRY} --inputDir
+    ${OFFLINEDIR}\"\n```\n\n### 6. Copy case and registry data to portable storage\n\nRun
+    the following command to copy the offline case inventory images and registry data
+    folder to the portable storage device:\n\n```bash\ncp -r ${OFFLINEDIR} ${PORTABLE_STORAGE_LOCATION}\n```\n\n###
+    7. Copy the images to the target registry behind the firewall\n\n* Set up environment
+    variables\n\n    Review the following parameters for your environment and then
+    run the following commands to set up the environment.\n\n    ```bash\n    export
+    NS=<Namespace of target installation on OpenShift cluster>\n    export CASE_NAME=ibm-db2uoperator\n
+    \   export CASE_VERSION=5.6.4\n    export CASE_ARCHIVE=${CASE_NAME}-${CASE_VERSION}.tgz\n
+    \   export OFFLINEDIR=/tmp/cases\n    export OFFLINECASE=${OFFLINEDIR}/${CASE_NAME}\n
+    \   export CASEPATH=\"https://github.com/IBM/cloud-pak/raw/master/repo/case/${CASE_ARCHIVE}\"\n\n
+    \   # Details of the source registry to copy from\n    export EXTERNAL_REGISTRY=cp.icr.io\n
+    \   export EXTERNAL_REGISTRY_USER=cp\n    export EXTERNAL_REGISTRY_PASSWORD=\"actualkey\"
+    # Actual entitlement key goes here\n\n    # Details of the intermediate registry
+    if not using a Bastion server\n    export PORTABLE_REGISTRY_HOST=localhost\n    export
+    PORTABLE_REGISTRY_PORT=5000\n    export PORTABLE_REGISTRY=${PORTABLE_REGISTRY_HOST}:${PORTABLE_REGISTRY_PORT}\n
+    \   export PORTABLE_REGISTRY_USER=\"user\"      # Actual username goes here\n
+    \   export PORTABLE_REGISTRY_PASSWORD=\"key\"   # Actual API Key goes here\n    export
+    PORTABLE_REGISTRY_PATH=${OFFLINEDIR}/registry\n    export PORTABLE_STORAGE_LOCATION=\"\"
+    \      # Override\n\n    # Details of the target registry to copy to\n    export
+    TARGET_REGISTRY_HOST=\"\"          # Target registry host\n    export TARGET_REGISTRY_PORT=5000
+    \       # Target registry port number\n    export TARGET_REGISTRY=${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\n
+    \   export TARGET_REGISTRY_USER=\"user\"      # Actual username goes here\n    export
+    TARGET_REGISTRY_PASSWORD=\"key\"   # Actual API Key goes here\n\n    # Details
+    of the storage class for the deployment\n    export STORAGECLASS=\"Use the storage
+    class name\"\n    ```\n\n* Set the source and target registries\n\n    The source
+    container registry is now the local registry on compute, for example localhost:5000
+    and the destination is the registry behind the firewall, for example 10.10.4.6:5000,
+    or the host and port in your airgap environment. You need to set up the environment
+    variables, mirror the images, and then install the catalog. Run the following
+    command to set up the environment variables:\n\n    ```bash\n    export SOURCE_REGISTRY=${PORTABLE_REGISTRY}\n
+    \   export SOURCE_REGISTRY_USER=${PORTABLE_REGISTRY_USER}\n    export SOURCE_REGISTRY_PASS=${PORTABLE_REGISTRY_PASSWORD}\n\n
+    \   export TARGET_REGISTRY=${INTERNAL_REGISTRY}\n    export TARGET_REGISTRY_USER=${INTERNAL_REGISTRY_USER}\n
+    \   export TARGET_REGISTRY_PASS=${INTERNAL_REGISTRY_PASSWORD}\n    ```\n\n    Run
+    the following command to override the registry storage location to point to the
+    location of the portable storage:\n\n    ```bash\n    export PORTABLE_STORAGE_LOCATION=#Provide
+    external storage path here\n    ```\n\n    Run the following command to copy the
+    offline case inventory images and registry data folder from the portable storage
+    device to the node.\n\n    ```bash\n    cp -r ${PORTABLE_STORAGE_LOCATION} ${OFFLINEDIR}\n
+    \   ```\n\n* Initialize the Docker registry by running the following command:\n\n
+    \   ```bash\n    cloudctl case launch              \\\n        --case ${OFFLINECASE}
+    \        \\\n        --inventory db2uOperatorSetup \\\n        --action init-registry
+    \       \\\n        --args \"--registry $PORTABLE_REGISTRY_HOST --user $PORTABLE_REGISTRY_USER
+    --pass $PORTABLE_REGISTRY_PASSWORD --dir $PORTABLE_REGISTRY_PATH\"\n    ```\n\n*
+    Start the Docker registry by running the following command:\n\n    ```bash\n    cloudctl
+    case launch              \\\n        --case ${OFFLINECASE}         \\\n        --inventory
+    db2uOperatorSetup \\\n        --action start-registry       \\\n        --args
+    \"--registry $PORTABLE_REGISTRY --user $PORTABLE_REGISTRY_USER --pass $PORTABLE_REGISTRY_PASSWORD
+    --dir $PORTABLE_REGISTRY_PATH\"\n    ```\n\n### 8. Configure Registry Auth\n\n1.
+    Create auth secret for the source image registry\n\n    Create registry secret
+    for source image registry (if the registry is public which doesn't require credentials,
+    this step can be skipped)\n\n    ```bash\n    $ cloudctl case launch              \\\n
+    \       --case ${OFFLINECASE}           \\\n        --namespace ${NS}               \\\n
+    \       --inventory db2uOperatorSetup   \\\n        --action configure-creds-airgap
+    \\\n        --args \"--registry ${SOURCE_REGISTRY} --user ${SOURCE_REGISTRY_USER}
+    --pass ${SOURCE_REGISTRY_PASSWORD}\"\n    ```\n\n2. Create auth secret for target
+    image registry\n\n    ```bash\n    $ cloudctl case launch              \\\n        --case
+    ${OFFLINECASE}           \\\n        --namespace ${NS}               \\\n        --inventory
+    db2uOperatorSetup   \\\n        --action configure-creds-airgap \\\n        --args
+    \"--registry ${TARGET_REGISTRY} --user ${TARGET_REGISTRY_USER} --pass ${TARGET_REGISTRY_PASSWORD}\"\n
+    \   ```\n\n### 9. Mirror Images\n\nIn this step, images from the saved CASE (images.csv)
+    are copied to the target registry in the airgap environment\n\n```bash\n$ cloudctl
+    case launch               \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NS}                \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    mirror-images           \\\n    --args \"--registry ${TARGET_REGISTRY} --inputDir
+    ${OFFLINEDIR}\"\n```\n\n### 10. Configure Cluster for Airgap\n\nThis steps does
+    the following\n\n* creates a global image pull secret for the target registry
+    (skipped if target registry is unauthenticated)\n* creates a imagesourcecontentpolicy\n\nWARNING:\n\n*
+    Cluster resources must adjust to the new pull secret, which can temporarily limit
+    the usability of the cluster. Authorization credentials are stored in $HOME/.airgap/secrets
+    and /tmp/airgap* to support this action\n\n* Applying imagesourcecontentpolicy
+    causes cluster nodes to recycle.\n\n    ```bash\n    $ cloudctl case launch                \\\n
+    \       --case ${OFFLINECASE}             \\\n        --namespace ${NS}                 \\\n
+    \       --inventory db2uOperatorSetup     \\\n        --action configure-cluster-airgap
+    \\\n        --args \"--registry ${TARGET_REGISTRY} --inputDir ${OFFLINEDIR}\"\n
+    \   ```\n\n* (Optional) Add the taget registry to cluster insecureRegistries list
+    if your target registry is not secured by a certificate. All the nodes will restart
+    one at a time after the following command:\n\n    ```bash\n    $ oc patch image.config.openshift.io/cluster
+    --type=merge -p \"{\\\"spec\\\":{\\\"registrySources\\\":{\\\"insecureRegistries\\\":[\\\"${TARGET_REGISTRY_HOST}:${TARGET_REGISTRY_PORT}\\\",
+    \\\"${TARGET_REGISTRY_HOST}\\\"]}}}\"\n    ```\n\n### 11. Install Catalog Source\n\n```bash\ncloudctl
+    case launch                 \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    installCatalog          \\\n    --tolerance 1\n```\n\n### 12. Install the operator\n\n```bash\ncloudctl
+    case launch                 \\\n    --case ${OFFLINECASE}            \\\n    --namespace
+    ${NAMESPACE}         \\\n    --inventory db2uOperatorSetup    \\\n    --action
+    installOperatorNative   \\\n    --tolerance 1\n```\n\n### 13. Install Db2UCluster\n##
+    Installing the Db2 Operator in an air-gapped environment\n\nTo install Db2 in
+    an air-gapped envirionment, follow the [Installing in an air-gapped environment](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/t_db2u_install_cli.html)
+    topic located in the Db2 knowledge center.\n\n## Deploy Db2 using the Db2UCluster
+    API\n\nTo deploy Db2, [the Db2uCluster API is required](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2ucluster_api.html).
+    More information about the API is located in the Db2 knowledge center.\n\n# Configuration\n\n*
+    The Db2U operator does not require any particular configuration\n\n# Deploying
+    Db2\n\nTo successfully IBM Db2, the following information needs to be specified:\n\n-
+    The license terms needs to be accepted\n- A valid storage class specified\n\nSee
+    below sections for further information and examples.\n\n## License\n\nIn order
+    to successfully deploy Db2, the license terms detailed inside the Db2UCluster
+    API, needs to be reviewed and accepted inside the Db2 Custom Resource.\n\n## Storage\n\nThe
+    provided example refer to a storage class named `managed-nfs-storage`. The storage
+    class must exist in the cluster or a supported storage class must be provided
+    accordingly.\n\nTo deploy Db2, you need a supported storage class. [Information
+    about the certified storage classes for Db2](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-cert-storage.html)\n\nDuring
+    a Db2 deployment, storage can be dynamically created or pre-created PVs can be
+    specified.\n\nDb2 needs the following storage locations:\n* System & Backup storage
+    [Shared with RWX]\n       * Db2 instance home directory\n       * Diagnostic logs\n
+    \      * Other global configuration directories\n    * Backups, Restore or Load
+    locations\n* User storage [Exclusive with RWO]\n       * Database storage paths\n
+    \      * Transaction logs\n\nIn cases, where the storage layer supports it, a
+    single storage location, defined as RWX, can be specified. Such a configuration
+    would exhibit degraded performances. \n\n| Software-defined  | Shared Zone [Meta]
+    | Data Zone [Data] | \n| --------- | ----------- | ----------- | \n| NFS  | Access
+    Mode: RWX |    RWX (combined with Meta) or RWO  | \n| Portworx 2.5.5 or 2.5.6
+    \ | Shared v4, RWX (based on NFS v4 protocol) | io-profile: db_remote, RWO |\n|
+    OCS 4.5  | CephFS, RWX | CephRBD(Block Device), RWO  |\n| Spectrum Scale CSI 2.1
+    or greater | RWX | RWO  |\n\n\n### NFS Storage configuration\n\nDescription for
+    a valid [NFS configuration](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-nfs-storage.html)\n\n###
+    SELinux configuration\n\nDescription for [SELinux](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/aese-selinux-storage.html)\n\n##
+    PodSecurityPolicy Requirements\n\nThe Db2 Deployment is currently only supported
+    on Red Hat OpenShift\n\n### Red Hat OpenShift SecurityContextConstraints Requirements\n\n*
+    The Db2 Deployment requires the following Custom SecurityContextConstraints definition:
+    \n\n    ```\n    kind: SecurityContextConstraints\n    apiVersion: v1\n    apiGroup:
+    security.openshift.io\n    metadata:\n        name: db2u-scc\n    allowHostDirVolumePlugin:
+    false\n    allowHostIPC: false\n    allowHostNetwork: false\n    allowHostPID:
+    false\n    allowHostPorts: false\n    # privileged container is only needed for
+    the init container that sets the Db2 kernel parameters\n    allowPrivilegedContainer:
+    true\n    allowedCapabilities:\n    - \"SYS_RESOURCE\"\n    - \"IPC_OWNER\"\n
+    \   - \"SYS_NICE\"\n    - \"CHOWN\"\n    - \"DAC_OVERRIDE\"\n    - \"FSETID\"\n
+    \   - \"FOWNER\"\n    - \"SETGID\"\n    - \"SETUID\"\n    - \"SETFCAP\"\n    -
+    \"SETPCAP\"\n    - \"SYS_CHROOT\"\n    - \"KILL\"\n    - \"AUDIT_WRITE\"\n    priority:
+    10\n    runAsUser:\n        type: RunAsAny\n    seLinuxContext:\n        type:
+    MustRunAs\n    fsGroup:\n        type: RunAsAny\n    supplementalGroups:\n        type:
+    RunAsAny\n    version: v1\n    ```\n\n## Example of a Db2 Custom Resource\n\n```\napiVersion:
+    db2u.databases.ibm.com/v1\nkind: Db2uCluster\nmetadata:\n  name: db2u-cicd-test\nspec:\n
+    \ license:\n    accept: true\n  account:\n    privileged: true\n    imagePullSecrets:\n
+    \     - ibm-registry    \n  version: \"11.5.5.0-cn1\"\n  size: 1\n  podConfig:\n
+    \   db2u:\n      resource:\n        db2u:\n          requests:\n            cpu:
+    2\n            memory: 4Gi\n          limits:\n            cpu: 2\n            memory:
+    4Gi\n  environment:\n    dbType: db2oltp\n    instance:\n      password: cicdtest\n
+    \ storage:\n    - name: meta\n      type: \"create\"\n      spec:\n        storageClassName:
+    \"managed-nfs-storage\"\n        accessModes:\n          - ReadWriteMany\n        resources:\n
+    \         requests:\n            storage: 10Gi\n    - name: data\n      type:
+    \"create\"\n      spec:\n        storageClassName: \"managed-nfs-storage\"\n        accessModes:\n
+    \         - ReadWriteMany\n        resources:\n          requests:\n            storage:
+    100Gi\n```\n\n### Limitations\n\nNone"
+  displayName: IBM Db2
+  icon:
+  - base64data: iVBORw0KGgoAAAANSUhEUgAAAGQAAABgCAYAAADrc9dCAAAGYElEQVR4nO2ZW6iVRRSAv3OOHj1hL3npoh5TPKjk7aiVqFmoCUlmRA9FaWX1kmhpQmWocDKjoqAog65KEkYPWdkNQ4iI0qJQqQd9KcpuECpmmXr27mHWYtYe/3/fzlYfWh8M//5n1qxZM+ufNZcNjuM4juM4juM4juM4juM4juM4juM4juM4juM4juM4juM4juM4juM4zv+LJqBZUtNZtqUEa1iaqpVLZVNq6Xg9slnpdA9yM9BLUguVx+CMow7rqY5GUm6gBgEXSepXg85yfWyhB33Qiv2ADkljgFHye1giP1TKO4CRSboww2DV31fqjQH6SH45o9tFdkgF+1XvaKN/tKThQJuRbcmo/xVwVNIyyetVoU3rjE7gJmAxcJ3YrdTlFG38FqCYkf6g9AvbliOn6XPgKmO4DsKlUl4AnpO8dIA0xFwM/Cny75SRBZho9BaBbkkngX+AH4FNwIQcPd8Z2+9PxiQLbXcm8IVpV9NfwIuED7zSR1e2gQ5gCfCIKN4r74tEqXZEHbIB6BL5LmAdsFXK/gXGS73eUk8dUgROEGZgGt60jU1G9t2kLLU7dUheOgbcmqFrj9QtAMvFpr6UrgupfbOlD+Xa+4gGrSlDxLi3k3zrkAL5oWS1GPSyvLfKc4rU203ozNZEr8bdcYQv/Bt5bkvkFOuQgsgWgP3Sxh7gB+Ks0UG/jNIPbC+nzpCUJpMGAQdF5wngAPCYpANE5xeBBTm2V0UL4YsYL8o+kPdWUw5xhkww5b0I60ILIaYWCNMZ4vTvlHpPA8/L78lGt+r/kBBu5oue93M6lc6QbnlONeVtwPWEAdQvekdS3zpkKWHQFwPPAI8Cs0z7TdIPDXN/AyOMTWMl74TYo6G50pqUiRp4iTSWDkS1DplIGNBPRV5DljpkA3ABYbB3JDIzROYloD+1hSx1yDQjr/F7qZSdlNRh9FiHrATe4tTw80KGDdcAN8tvHYMWwpqlIfQ1KT8jDskLWV1Sfq8xFqJDNsv7K/I+h7iWfAkcJ2xBB9Nzh2gaRVzoi8SBbCY6pJsYco4SnXFcnoukTjq49lw2lDBDtJ0HcupURa0OeZawXqwF1shzC/ArsJ7w1dtdljpkk3RiMGFHskfKFxBDGoRta08dojLthLiuMg8aHdYhvwHXEnZ58+X9pJTtNHV0DdJZqAP+KtGJx0SPtbUmanVIXvoFuM3oTNeQjabNNZK3EPgaOAScJ53soHEOGUapQ7qMDhuyHpJ8DXX3EMPPEWBgUm5vAtZTuqDrmaauBd12sFqHzCV0dDjhSxgBTCKEJF0r4NQ1ZKPRdy7wE3GKrzD2jOT0zZBVRod1yHKp1ybPKxPdY009tac3Ya2w4W1djs01UatD7MKY8q3IjDZ5qUP6ynOx5H9P3BhA4xzSLLbaNWSR0ZG17e0jz1nEzYDdFeq6OJCwMSkauSU59tZMrQ4ZTwxJ2vFWeb5OGIAbjf7UIbbePuB2ydfO1uuQGVLWmxgu7yAOWEH6qFiH3Cd1smZIWm+c2G1D9dVSZg+WddPTc4hufQHeFJl5Rn+WQzT+dhAGwZ7c63VIZyI3jbB7UmfsTNqxDlmb1F1JXEMOAQMkfx7hbFMkXM9sIc74htMuDW1N8lOHDM2p3x/4mXB9Yi8bsxySRb0O0auTXcB24BPCRkHzNezMSfTZXdZhwmzqlOch4iHvM5E/n7C1LUrZQeBJwiHyKeAJ4HF5PkxcQ6u+01LBIYSt5xIxYJe8z6X0quE9KV8N3AncDdwlz1XEabxe5O05pJvsw5LdrViHdFPd5aKuDzpL8tLyDF27Tf19iXzB6LxB5NsJOy49ZJZr7whwjtSr2iE6MAtzlB6kdMeyvYIRxwlfjNZR/ZOl/I2k3RR72VkEPpb3PIdMqmDPYdExO0fPfiO7gnAqT53SZeQHU/kiU9PvxOv/mmfIAMKCOJ2wmF0h75MpvUYeK+XTkzQNuJzSMGX195N6o6o0sE3kdauZJ696Z8pTf88k3DBn/UdjmWLqqew8QrhZRry217qthHFJ27RJ86fmtHnG6fGWr8HYc0Mlshx/VgbVXgfYlBrTnCOXJ5/qr6Vz1cjn2W2vNsrRnCGrO07dmmfZVW1yHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxnIbwH5SEJ98Du3ENAAAAAElFTkSuQmCC
+    mediatype: image/png
+  install:
+    spec:
+      clusterPermissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - namespaces
+          verbs:
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - persistentvolumes
+          verbs:
+          - list
+          - watch
+        - apiGroups:
+          - apiextensions.k8s.io
+          resources:
+          - customresourcedefinitions
+          verbs:
+          - create
+          - get
+          - list
+          - patch
+          - update
+        - apiGroups:
+          - policy
+          resources:
+          - podsecuritypolicies
+          - podsecuritypolicies/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - use
+          - watch
+        - apiGroups:
+          - security.openshift.io
+          resources:
+          - securitycontextconstraints
+          - securitycontextconstraints/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: db2u-operator
+      - rules:
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uclusters
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uinstances
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2ubackups
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2ubackups/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2ubackups/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2urestores
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2urestores/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - db2ubnr.databases.ibm.com
+          resources:
+          - db2urestores/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2ulog.databases.ibm.com
+          resources:
+          - db2ulogstreams
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2ulog.databases.ibm.com
+          resources:
+          - db2ulogstreams/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - db2ulog.databases.ibm.com
+          resources:
+          - db2ulogstreams/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - authentication.k8s.io
+          resources:
+          - tokenreviews
+          verbs:
+          - create
+        - apiGroups:
+          - authorization.k8s.io
+          resources:
+          - subjectaccessreviews
+          verbs:
+          - create
+        serviceAccountName: db2u-day2-ops-controller-manager
+      deployments:
+      - name: db2u-operator-manager
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              control-plane: db2u-operator-manager
+          strategy: {}
+          template:
+            metadata:
+              annotations:
+                seccomp.security.alpha.kubernetes.io/pod: runtime/default
+              creationTimestamp: null
+              labels:
+                control-plane: db2u-operator-manager
+                icpdsupport/addOnId: operator
+                icpdsupport/app: operator
+                icpdsupport/module: db2uoperator
+                intent: projected
+            spec:
+              containers:
+              - args:
+                - --enable-leader-election
+                - --zap-log-level=debug
+                - --zap-encoder=console
+                - --registry=cp.icr.io/cp
+                - --ce-registry=icr.io/db2u
+                - --operand-image-registry=icr.io/db2u
+                command:
+                - /manager
+                env:
+                - name: CDCP_GROUP
+                  value: db2u.databases.ibm.com
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: namespaces
+                      name: namespace-scope
+                      optional: true
+                - name: META_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: OPERATOR_NAME
+                  value: db2u-operator
+                image: icr.io/cpopen/db2u-operator@sha256:6ae3d5c06903528db1c0bd4e9b7692ac67bf6c951d2098b84a3e7c8f97ec84c3
+                livenessProbe:
+                  failureThreshold: 5
+                  initialDelaySeconds: 30
+                  periodSeconds: 45
+                  successThreshold: 1
+                  tcpSocket:
+                    port: 8080
+                name: manager
+                ports:
+                - containerPort: 9443
+                  protocol: TCP
+                readinessProbe:
+                  failureThreshold: 5
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  successThreshold: 1
+                  tcpSocket:
+                    port: 8080
+                resources:
+                  limits:
+                    cpu: "1"
+                    memory: 1000Mi
+                  requests:
+                    cpu: 500m
+                    memory: 500Mi
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                    - ALL
+                  privileged: false
+                  readOnlyRootFilesystem: false
+              securityContext:
+                runAsNonRoot: true
+              serviceAccountName: db2u-operator
+              terminationGracePeriodSeconds: 10
+      - name: db2u-day2-ops-controller-manager
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              control-plane: controller-manager
+          strategy: {}
+          template:
+            metadata:
+              annotations:
+                kubectl.kubernetes.io/default-container: manager
+                seccomp.security.alpha.kubernetes.io/pod: runtime/default
+              creationTimestamp: null
+              labels:
+                control-plane: controller-manager
+                icpdsupport/addOnId: operator
+                icpdsupport/app: operator
+                icpdsupport/module: db2uday2operator
+                intent: projected
+            spec:
+              containers:
+              - args:
+                - --leader-elect
+                - --zap-log-level=debug
+                - --zap-encoder=console
+                command:
+                - /manager
+                env:
+                - name: META_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: namespaces
+                      name: namespace-scope
+                      optional: true
+                image: icr.io/cpopen/db2u-day2-operator@sha256:be006f6b60efcd6da8159752d2f7614343c848c1f7ab2aca5118b1c00f248f0d
+                livenessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 8081
+                  initialDelaySeconds: 15
+                  periodSeconds: 20
+                name: manager
+                readinessProbe:
+                  httpGet:
+                    path: /readyz
+                    port: 8081
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+                resources:
+                  limits:
+                    cpu: 500m
+                    memory: 128Mi
+                  requests:
+                    cpu: 10m
+                    memory: 64Mi
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                    - ALL
+                  privileged: false
+                  readOnlyRootFilesystem: false
+              securityContext:
+                runAsNonRoot: true
+              serviceAccountName: db2u-day2-ops-controller-manager
+              terminationGracePeriodSeconds: 10
+      permissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          - configmaps/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - endpoints
+          - endpoints/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          - events/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - persistentvolumeclaims
+          - persistentvolumeclaims/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          - pods/exec
+          - pods/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - secrets
+          - secrets/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - serviceaccounts
+          - serviceaccounts/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - services
+          - services/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps
+          resources:
+          - deployments
+          - deployments/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps
+          resources:
+          - replicasets
+          - replicasets/finalizers
+          verbs:
+          - get
+          - list
+        - apiGroups:
+          - apps
+          resources:
+          - statefulsets
+          - statefulsets/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps.foundationdb.org
+          resources:
+          - foundationdbclusters
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps.foundationdb.org
+          resources:
+          - foundationdbclusters/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - batch
+          resources:
+          - cronjobs
+          - cronjobs/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - batch
+          resources:
+          - jobs
+          - jobs/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - coordination.k8s.io
+          resources:
+          - leases
+          verbs:
+          - create
+          - get
+          - list
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - backups
+          - buckets
+          - formationlocks
+          - formations
+          - recipes
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - bigsqls
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - bigsqls/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uclusters
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uclusters/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uclusters/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uengines
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uengines/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uengines/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uhadrs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uhadrs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uinstances
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uinstances/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - db2uinstances/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - formations/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - formations/status
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - objectstorages
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - sirius
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - sirius/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - sirius/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - db2ulog.databases.ibm.com
+          resources:
+          - db2ulogstreams
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - networking.k8s.io
+          resources:
+          - networkpolicies
+          - networkpolicies/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - rbac.authorization.k8s.io
+          resources:
+          - rolebindings
+          - rolebindings/finalizers
+          - roles
+          - roles/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: db2u-operator
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - coordination.k8s.io
+          resources:
+          - leases
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          verbs:
+          - create
+          - patch
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          - configmaps/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - persistentvolumeclaims
+          - persistentvolumeclaims/finalizers
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          - pods/exec
+          - pods/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - secrets
+          - secrets/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          resources:
+          - serviceaccounts
+          - serviceaccounts/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps
+          resources:
+          - deployments
+          - deployments/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: db2u-day2-ops-controller-manager
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: true
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - db2
+  - database
+  - db2u
+  - mpp
+  - sql
+  - RHOCP
+  - amd64
+  - ppc64le
+  - s390x
+  links:
+  - name: IBM Db2
+    url: https://www.ibm.com/analytics/db2
+  - name: IBM Db2 Knowledge Center
+    url: https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.5.0/com.ibm.db2.luw.db2u_openshift.doc/doc/c_db2u_overview.html
+  maintainers:
+  - email: db2install@ca.ibm.com
+    name: Db2U Development Team @ IBM
+  maturity: stable
+  minKubeVersion: 1.19.0
+  provider:
+    name: IBM
+  relatedImages:
+  - image: icr.io/cpopen/db2u-operator@sha256:6ae3d5c06903528db1c0bd4e9b7692ac67bf6c951d2098b84a3e7c8f97ec84c3
+    name: db2u-operator
+  replaces: db2u-operator.v5.0.0
+  version: 5.3.0
+status:
+  cleanup: {}
+  conditions:
+  - lastTransitionTime: "2024-09-24T01:36:45Z"
+    lastUpdateTime: "2024-09-24T01:36:45Z"
+    message: requirements not yet checked
+    phase: Pending
+    reason: RequirementsUnknown
+  - lastTransitionTime: "2024-09-24T01:36:45Z"
+    lastUpdateTime: "2024-09-24T01:36:49Z"
+    message: one or more requirements couldn't be found
+    phase: Pending
+    reason: RequirementsNotMet
+  - lastTransitionTime: "2024-09-24T01:36:56Z"
+    lastUpdateTime: "2024-09-24T01:36:56Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2024-09-24T01:36:57Z"
+    lastUpdateTime: "2024-09-24T01:36:57Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-24T01:36:57Z"
+    lastUpdateTime: "2024-09-24T01:37:00Z"
+    message: 'installing: waiting for deployment db2u-operator-manager to become ready:
+      deployment "db2u-operator-manager" waiting for 1 outdated replica(s) to be terminated'
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2024-09-24T01:37:20Z"
+    lastUpdateTime: "2024-09-24T01:37:20Z"
+    message: install strategy completed with no errors
+    phase: Succeeded
+    reason: InstallSucceeded
+  lastTransitionTime: "2024-09-24T01:37:20Z"
+  lastUpdateTime: "2024-09-24T01:37:20Z"
+  message: install strategy completed with no errors
+  phase: Succeeded
+  reason: InstallSucceeded
+  requirementStatus:
+  - group: operators.coreos.com
+    kind: ClusterServiceVersion
+    message: CSV minKubeVersion (1.19.0) less than server version (v1.27.15+6147456)
+    name: db2u-operator.v5.3.0
+    status: Present
+    version: v1alpha1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: bigsqls.db2u.databases.ibm.com
+    status: Present
+    uuid: 18514dae-df87-419b-8b40-afeb72b43d34
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2ubackups.db2ubnr.databases.ibm.com
+    status: Present
+    uuid: 1d92fa2a-75d2-4a2b-b846-6741aabe038f
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2uclusters.db2u.databases.ibm.com
+    status: Present
+    uuid: 435bb472-66c3-4ecd-af23-f7ed27633cee
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2uengines.db2u.databases.ibm.com
+    status: Present
+    uuid: 68df402e-7f1d-468e-8c2b-99216e722d4b
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2uhadrs.db2u.databases.ibm.com
+    status: Present
+    uuid: 8bdaab80-23bc-420e-8990-92f3ce530b54
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2uinstances.db2u.databases.ibm.com
+    status: Present
+    uuid: 637adfee-fc76-4d33-8845-1a78f565560d
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2ulogstreams.db2ulog.databases.ibm.com
+    status: Present
+    uuid: 26262f0e-8683-4251-be50-955911843e83
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2urestores.db2ubnr.databases.ibm.com
+    status: Present
+    uuid: fd34f6e1-0167-4729-bd3d-e5e2c1712993
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: formationlocks.db2u.databases.ibm.com
+    status: Present
+    uuid: 2bd73c4a-873c-4bc8-8792-a3c39d02a03d
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: formations.db2u.databases.ibm.com
+    status: Present
+    uuid: ced2a8d0-205a-4af7-8a91-360ccefd5864
+    version: v1
+  - dependents:
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["configmaps","configmaps/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["endpoints","endpoints/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["events","events/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["persistentvolumeclaims","persistentvolumeclaims/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["pods","pods/exec","pods/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["secrets","secrets/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["serviceaccounts","serviceaccounts/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["services","services/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps"],"resources":["deployments","deployments/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list"],"apiGroups":["apps"],"resources":["replicasets","replicasets/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps"],"resources":["statefulsets","statefulsets/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps.foundationdb.org"],"resources":["foundationdbclusters"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps.foundationdb.org"],"resources":["foundationdbclusters/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["batch"],"resources":["cronjobs","cronjobs/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["batch"],"resources":["jobs","jobs/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","get","list","update"],"apiGroups":["coordination.k8s.io"],"resources":["leases"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["backups","buckets","formationlocks","formations","recipes"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["bigsqls"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["bigsqls/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uclusters"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uclusters/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uclusters/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uengines"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uengines/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uengines/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uhadrs"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uhadrs/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uinstances"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uinstances/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uinstances/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["formations/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["formations/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["objectstorages"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["sirius"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["sirius/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","patch","update"],"apiGroups":["db2u.databases.ibm.com"],"resources":["sirius/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2ulog.databases.ibm.com"],"resources":["db2ulogstreams"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["networking.k8s.io"],"resources":["networkpolicies","networkpolicies/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["rbac.authorization.k8s.io"],"resources":["rolebindings","rolebindings/finalizers","roles","roles/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list","patch","update","watch"],"apiGroups":[""],"resources":["namespaces"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["list","watch"],"apiGroups":[""],"resources":["persistentvolumes"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","get","list","patch","update"],"apiGroups":["apiextensions.k8s.io"],"resources":["customresourcedefinitions"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","delete","get","list","patch","update","use","watch"],"apiGroups":["policy"],"resources":["podsecuritypolicies","podsecuritypolicies/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["security.openshift.io"],"resources":["securitycontextconstraints","securitycontextconstraints/finalizers"]}
+      status: Satisfied
+      version: v1
+    group: ""
+    kind: ServiceAccount
+    message: ""
+    name: db2u-operator
+    status: Present
+    version: v1
+  - dependents:
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch","create","update","patch","delete"],"apiGroups":[""],"resources":["configmaps"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch","create","update","patch","delete"],"apiGroups":["coordination.k8s.io"],"resources":["leases"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","patch"],"apiGroups":[""],"resources":["events"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["configmaps","configmaps/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch"],"apiGroups":[""],"resources":["persistentvolumeclaims","persistentvolumeclaims/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch"],"apiGroups":[""],"resources":["pods"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["pods","pods/exec","pods/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["secrets","secrets/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":[""],"resources":["serviceaccounts","serviceaccounts/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps"],"resources":["deployments","deployments/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uclusters"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","list","watch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["db2uinstances"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2ubackups"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["update"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2ubackups/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","patch","update"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2ubackups/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2urestores"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["update"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2urestores/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","patch","update"],"apiGroups":["db2ubnr.databases.ibm.com"],"resources":["db2urestores/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["db2ulog.databases.ibm.com"],"resources":["db2ulogstreams"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["update"],"apiGroups":["db2ulog.databases.ibm.com"],"resources":["db2ulogstreams/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["get","patch","update"],"apiGroups":["db2ulog.databases.ibm.com"],"resources":["db2ulogstreams/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create"],"apiGroups":["authentication.k8s.io"],"resources":["tokenreviews"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create"],"apiGroups":["authorization.k8s.io"],"resources":["subjectaccessreviews"]}
+      status: Satisfied
+      version: v1
+    group: ""
+    kind: ServiceAccount
+    message: ""
+    name: db2u-day2-ops-controller-manager
+    status: Present
+    version: v1

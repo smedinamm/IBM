@@ -1,0 +1,805 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "databases.cpd.ibm.com/v1",
+          "kind": "Db2aaserviceService",
+          "metadata": {
+            "name": "db2aaserviceservice-sample"
+          },
+          "spec": {
+            "db_type": "db2aaservice",
+            "license": {
+              "accept": false,
+              "license": "Community"
+            }
+          }
+        }
+      ]
+    capabilities: Seamless Upgrades
+    cloudpakId: eb9998dcc5d24e3eb5b6fb488f750fe2
+    cloudpakName: IBM Cloud Pak for Data
+    containerImage: icr.io/cpopen/ibm-db2aaservice-cp4d-operator@sha256:33dbdfe336546eb4b69a9efc38fd1df2162027954be1bd3d95a00271779fb4da
+    description: IBM® Db2 as a Service Operator Extension for IBM® Cloud Pak for Data
+    olm.operatorGroup: common-service
+    olm.operatorNamespace: cp4d
+    olm.skipRange: '>= 1.0.0 < 2.0.0'
+    olm.targetNamespaces: cp4d
+    operatorframework.io/properties: '{"properties":[{"type":"olm.gvk","value":{"group":"databases.cpd.ibm.com","kind":"Db2aaserviceService","version":"v1"}},{"type":"olm.package","value":{"packageName":"ibm-db2aaservice-cp4d-operator","version":"5.0.0"}}]}'
+    operators.openshift.io/infrastructure-features: '["disconnected"]'
+    operators.operatorframework.io/builder: operator-sdk-v1.14.0+git
+    operators.operatorframework.io/internal-objects: '["db2aaserviceservices.databases.cpd.ibm.com"]'
+    operators.operatorframework.io/operator-type: non-standalone
+    operators.operatorframework.io/project_layout: ansible.sdk.operatorframework.io/v1
+    productID: eb9998dcc5d24e3eb5b6fb488f750fe2
+    productMetric: FREE
+    productName: IBM® Cloud Pak for Data Common Database Services
+    productVersion: 4.8.0
+  creationTimestamp: "2024-09-10T00:56:21Z"
+  generation: 1
+  labels:
+    operatorframework.io/arch.amd64: supported
+    operatorframework.io/arch.ppc64le: supported
+    operatorframework.io/arch.s390x: supported
+    operatorframework.io/os.linux: supported
+    operators.coreos.com/ibm-db2aaservice-cp4d-operator.cp4d: ""
+  name: ibm-db2aaservice-cp4d-operator.v5.0.0
+  namespace: cp4d
+  resourceVersion: "336794257"
+  uid: a54d2812-ace8-4d09-abed-7a2b4966e196
+spec:
+  apiservicedefinitions: {}
+  cleanup:
+    enabled: false
+  customresourcedefinitions:
+    owned:
+    - kind: Db2aaserviceService
+      name: db2aaserviceservices.databases.cpd.ibm.com
+      version: v1
+  description: |
+    IBM® Db2 is a relational database that delivers advanced data management and analytics capabilities for transactional workloads.
+  displayName: IBM® Db2 as a Service Operator Extension for IBM® Cloud Pak for Data
+  icon:
+  - base64data: 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
+    mediatype: image/png
+  install:
+    spec:
+      clusterPermissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - create
+          - get
+          - delete
+          - watch
+          - update
+          - list
+          - patch
+          - deletecollection
+        - apiGroups:
+          - ""
+          resources:
+          - secrets
+          verbs:
+          - create
+          - get
+          - delete
+          - watch
+          - update
+          - list
+          - patch
+          - deletecollection
+        - apiGroups:
+          - apps
+          resources:
+          - deployments
+          - deployments/scale
+          verbs:
+          - create
+          - get
+          - delete
+          - watch
+          - update
+          - list
+          - patch
+          - deletecollection
+        serviceAccountName: ibm-db2aaservice-cp4d-operator-db2u-cp4d-operator
+      deployments:
+      - name: ibm-db2aaservice-cp4d-operator-controller-manager
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              control-plane: controller-manager
+          strategy: {}
+          template:
+            metadata:
+              creationTimestamp: null
+              labels:
+                component: db2aaservice
+                control-plane: controller-manager
+                icpdsupport/addOnId: operator
+                icpdsupport/app: operator
+                intent: projected
+            spec:
+              containers:
+              - args:
+                - --zap-log-level
+                - error
+                - --max-concurrent-reconciles
+                - "8"
+                env:
+                - name: ANSIBLE_GATHERING
+                  value: explicit
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    configMapKeyRef:
+                      key: namespaces
+                      name: namespace-scope
+                - name: META_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                image: icr.io/cpopen/ibm-db2aaservice-cp4d-operator@sha256:33dbdfe336546eb4b69a9efc38fd1df2162027954be1bd3d95a00271779fb4da
+                livenessProbe:
+                  httpGet:
+                    path: /readyz
+                    port: 6789
+                  initialDelaySeconds: 15
+                  periodSeconds: 20
+                name: manager
+                readinessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 6789
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+                resources:
+                  limits:
+                    cpu: 500m
+                    ephemeral-storage: 500Mi
+                    memory: 1Gi
+                  requests:
+                    cpu: 100m
+                    ephemeral-storage: 100Mi
+                    memory: 256Mi
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                    - ALL
+                  privileged: false
+                  readOnlyRootFilesystem: false
+                  runAsNonRoot: true
+              serviceAccountName: ibm-db2aaservice-cp4d-operator-db2u-cp4d-operator
+              terminationGracePeriodSeconds: 10
+      permissions:
+      - rules:
+        - apiGroups:
+          - ""
+          - apps
+          - autoscaling
+          - batch
+          - extensions
+          - policy
+          - authorization.openshift.io
+          - metrics.k8s.io
+          - networking.k8s.io
+          - project.openshift.io
+          - rbac.authorization.k8s.io
+          - route.openshift.io
+          resources:
+          - configmaps
+          - cronjob
+          - cronjobs
+          - deployments
+          - deployments/scale
+          - daemonsets
+          - endpoints
+          - events
+          - horizontalpodautoscalers
+          - ingresses
+          - jobs
+          - jobs/status
+          - namespaces
+          - networkpolicies
+          - persistentvolumeclaims
+          - pods
+          - pods/eviction
+          - pods/exec
+          - pods/log
+          - pods/portforward
+          - pods/status
+          - poddisruptionbudgets
+          - projects
+          - replicasets
+          - replicationcontrollers
+          - resourcequotas
+          - resourcequotas/status
+          - roles
+          - rolebindings
+          - routes
+          - routes/custom-host
+          - secrets
+          - serviceaccounts
+          - services
+          - services/finalizers
+          - statefulsets
+          - verticalpodautoscalers
+          verbs:
+          - apply
+          - create
+          - get
+          - delete
+          - watch
+          - update
+          - edit
+          - exec
+          - list
+          - patch
+          - deletecollection
+        - apiGroups:
+          - cpd.ibm.com
+          resources:
+          - cpdinstalls
+          - cpdinstalls/spec
+          - cpdinstalls/status
+          verbs:
+          - apply
+          - create
+          - delete
+          - edit
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - build.openshift.io
+          resources:
+          - buildconfigs
+          - buildconfigs/instantiate
+          - buildconfigs/instantiatebinary
+          - buildconfigs/webhooks
+          - buildlogs
+          - builds
+          - builds/clone
+          - builds/details
+          - builds/log
+          verbs:
+          - create
+          - delete
+          - list
+          - watch
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - image.openshift.io
+          resources:
+          - imagestreams
+          - imagestreams/layers
+          - imagestreams/secrets
+          - imagestreams/status
+          - imagestreamimages
+          - imagestreamimports
+          - imagestreammappings
+          - imagestreamtags
+          verbs:
+          - create
+          - delete
+          - list
+          - watch
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - apps
+          resourceNames:
+          - cpd-zen-operator
+          resources:
+          - deployments/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          verbs:
+          - get
+        - apiGroups:
+          - apps
+          resources:
+          - replicasets
+          - deployments
+          verbs:
+          - get
+        - apiGroups:
+          - zen.cpd.ibm.com
+          resources:
+          - zenextensions
+          - zenservices
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - zen.cpd.ibm.com
+          resources:
+          - zenextensions/status
+          - zenservices/status
+          verbs:
+          - get
+        - apiGroups:
+          - operator.ibm.com
+          resources:
+          - commonservices
+          - operandrequests
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - apps
+          resources:
+          - configmaps
+          - deployments
+          - daemonsets
+          - replicasets
+          - statefulsets
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - rbac.authorization.k8s.io
+          resources:
+          - clusterrole
+          - clusterroles
+          - clusterrolebinding
+          - clusterrolebindings
+          verbs:
+          - create
+          - delete
+          - list
+          - get
+          - watch
+          - update
+          - patch
+        - apiGroups:
+          - db2u.databases.ibm.com
+          resources:
+          - bigsqls
+          - db2uclusters
+          - db2uengines
+          - db2uhadrs
+          - db2uhelmmigrations
+          - db2uinstances
+          - formationlocks
+          - formations
+          verbs:
+          - create
+          - delete
+          - list
+          - get
+          - watch
+          - update
+          - patch
+        - apiGroups:
+          - certmanager.k8s.io
+          resources:
+          - issuers
+          - issuers/status
+          - issuers/finalizers
+          - certificates
+          - certificates/status
+          - certificates/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - cert-manager.io
+          resources:
+          - issuers
+          - issuers/status
+          - issuers/finalizers
+          - certificates
+          - certificates/status
+          - certificates/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - ""
+          - apps
+          - authorization.openshift.io
+          - autoscaling
+          - batch
+          - extensions
+          - metrics.k8s.io
+          - networking.k8s.io
+          - policy
+          - rbac.authorization.k8s.io
+          - route.openshift.io
+          resources:
+          - statefulsets/scale
+          verbs:
+          - create
+          - get
+          - delete
+          - watch
+          - update
+          - list
+          - patch
+          - deletecollection
+        - apiGroups:
+          - ibm.com
+          resources:
+          - resourceplans
+          - resourcematches
+          verbs:
+          - get
+          - list
+          - watch
+          - update
+          - patch
+          - create
+          - delete
+          - deletecollection
+        - apiGroups:
+          - oidc.security.ibm.com
+          resources:
+          - client
+          - clients
+          verbs:
+          - create
+          - get
+          - list
+          - patch
+          - update
+          - watch
+          - delete
+        - apiGroups:
+          - databases.cpd.ibm.com
+          resources:
+          - db2whservices
+          - db2whservices/status
+          - db2whservices/finalizers
+          - db2oltpservices
+          - db2oltpservices/status
+          - db2oltpservices/finalizers
+          - db2aaserviceservices
+          - db2aaserviceservices/status
+          - db2aaserviceservices/finalizers
+          verbs:
+          - get
+          - list
+          - watch
+        - apiGroups:
+          - databases.cpd.ibm.com
+          resources:
+          - db2aaserviceservices
+          - db2aaserviceservices/status
+          - db2aaserviceservices/finalizers
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: ibm-db2aaservice-cp4d-operator-db2u-cp4d-operator
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - ibm-db2aaservice-cp4d-operator
+  links:
+  - name: Ibm Db2aaservice Cp4d Operator
+    url: https://ibm-db2aaservice-cp4d-operator.domain
+  maintainers:
+  - email: db2install@ca.ibm.com
+    name: Db2U Team
+  maturity: stable
+  minKubeVersion: 1.19.0
+  provider:
+    name: IBM
+    url: www.ibm.com
+  relatedImages:
+  - image: icr.io/cpopen/ibm-db2aaservice-cp4d-operator@sha256:33dbdfe336546eb4b69a9efc38fd1df2162027954be1bd3d95a00271779fb4da
+    name: ibm-db2aaservice-cp4d-operator
+  version: 5.0.0
+status:
+  cleanup: {}
+  conditions:
+  - lastTransitionTime: "2024-09-13T01:11:14Z"
+    lastUpdateTime: "2024-09-13T01:11:14Z"
+    message: install timeout
+    phase: Failed
+    reason: InstallCheckFailed
+  - lastTransitionTime: "2024-09-13T01:11:18Z"
+    lastUpdateTime: "2024-09-13T01:11:18Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2024-09-13T01:11:20Z"
+    lastUpdateTime: "2024-09-13T01:11:20Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2024-09-13T01:11:24Z"
+    lastUpdateTime: "2024-09-13T01:11:24Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T01:11:24Z"
+    lastUpdateTime: "2024-09-13T01:11:27Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2024-09-13T01:12:47Z"
+    lastUpdateTime: "2024-09-13T01:12:47Z"
+    message: install strategy completed with no errors
+    phase: Succeeded
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T17:06:00Z"
+    lastUpdateTime: "2024-09-13T17:06:00Z"
+    message: 'installing: deployment changed old hash=574844848b, new hash=64d4fb8bc4'
+    phase: InstallReady
+    reason: ComponentUnhealthy
+  - lastTransitionTime: "2024-09-13T17:06:06Z"
+    lastUpdateTime: "2024-09-13T17:06:06Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T17:06:11Z"
+    lastUpdateTime: "2024-09-13T17:06:11Z"
+    message: install strategy completed with no errors
+    phase: Succeeded
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T17:32:34Z"
+    lastUpdateTime: "2024-09-13T17:32:34Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Failed
+    reason: ComponentUnhealthy
+  - lastTransitionTime: "2024-09-13T17:32:37Z"
+    lastUpdateTime: "2024-09-13T17:32:37Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2024-09-13T17:32:40Z"
+    lastUpdateTime: "2024-09-13T17:32:40Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2024-09-13T17:32:44Z"
+    lastUpdateTime: "2024-09-13T17:32:44Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T17:32:44Z"
+    lastUpdateTime: "2024-09-13T17:32:50Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2024-09-13T17:37:44Z"
+    lastUpdateTime: "2024-09-13T17:37:44Z"
+    message: install timeout
+    phase: Failed
+    reason: InstallCheckFailed
+  - lastTransitionTime: "2024-09-13T17:37:48Z"
+    lastUpdateTime: "2024-09-13T17:37:48Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Pending
+    reason: NeedsReinstall
+  - lastTransitionTime: "2024-09-13T17:37:50Z"
+    lastUpdateTime: "2024-09-13T17:37:50Z"
+    message: all requirements found, attempting install
+    phase: InstallReady
+    reason: AllRequirementsMet
+  - lastTransitionTime: "2024-09-13T17:37:53Z"
+    lastUpdateTime: "2024-09-13T17:37:53Z"
+    message: waiting for install components to report healthy
+    phase: Installing
+    reason: InstallSucceeded
+  - lastTransitionTime: "2024-09-13T17:37:53Z"
+    lastUpdateTime: "2024-09-13T17:37:56Z"
+    message: 'installing: waiting for deployment ibm-db2aaservice-cp4d-operator-controller-manager
+      to become ready: deployment "ibm-db2aaservice-cp4d-operator-controller-manager"
+      not available: Deployment does not have minimum availability.'
+    phase: Installing
+    reason: InstallWaiting
+  - lastTransitionTime: "2024-09-13T17:41:02Z"
+    lastUpdateTime: "2024-09-13T17:41:02Z"
+    message: install strategy completed with no errors
+    phase: Succeeded
+    reason: InstallSucceeded
+  lastTransitionTime: "2024-09-13T17:41:02Z"
+  lastUpdateTime: "2024-09-13T17:41:02Z"
+  message: install strategy completed with no errors
+  phase: Succeeded
+  reason: InstallSucceeded
+  requirementStatus:
+  - group: operators.coreos.com
+    kind: ClusterServiceVersion
+    message: CSV minKubeVersion (1.19.0) less than server version (v1.27.15+6147456)
+    name: ibm-db2aaservice-cp4d-operator.v5.0.0
+    status: Present
+    version: v1alpha1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    message: CRD is present and Established condition is true
+    name: db2aaserviceservices.databases.cpd.ibm.com
+    status: Present
+    uuid: 59005a68-6613-4376-a395-9478309ab343
+    version: v1
+  - dependents:
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["apply","create","get","delete","watch","update","edit","exec","list","patch","deletecollection"],"apiGroups":["","apps","autoscaling","batch","extensions","policy","authorization.openshift.io","metrics.k8s.io","networking.k8s.io","project.openshift.io","rbac.authorization.k8s.io","route.openshift.io"],"resources":["configmaps","cronjob","cronjobs","deployments","deployments/scale","daemonsets","endpoints","events","horizontalpodautoscalers","ingresses","jobs","jobs/status","namespaces","networkpolicies","persistentvolumeclaims","pods","pods/eviction","pods/exec","pods/log","pods/portforward","pods/status","poddisruptionbudgets","projects","replicasets","replicationcontrollers","resourcequotas","resourcequotas/status","roles","rolebindings","routes","routes/custom-host","secrets","serviceaccounts","services","services/finalizers","statefulsets","verticalpodautoscalers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["apply","create","delete","edit","get","list","patch","update","watch"],"apiGroups":["cpd.ibm.com"],"resources":["cpdinstalls","cpdinstalls/spec","cpdinstalls/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","list","watch","get","patch","update"],"apiGroups":["build.openshift.io"],"resources":["buildconfigs","buildconfigs/instantiate","buildconfigs/instantiatebinary","buildconfigs/webhooks","buildlogs","builds","builds/clone","builds/details","builds/log"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","list","watch","get","patch","update"],"apiGroups":["image.openshift.io"],"resources":["imagestreams","imagestreams/layers","imagestreams/secrets","imagestreams/status","imagestreamimages","imagestreamimports","imagestreammappings","imagestreamtags"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["update"],"apiGroups":["apps"],"resources":["deployments/finalizers"],"resourceNames":["cpd-zen-operator"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get"],"apiGroups":[""],"resources":["pods"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get"],"apiGroups":["apps"],"resources":["replicasets","deployments"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["zen.cpd.ibm.com"],"resources":["zenextensions","zenservices"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get"],"apiGroups":["zen.cpd.ibm.com"],"resources":["zenextensions/status","zenservices/status"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["operator.ibm.com"],"resources":["commonservices","operandrequests"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["apps"],"resources":["configmaps","deployments","daemonsets","replicasets","statefulsets"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","list","get","watch","update","patch"],"apiGroups":["rbac.authorization.k8s.io"],"resources":["clusterrole","clusterroles","clusterrolebinding","clusterrolebindings"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","list","get","watch","update","patch"],"apiGroups":["db2u.databases.ibm.com"],"resources":["bigsqls","db2uclusters","db2uengines","db2uhadrs","db2uhelmmigrations","db2uinstances","formationlocks","formations"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["certmanager.k8s.io"],"resources":["issuers","issuers/status","issuers/finalizers","certificates","certificates/status","certificates/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["cert-manager.io"],"resources":["issuers","issuers/status","issuers/finalizers","certificates","certificates/status","certificates/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","get","delete","watch","update","list","patch","deletecollection"],"apiGroups":["","apps","authorization.openshift.io","autoscaling","batch","extensions","metrics.k8s.io","networking.k8s.io","policy","rbac.authorization.k8s.io","route.openshift.io"],"resources":["statefulsets/scale"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch","update","patch","create","delete","deletecollection"],"apiGroups":["ibm.com"],"resources":["resourceplans","resourcematches"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","get","list","patch","update","watch","delete"],"apiGroups":["oidc.security.ibm.com"],"resources":["client","clients"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["get","list","watch"],"apiGroups":["databases.cpd.ibm.com"],"resources":["db2whservices","db2whservices/status","db2whservices/finalizers","db2oltpservices","db2oltpservices/status","db2oltpservices/finalizers","db2aaserviceservices","db2aaserviceservices/status","db2aaserviceservices/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: namespaced rule:{"verbs":["create","delete","get","list","patch","update","watch"],"apiGroups":["databases.cpd.ibm.com"],"resources":["db2aaserviceservices","db2aaserviceservices/status","db2aaserviceservices/finalizers"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","get","delete","watch","update","list","patch","deletecollection"],"apiGroups":[""],"resources":["configmaps"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","get","delete","watch","update","list","patch","deletecollection"],"apiGroups":[""],"resources":["secrets"]}
+      status: Satisfied
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: PolicyRule
+      message: cluster rule:{"verbs":["create","get","delete","watch","update","list","patch","deletecollection"],"apiGroups":["apps"],"resources":["deployments","deployments/scale"]}
+      status: Satisfied
+      version: v1
+    group: ""
+    kind: ServiceAccount
+    message: ""
+    name: ibm-db2aaservice-cp4d-operator-db2u-cp4d-operator
+    status: Present
+    version: v1

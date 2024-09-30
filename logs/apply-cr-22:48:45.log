@@ -1,0 +1,412 @@
+2024-09-26 22:48:45,969 p=114395 u=ansible n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-09-26 22:48:45,972 p=114395 u=ansible n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+2024-09-26 22:48:46,042 p=114395 u=ansible n=ansible | PLAY [localhost] ***************************************************************
+2024-09-26 22:48:46,049 p=114395 u=ansible n=ansible | TASK [include_role : utils] ****************************************************
+2024-09-26 22:48:46,076 p=114395 u=ansible n=ansible | TASK [utils : include_vars] ****************************************************
+2024-09-26 22:48:46,351 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:46,353 p=114395 u=ansible n=ansible | TASK [utils : include_vars] ****************************************************
+2024-09-26 22:48:46,665 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:46,668 p=114395 u=ansible n=ansible | TASK [utils : merging global_components_meta, release_components_meta and override_components_meta if any] ***
+2024-09-26 22:48:47,046 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:47,049 p=114395 u=ansible n=ansible | TASK [utils : show parsed components list, it should not include cpfs, scheduler, ibm-cert-manager, ibm-licensing, ibm_events_operator] ***
+2024-09-26 22:48:47,285 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "components": [
+        "init",
+        "db2wh"
+    ]
+}
+2024-09-26 22:48:47,288 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:47,534 p=114395 u=ansible n=ansible | skipping: [localhost] => (item=init) 
+2024-09-26 22:48:47,543 p=114395 u=ansible n=ansible | skipping: [localhost] => (item=db2wh) 
+2024-09-26 22:48:47,547 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:47,780 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:47,782 p=114395 u=ansible n=ansible | TASK [utils : get a list of components are deprecated] *************************
+2024-09-26 22:48:48,023 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:48,025 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:48,262 p=114395 u=ansible n=ansible | skipping: [localhost] => (item=init) 
+2024-09-26 22:48:48,264 p=114395 u=ansible n=ansible | skipping: [localhost] => (item=db2wh) 
+2024-09-26 22:48:48,268 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:48,497 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:48,500 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:48,727 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:48,729 p=114395 u=ansible n=ansible | TASK [utils : check openshift cluster status] **********************************
+2024-09-26 22:48:48,931 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/check_cluster_healthy.yml for localhost
+2024-09-26 22:48:48,934 p=114395 u=ansible n=ansible | TASK [utils : checking ocp cluster connection status] **************************
+2024-09-26 22:48:49,268 p=114395 u=ansible n=ansible | changed: [localhost]
+2024-09-26 22:48:49,270 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:49,473 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:49,476 p=114395 u=ansible n=ansible | TASK [utils : get cluster arch] ************************************************
+2024-09-26 22:48:49,944 p=114453 u=ansible n=ansible | [WARNING]: conditional statements should not include jinja2 templating
+delimiters such as {{ }} or {% %}. Found: {{ (kube_arch.stdout |
+from_json)['serverVersion'] is defined }}
+
+2024-09-26 22:48:49,951 p=114395 u=ansible n=ansible | changed: [localhost]
+2024-09-26 22:48:49,953 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:50,189 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:50,191 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:50,430 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:50,433 p=114395 u=ansible n=ansible | TASK [utils : include_tasks] ***************************************************
+2024-09-26 22:48:50,673 p=114395 u=ansible n=ansible | skipping: [localhost] => (item=init) 
+2024-09-26 22:48:50,681 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/check_comp_supported.yml for localhost => (item=db2wh)
+2024-09-26 22:48:50,683 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:50,929 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:50,931 p=114395 u=ansible n=ansible | TASK [utils : fail if component is not supported on current architecture] ******
+2024-09-26 22:48:51,172 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:51,175 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:51,186 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:51,188 p=114395 u=ansible n=ansible | TASK [utils : Print trace information] *****************************************
+2024-09-26 22:48:51,946 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:51,948 p=114395 u=ansible n=ansible | TASK [utils : remove any existing generated preview sh script] *****************
+2024-09-26 22:48:52,181 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,184 p=114395 u=ansible n=ansible | TASK [utils : remove any existing generated preview yaml file] *****************
+2024-09-26 22:48:52,413 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,628 p=114395 u=ansible n=ansible | TASK [utils : Check status of namespace ibm-common-services] *******************
+2024-09-26 22:48:52,646 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,648 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:52,664 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,668 p=114395 u=ansible n=ansible | TASK [utils : Create cpd operator namespace if not present ibm-common-services] ***
+2024-09-26 22:48:52,683 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,686 p=114395 u=ansible n=ansible | TASK [utils : Create operator group for ibm-common-services namespace] *********
+2024-09-26 22:48:52,701 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:52,703 p=114395 u=ansible n=ansible | TASK [include_role : utils] ****************************************************
+2024-09-26 22:48:52,729 p=114395 u=ansible n=ansible | TASK [utils : Check if user have permission to access cp4d-operands] ***********
+2024-09-26 22:48:53,549 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:53,551 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:53,569 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:53,572 p=114395 u=ansible n=ansible | TASK [utils : Create cpd instance namespace if not present cp4d-operands] ******
+2024-09-26 22:48:53,588 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:53,591 p=114395 u=ansible n=ansible | TASK [include_role : utils] ****************************************************
+2024-09-26 22:48:53,616 p=114395 u=ansible n=ansible | TASK [utils : merge release_components_meta and override_components_meta] ******
+2024-09-26 22:48:53,631 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:53,633 p=114395 u=ansible n=ansible | TASK [utils : set cm_components_meta when not override] ************************
+2024-09-26 22:48:53,738 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:53,740 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:53,755 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:53,757 p=114395 u=ansible n=ansible | TASK [utils : print preview ConfigMap] *****************************************
+2024-09-26 22:48:53,771 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:53,773 p=114395 u=ansible n=ansible | TASK [utils : create a configmap olm-utils-cm to save components versions] *****
+2024-09-26 22:48:54,762 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:54,764 p=114395 u=ansible n=ansible | TASK [include_role : utils] ****************************************************
+2024-09-26 22:48:54,798 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:54,816 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "msg": [
+        "installed_components: []",
+        "input_components: ['init', 'db2wh']"
+    ]
+}
+2024-09-26 22:48:54,819 p=114395 u=ansible n=ansible | TASK [utils : generate precedence map and dependent map] ***********************
+2024-09-26 22:48:54,847 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:54,849 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:54,871 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:54,873 p=114395 u=ansible n=ansible | TASK [utils : set skip_component to empty for delete-cr] ***********************
+2024-09-26 22:48:54,888 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,890 p=114395 u=ansible n=ansible | TASK [utils : get a list of components skip the check for shutdown and restart] ***
+2024-09-26 22:48:54,906 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,908 p=114395 u=ansible n=ansible | TASK [utils : remove the skip components from installed list] ******************
+2024-09-26 22:48:54,923 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,925 p=114395 u=ansible n=ansible | TASK [utils : print out the list of required components that skip the check for shutdown or restart] ***
+2024-09-26 22:48:54,941 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,943 p=114395 u=ansible n=ansible | TASK [utils : get a list of components do not support shutdown via olm-utils] ***
+2024-09-26 22:48:54,958 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,960 p=114395 u=ansible n=ansible | TASK [utils : get uninstall order for delete-cr or shutdown cmd] ***************
+2024-09-26 22:48:54,976 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,978 p=114395 u=ansible n=ansible | TASK [utils : get restart order for restart cmd] *******************************
+2024-09-26 22:48:54,992 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:54,995 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:55,010 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,012 p=114395 u=ansible n=ansible | TASK [utils : print out useful information after apply filter] *****************
+2024-09-26 22:48:55,027 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,029 p=114395 u=ansible n=ansible | TASK [utils : print out the parallel number] ***********************************
+2024-09-26 22:48:55,045 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "parallel_num": 4
+}
+2024-09-26 22:48:55,047 p=114395 u=ansible n=ansible | TASK [utils : get apply cr order] **********************************************
+2024-09-26 22:48:55,066 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:55,069 p=114395 u=ansible n=ansible | TASK [utils : print out apply cr order] ****************************************
+2024-09-26 22:48:55,087 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "apply_cr_order": [
+        [
+            [
+                "db2wh"
+            ]
+        ]
+    ]
+}
+2024-09-26 22:48:55,089 p=114395 u=ansible n=ansible | TASK [utils : initialize skip_components if it is not defined] *****************
+2024-09-26 22:48:55,104 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,106 p=114395 u=ansible n=ansible | TASK [utils : print out skip_components] ***************************************
+2024-09-26 22:48:55,121 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,123 p=114395 u=ansible n=ansible | TASK [utils : get all dependencies and components] *****************************
+2024-09-26 22:48:55,137 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,139 p=114395 u=ansible n=ansible | TASK [utils : get apply olm order] *********************************************
+2024-09-26 22:48:55,154 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,156 p=114395 u=ansible n=ansible | TASK [utils : print out apply olm order] ***************************************
+2024-09-26 22:48:55,170 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,172 p=114395 u=ansible n=ansible | TASK [include_role : utils] ****************************************************
+2024-09-26 22:48:55,209 p=114395 u=ansible n=ansible | TASK [utils : Verify if the tethered namespace is available for use in the {{ tethered_instance_ns }} namespace] ***
+2024-09-26 22:48:55,224 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,227 p=114395 u=ansible n=ansible | TASK [utils : Fail if product-configmap is not existing in the tethered namespace] ***
+2024-09-26 22:48:55,244 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,246 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:55,262 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,263 p=114395 u=ansible n=ansible | TASK [utils : preview support_online_upgrade for components] *******************
+2024-09-26 22:48:55,278 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,280 p=114395 u=ansible n=ansible | TASK [utils : Initialize the list of components whose cr instances are applied already] ***
+2024-09-26 22:48:55,292 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:55,294 p=114395 u=ansible n=ansible | TASK [utils : Loop install levels to apply and wait for multiple CRs in parallel] ***
+2024-09-26 22:48:55,314 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/multi_apply_cr_same_level.yml for localhost => (item=[['db2wh']])
+2024-09-26 22:48:55,317 p=114395 u=ansible n=ansible | TASK [utils : Display the components groups to apply in current install level] ***
+2024-09-26 22:48:55,332 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "curr_install_level": [
+        [
+            "db2wh"
+        ]
+    ]
+}
+2024-09-26 22:48:55,335 p=114395 u=ansible n=ansible | TASK [utils : Loop parallel groups to apply and wait for multiple CRs] *********
+2024-09-26 22:48:55,360 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/multi_apply_cr_same_group.yml for localhost => (item=['db2wh'])
+2024-09-26 22:48:55,363 p=114395 u=ansible n=ansible | TASK [utils : Display the components to apply in current group] ****************
+2024-09-26 22:48:55,381 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "curr_parallel_group": [
+        "db2wh"
+    ]
+}
+2024-09-26 22:48:55,383 p=114395 u=ansible n=ansible | TASK [utils : Initialize all_crs_same_group for the control plane namespace] ***
+2024-09-26 22:48:55,396 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:55,398 p=114395 u=ansible n=ansible | TASK [utils : For control plane namespace, loop components to apply multiple CRs that are in the same parallel group] ***
+2024-09-26 22:48:55,435 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/apply_cr_for_kind.yml for localhost => (item=db2wh)
+2024-09-26 22:48:55,439 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:55,451 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:55,454 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:55,466 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:55,477 p=114395 u=ansible n=ansible | TASK [utils : fetch the Db2whService CR if it exists] **************************
+2024-09-26 22:48:55,496 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/fetch_existing_cr.yml for localhost
+2024-09-26 22:48:55,511 p=114395 u=ansible n=ansible | TASK [utils : fetch the Db2whService CR if it exists] **************************
+2024-09-26 22:48:56,135 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:56,138 p=114395 u=ansible n=ansible | TASK [utils : fail if detect more than one CR when multi_instances is disabled] ***
+2024-09-26 22:48:56,166 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,171 p=114395 u=ansible n=ansible | TASK [utils :  Collect list of CRs for component 'db2wh' and append them to all_crs_same_group] ***
+2024-09-26 22:48:56,210 p=114395 u=ansible n=ansible | ok: [localhost] => (item={'apiVersion': 'databases.cpd.ibm.com/v1', 'kind': 'Db2whService', 'metadata': {'creationTimestamp': '2024-01-26T18:22:16Z', 'finalizers': ['databases.cpd.ibm.com/finalizer'], 'generation': 3, 'managedFields': [{'apiVersion': 'databases.cpd.ibm.com/v1', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:metadata': {'f:finalizers': {'.': {}, 'v:"databases.cpd.ibm.com/finalizer"': {}}}}, 'manager': 'ansible-operator', 'operation': 'Update', 'time': '2024-01-26T18:22:16Z'}, {'apiVersion': 'databases.cpd.ibm.com/v1', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:spec': {'.': {}, 'f:blockStorageClass': {}, 'f:fileStorageClass': {}, 'f:license': {'.': {}, 'f:accept': {}, 'f:license': {}}, 'f:version': {}}}, 'manager': 'OpenAPI-Generator', 'operation': 'Update', 'time': '2024-09-24T17:20:47Z'}, {'apiVersion': 'databases.cpd.ibm.com/v1', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:status': {'f:db2whStatus': {}, 'f:message': {}, 'f:supportedOperandVersions': {}, 'f:versionBuild': {}}}, 'manager': 'OpenAPI-Generator', 'operation': 'Update', 'subresource': 'status', 'time': '2024-09-24T17:20:54Z'}, {'apiVersion': 'databases.cpd.ibm.com/v1', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:status': {'.': {}, 'f:conditions': {}}}, 'manager': 'ansible-operator', 'operation': 'Update', 'subresource': 'status', 'time': '2024-09-26T22:43:31Z'}], 'name': 'db2wh-cr', 'namespace': 'cp4d-operands', 'resourceVersion': '355937735', 'uid': 'c0ac5170-28fd-4154-a5f8-6055453cbd02'}, 'spec': {'blockStorageClass': 'managed-nfs-storage', 'fileStorageClass': 'managed-nfs-storage', 'license': {'accept': True, 'license': 'Enterprise'}, 'version': '4.8.5'}, 'status': {'conditions': [{'lastTransitionTime': '2024-09-24T15:52:07Z', 'message': '', 'reason': '', 'status': 'False', 'type': 'Successful'}, {'lastTransitionTime': '2024-09-26T22:43:20Z', 'message': 'Running reconciliation', 'reason': 'Running', 'status': 'False', 'type': 'Running'}, {'ansibleResult': {'changed': 0, 'completion': '2024-09-26T22:43:30.870064', 'failures': 1, 'ok': 11, 'skipped': 5}, 'lastTransitionTime': '2024-09-26T22:43:31Z', 'message': 'Invalid version specified; Valid supportedOperandVersions are 4.8.0', 'reason': 'Failed', 'status': 'True', 'type': 'Failure'}], 'db2whStatus': 'Failed', 'message': 'Please select one of the following valid supportedOperandVersions: 4.8.0', 'supportedOperandVersions': '4.8.0', 'versionBuild': '4.8.0+11.5.8.0-cn6+2238'}})
+2024-09-26 22:48:56,217 p=114395 u=ansible n=ansible | TASK [utils : Use default cr-name for component 'db2wh' and append default cr-name to all_crs_same_group] ***
+2024-09-26 22:48:56,244 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,246 p=114395 u=ansible n=ansible | TASK [utils : display cr_name] *************************************************
+2024-09-26 22:48:56,263 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "list_of_cr_name": [
+        "db2wh-cr"
+    ]
+}
+2024-09-26 22:48:56,265 p=114395 u=ansible n=ansible | TASK [utils : trigger pre apply-cr patching] ***********************************
+2024-09-26 22:48:56,285 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/exe_run.yml for localhost
+2024-09-26 22:48:56,292 p=114395 u=ansible n=ansible | TASK [utils : checking if preview] *********************************************
+2024-09-26 22:48:56,310 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,312 p=114395 u=ansible n=ansible | TASK [utils : checking if yaml dry run case] ***********************************
+2024-09-26 22:48:56,327 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,330 p=114395 u=ansible n=ansible | TASK [utils :  check if must run ..] *******************************************
+2024-09-26 22:48:56,343 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:56,345 p=114395 u=ansible n=ansible | TASK [utils :  if not to run..] ************************************************
+2024-09-26 22:48:56,361 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,366 p=114395 u=ansible n=ansible | TASK [utils : pre- apply-cr release patching (if any) for db2wh] ***************
+2024-09-26 22:48:56,753 p=114395 u=ansible n=ansible | changed: [localhost]
+2024-09-26 22:48:56,758 p=114395 u=ansible n=ansible | TASK [utils : lineinfile] ******************************************************
+2024-09-26 22:48:56,776 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,781 p=114395 u=ansible n=ansible | TASK [utils : lineinfile] ******************************************************
+2024-09-26 22:48:56,798 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,800 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:56,818 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,820 p=114395 u=ansible n=ansible | TASK [utils : Reconcile storage_vendor selection] ******************************
+2024-09-26 22:48:56,835 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/handle_storage_vendor.yml for localhost
+2024-09-26 22:48:56,845 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:56,871 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:56,873 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:56,899 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,902 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:56,928 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,930 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:56,956 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,958 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:56,984 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:56,986 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:57,003 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,006 p=114395 u=ansible n=ansible | TASK [utils : applying multiple CRs] *******************************************
+2024-09-26 22:48:57,034 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/apply_cr.yml for localhost => (item=db2wh-cr)
+2024-09-26 22:48:57,047 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:57,060 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,063 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:57,078 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,081 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,096 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,099 p=114395 u=ansible n=ansible | TASK [utils : print preview CR] ************************************************
+2024-09-26 22:48:57,114 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,117 p=114395 u=ansible n=ansible | TASK [utils : check storage class availability] ********************************
+2024-09-26 22:48:57,137 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/check_sc_availability.yml for localhost
+2024-09-26 22:48:57,145 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,162 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:57,167 p=114395 u=ansible n=ansible | TASK [utils : check storage_class  availablity] ********************************
+2024-09-26 22:48:57,187 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,190 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,208 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,210 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:57,227 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,232 p=114395 u=ansible n=ansible | TASK [utils : check file_storage_class  availablity] ***************************
+2024-09-26 22:48:57,250 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,253 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,271 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,274 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:57,291 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,296 p=114395 u=ansible n=ansible | TASK [utils : check block_storage_class  availability] *************************
+2024-09-26 22:48:57,314 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,316 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,333 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,335 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:57,352 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,354 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:57,371 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,373 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-26 22:48:57,391 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:57,393 p=114395 u=ansible n=ansible | TASK [utils : Reset has_digest_hotfix and has_tag_hotfix] **********************
+2024-09-26 22:48:57,420 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:57,425 p=114395 u=ansible n=ansible | TASK [utils : Fetch current CR db2wh-cr] ***************************************
+2024-09-26 22:48:58,054 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:58,056 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:58,084 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:58,087 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-26 22:48:58,114 p=114395 u=ansible n=ansible | skipping: [localhost]
+2024-09-26 22:48:58,116 p=114395 u=ansible n=ansible | TASK [utils : debug] ***********************************************************
+2024-09-26 22:48:58,144 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "msg": "has_digest_hotfix is False; has_tag_hotfix is False"
+}
+2024-09-26 22:48:58,157 p=114395 u=ansible n=ansible | TASK [utils : applying CR db2wh-cr for Db2 Warehouse in the cp4d-operands namespace] ***
+2024-09-26 22:48:59,001 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:48:59,005 p=114395 u=ansible n=ansible | TASK [utils : Pause for "120" seconds to let OLM trigger changes (to avoid getting confused by existing state)] ***
+2024-09-26 22:48:59,029 p=114804 u=ansible n=ansible | Pausing for 120 seconds
+2024-09-26 22:48:59,029 p=114804 u=ansible n=ansible | (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+2024-09-26 22:50:59,034 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:50:59,039 p=114395 u=ansible n=ansible | TASK [utils : Append "db2wh" to the cr_applied_comps list] *********************
+2024-09-26 22:50:59,069 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-26 22:50:59,071 p=114395 u=ansible n=ansible | TASK [utils : show all_crs_same_group for the control plane namespace] *********
+2024-09-26 22:50:59,087 p=114395 u=ansible n=ansible | ok: [localhost] => {
+    "all_crs_same_group": [
+        {
+            "comp_name": "db2wh",
+            "cr_kind": "Db2whService",
+            "cr_name": "db2wh-cr"
+        }
+    ]
+}
+2024-09-26 22:50:59,089 p=114395 u=ansible n=ansible | TASK [utils : Wait for multiple CR status to be ready in the control plane namespace] ***
+2024-09-26 22:50:59,125 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/wait_for_cr.yml for localhost => (item={'comp_name': 'db2wh', 'cr_name': 'db2wh-cr', 'cr_kind': 'Db2whService'})
+2024-09-26 22:50:59,143 p=114395 u=ansible n=ansible | TASK [utils : check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay] ***
+2024-09-26 22:50:59,931 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(100 Retries left)
+2024-09-26 22:52:00,559 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(99 Retries left)
+2024-09-26 22:53:01,165 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(98 Retries left)
+2024-09-26 22:54:01,791 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(97 Retries left)
+2024-09-26 22:55:02,474 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(96 Retries left)
+2024-09-26 22:56:03,084 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(95 Retries left)
+2024-09-26 22:57:03,715 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(94 Retries left)
+2024-09-26 22:58:04,354 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(93 Retries left)
+2024-09-26 22:59:04,985 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(92 Retries left)
+2024-09-26 23:00:05,612 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(91 Retries left)
+2024-09-26 23:01:06,232 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(90 Retries left)
+2024-09-26 23:02:06,845 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(89 Retries left)
+2024-09-26 23:03:07,484 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(88 Retries left)
+2024-09-26 23:04:08,126 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(87 Retries left)
+2024-09-26 23:05:08,741 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(86 Retries left)
+2024-09-26 23:06:09,434 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(85 Retries left)
+2024-09-26 23:07:10,068 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(84 Retries left)
+2024-09-26 23:08:10,660 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(83 Retries left)
+2024-09-26 23:09:11,261 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(82 Retries left)
+2024-09-26 23:10:11,859 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(81 Retries left)
+2024-09-26 23:11:12,476 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(80 Retries left)
+2024-09-26 23:12:13,058 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(79 Retries left)
+2024-09-26 23:13:13,624 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(78 Retries left)
+2024-09-26 23:14:14,214 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(77 Retries left)
+2024-09-26 23:15:14,835 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(76 Retries left)
+2024-09-26 23:16:15,397 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(75 Retries left)
+2024-09-26 23:17:16,002 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(74 Retries left)
+2024-09-26 23:18:16,602 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(73 Retries left)
+2024-09-26 23:19:17,179 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(72 Retries left)
+2024-09-26 23:20:17,752 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(71 Retries left)
+2024-09-26 23:21:18,368 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(70 Retries left)
+2024-09-26 23:22:19,018 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(69 Retries left)
+2024-09-26 23:23:19,595 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(68 Retries left)
+2024-09-26 23:24:20,188 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(67 Retries left)
+2024-09-26 23:25:20,779 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(66 Retries left)
+2024-09-26 23:26:21,396 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(65 Retries left)
+2024-09-26 23:27:21,979 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(64 Retries left)
+2024-09-26 23:28:22,566 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(63 Retries left)
+2024-09-26 23:29:23,170 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(62 Retries left)
+2024-09-26 23:30:23,767 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(61 Retries left)
+2024-09-26 23:31:24,360 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(60 Retries left)
+2024-09-26 23:32:24,966 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(59 Retries left)
+2024-09-26 23:33:25,564 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(58 Retries left)
+2024-09-26 23:34:26,141 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(57 Retries left)
+2024-09-26 23:35:26,766 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(56 Retries left)
+2024-09-26 23:36:27,321 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(55 Retries left)
+2024-09-26 23:37:27,928 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(54 Retries left)
+2024-09-26 23:38:28,528 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(53 Retries left)
+2024-09-26 23:39:29,163 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(52 Retries left)
+2024-09-26 23:40:29,750 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(51 Retries left)
+2024-09-26 23:41:30,327 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(50 Retries left)
+2024-09-26 23:42:30,990 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(49 Retries left)
+2024-09-26 23:43:31,579 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(48 Retries left)
+2024-09-26 23:44:32,190 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(47 Retries left)
+2024-09-26 23:45:32,775 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(46 Retries left)
+2024-09-26 23:46:33,354 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(45 Retries left)
+2024-09-26 23:47:33,946 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(44 Retries left)
+2024-09-26 23:48:34,533 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(43 Retries left)
+2024-09-26 23:49:35,139 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(42 Retries left)
+2024-09-26 23:50:35,727 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(41 Retries left)
+2024-09-26 23:51:36,349 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(40 Retries left)
+2024-09-26 23:52:37,023 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(39 Retries left)
+2024-09-26 23:53:37,601 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(38 Retries left)
+2024-09-26 23:54:38,171 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(37 Retries left)
+2024-09-26 23:55:38,805 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(36 Retries left)
+2024-09-26 23:56:39,407 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(35 Retries left)
+2024-09-26 23:57:40,034 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(34 Retries left)
+2024-09-26 23:58:40,625 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(33 Retries left)
+2024-09-26 23:59:41,244 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(32 Retries left)
+2024-09-27 00:00:41,858 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(31 Retries left)
+2024-09-27 00:01:42,522 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(30 Retries left)
+2024-09-27 00:02:43,085 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(29 Retries left)
+2024-09-27 00:03:43,699 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(28 Retries left)
+2024-09-27 00:04:44,283 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(27 Retries left)
+2024-09-27 00:05:44,905 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(26 Retries left)
+2024-09-27 00:06:45,568 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(25 Retries left)
+2024-09-27 00:07:46,195 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(24 Retries left)
+2024-09-27 00:08:46,814 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(23 Retries left)
+2024-09-27 00:09:47,489 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(22 Retries left)
+2024-09-27 00:10:48,108 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(21 Retries left)
+2024-09-27 00:11:48,728 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(20 Retries left)
+2024-09-27 00:12:49,351 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(19 Retries left)
+2024-09-27 00:13:49,970 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(18 Retries left)
+2024-09-27 00:14:50,617 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(17 Retries left)
+2024-09-27 00:15:51,187 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(16 Retries left)
+2024-09-27 00:16:51,804 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(15 Retries left)
+2024-09-27 00:17:52,425 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(14 Retries left)
+2024-09-27 00:18:53,062 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(13 Retries left)
+2024-09-27 00:19:53,664 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(12 Retries left)
+2024-09-27 00:20:54,305 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(11 Retries left)
+2024-09-27 00:21:54,913 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(10 Retries left)
+2024-09-27 00:22:55,527 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(9 Retries left)
+2024-09-27 00:23:56,120 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(8 Retries left)
+2024-09-27 00:24:56,762 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(7 Retries left)
+2024-09-27 00:25:57,396 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(6 Retries left)
+2024-09-27 00:26:58,017 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(5 Retries left)
+2024-09-27 00:27:58,656 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(4 Retries left)
+2024-09-27 00:28:59,227 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(3 Retries left)
+2024-09-27 00:29:59,844 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(2 Retries left)
+2024-09-27 00:31:00,465 p=114395 u=ansible n=ansible | Not ready yet - Retrying: check if CR status indicates completion for db2wh-cr in cp4d-operands, max retry 100 times 60s delay [0m[38;5;11m(1 Retries left)
+2024-09-27 00:32:01,054 p=114395 u=ansible n=ansible | fatal: [localhost]: FAILED! => {"api_found": true, "attempts": 100, "changed": false, "resources": [{"apiVersion": "databases.cpd.ibm.com/v1", "kind": "Db2whService", "metadata": {"creationTimestamp": "2024-01-26T18:22:16Z", "finalizers": ["databases.cpd.ibm.com/finalizer"], "generation": 3, "managedFields": [{"apiVersion": "databases.cpd.ibm.com/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:metadata": {"f:finalizers": {".": {}, "v:\"databases.cpd.ibm.com/finalizer\"": {}}}}, "manager": "ansible-operator", "operation": "Update", "time": "2024-01-26T18:22:16Z"}, {"apiVersion": "databases.cpd.ibm.com/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:spec": {".": {}, "f:blockStorageClass": {}, "f:fileStorageClass": {}, "f:license": {".": {}, "f:accept": {}, "f:license": {}}, "f:version": {}}}, "manager": "OpenAPI-Generator", "operation": "Update", "time": "2024-09-24T17:20:47Z"}, {"apiVersion": "databases.cpd.ibm.com/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {"f:db2whStatus": {}, "f:message": {}, "f:supportedOperandVersions": {}, "f:versionBuild": {}}}, "manager": "OpenAPI-Generator", "operation": "Update", "subresource": "status", "time": "2024-09-24T17:20:54Z"}, {"apiVersion": "databases.cpd.ibm.com/v1", "fieldsType": "FieldsV1", "fieldsV1": {"f:status": {".": {}, "f:conditions": {}}}, "manager": "ansible-operator", "operation": "Update", "subresource": "status", "time": "2024-09-27T00:24:21Z"}], "name": "db2wh-cr", "namespace": "cp4d-operands", "resourceVersion": "356026726", "uid": "c0ac5170-28fd-4154-a5f8-6055453cbd02"}, "spec": {"blockStorageClass": "managed-nfs-storage", "fileStorageClass": "managed-nfs-storage", "license": {"accept": true, "license": "Enterprise"}, "version": "4.8.5"}, "status": {"conditions": [{"lastTransitionTime": "2024-09-24T15:52:07Z", "message": "", "reason": "", "status": "False", "type": "Successful"}, {"lastTransitionTime": "2024-09-27T00:24:13Z", "message": "Running reconciliation", "reason": "Running", "status": "False", "type": "Running"}, {"ansibleResult": {"changed": 0, "completion": "2024-09-27T00:24:20.84758", "failures": 1, "ok": 11, "skipped": 5}, "lastTransitionTime": "2024-09-27T00:24:21Z", "message": "Invalid version specified; Valid supportedOperandVersions are 4.8.0", "reason": "Failed", "status": "True", "type": "Failure"}], "db2whStatus": "Failed", "message": "Please select one of the following valid supportedOperandVersions: 4.8.0", "supportedOperandVersions": "4.8.0", "versionBuild": "4.8.0+11.5.8.0-cn6+2238"}}]}
+2024-09-27 00:32:01,056 p=114395 u=ansible n=ansible | TASK [utils : Get cr status when apply-cr command failed] **********************
+2024-09-27 00:32:01,071 p=114395 u=ansible n=ansible | included: /opt/ansible/ansible-play/roles/utils/tasks/rescue_when_parallel_apply_cr_failed.yml for localhost
+2024-09-27 00:32:01,075 p=114395 u=ansible n=ansible | TASK [utils : set_fact] ********************************************************
+2024-09-27 00:32:01,090 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-27 00:32:01,093 p=114395 u=ansible n=ansible | TASK [utils : Get the list of components that CR instances are not applied yet] ***
+2024-09-27 00:32:01,108 p=114395 u=ansible n=ansible | ok: [localhost]
+2024-09-27 00:32:01,111 p=114395 u=ansible n=ansible | TASK [utils : fail] ************************************************************
+2024-09-27 00:32:01,129 p=114395 u=ansible n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "msg": "[ERROR] Playbook failed while running 'wait_for_cr.yml' of 'db2wh-cr' for component 'db2wh' in namespace 'cp4d-operands'. The custom resources for the following components are already updated for the ['db2wh'] release 4.8.5."}
+2024-09-27 00:32:01,130 p=114395 u=ansible n=ansible | PLAY RECAP *********************************************************************
+2024-09-27 00:32:01,130 p=114395 u=ansible n=ansible | localhost                  : ok=52   changed=3    unreachable=0    failed=1    skipped=69   rescued=1    ignored=0   
