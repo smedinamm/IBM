@@ -1,0 +1,33 @@
+for sub in $(oc get sub -n ${PROJECT_CPD_INST_OPERATORS} \
+--sort-by=.metadata.creationTimestamp -o name); \
+do \
+echo $sub = \
+$(oc get $sub -n ${PROJECT_CPD_INST_OPERATORS} \
+-o jsonpath='{.metadata.creationTimestamp}{"\t"}{.status.installedCSV}{"\n"}'); \
+done
+
+for csv in $(oc get csv -n ${PROJECT_CPD_INST_OPERATORS}  \
+--sort-by=.metadata.creationTimestamp -o name); \
+do \
+echo -ne '.'; \
+csv_status=$(oc get $csv -n ${PROJECT_CPD_INST_OPERATORS} -o jsonpath='{.status.phase}'); \
+if [ "X${csv_status}" != "XSucceeded" ]; \
+then \
+echo; \
+echo "CSV did not succeed:  ${csv}  status: ${csv_status}"; \
+fi; \
+done
+
+oc get csv <csv-name> -n ${PROJECT_CPD_INST_OPERATORS} -o yaml
+
+for ip in $(oc get ip -n ${PROJECT_CPD_INST_OPERATORS} -o name); \
+do \
+echo $ip:  $(oc get $ip -n ${PROJECT_CPD_INST_OPERATORS} -o yaml | grep <csv-name>); \
+done
+
+##recheck olm operator
+oc logs -n openshift-operator-lifecycle-manager \
+$(oc get pods -n openshift-operator-lifecycle-manager -lapp=catalog-operator -o name) | grep ${PROJECT_CPD_INST_OPERATORS}
+
+cpd-cli manage collect-state \
+--cpd_instance_ns=${PROJECT_CPD_INST_OPERANDS}
