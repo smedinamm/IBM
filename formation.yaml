@@ -1,0 +1,1741 @@
+apiVersion: v1
+items:
+- apiVersion: db2u.databases.ibm.com/v1
+  kind: Formation
+  metadata:
+    annotations:
+      db2u/certs-api-cert: '[secure]'
+      db2u/certs-api-key: '[secure]'
+      db2u/certs-wv-rest: '[secure]'
+      db2u/license: '[secure]'
+      db2u/sshkeys-db2instusr: '[secure]'
+      db2u/sshkeys-db2uadm: '[secure]'
+      db2u/sshkeys-db2uhausr: '[secure]'
+      secret/db2ssl: db2oltp-internal-tls
+    creationTimestamp: "2024-03-08T17:21:28Z"
+    generation: 3
+    labels:
+      formation_id: db2oltp-1709918468192106
+      type: db2u
+    name: db2oltp-1709918468192106
+    namespace: cp4d-operands
+    ownerReferences:
+    - apiVersion: db2u.databases.ibm.com/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Db2uCluster
+      name: db2oltp-1709918468192106
+      uid: 5dc43e8f-4e4c-43bc-bd62-4038716c29e3
+    resourceVersion: "62612389"
+    uid: 07fef7a9-05c9-40e5-b809-d9ab5db43c5e
+  spec:
+    account: cp4d-operands
+    backups:
+      enabled: true
+    disablements: null
+    fqdn: ""
+    frozen: false
+    id: db2oltp-1709918468192106
+    kicker: 0
+    resource_configs:
+      etcd-m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: 500Mi
+        dedicated: true
+        disk: null
+        env:
+          crd_group: db2u.databases.ibm.com
+        images:
+          db: ""
+          mgmt: ""
+        initialized: true
+        memory: 500Mi
+        replicas: 1
+        resource_scaling_policy: ""
+        scheduler_name: icd-scheduler-plugin
+        secrets: {}
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: ""
+      m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: null
+        dedicated: false
+        disk: null
+        env:
+          account: '{"imagePullSecrets":["db2u-dockercfg-jmg2g"],"privileged":true}'
+          addOns: '{"rest":{},"graph":{},"qrep":{"license":{}}}'
+          advOpts: '{"db2SecurityPlugin":"cloud_gss_plugin"}'
+          config: '{"dbType":"db2oltp","mln":{"total":1},"ldap":{"enabled":false,"password":"[secure]","blueAdminPassword":"[secure]"},"database":{"name":"CSBLUDB","settings":{"dftPageSize":"32768"},"ssl":{"allowSslOnly":true,"secretName":"[secure]","certLabel":"CN=zen-ca-cert"}},"instance":{"password":"[secure]","registry":{"DB2AUTH":"OSAUTHDB,ALLOW_LOCAL_FALLBACK,PLUGIN_AUTO_RELOAD","DB2_4K_DEVICE_SUPPORT":"ON","DB2_FMP_RUN_AS_CONNECTED_USER":"NO"},"dbmConfig":{"SRVCON_PW_PLUGIN":"IBMIAMauthpwfile","group_plugin":"IBMIAMauthgroup","srvcon_auth":"GSS_SERVER_ENCRYPT","srvcon_gssplugin_list":"IBMIAMauth"}}}'
+          crd_group: db2u.databases.ibm.com
+          etcdEndPoint: http://c-db2oltp-1709918468192106-etcd-0.c-db2oltp-1709918468192106-etcd:2379,http://c-db2oltp-1709918468192106-etcd-0.c-db2oltp-1709918468192106-etcd:2379,http://c-db2oltp-1709918468192106-etcd-0.c-db2oltp-1709918468192106-etcd:2379
+          podConfig: '{"db2u":{"resource":{"db2u":{"limits":{"cpu":"2100m","memory":"8Gi"}}},"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"db2u","icpdsupport/podSelector":"db2u-log","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"certmanager.k8s.io/disable-auto-restart":"true","cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"VIRTUAL_PROCESSOR_CORE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"etcd":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"etcd","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"graph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"instdb":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"instdb","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"qrep":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"qrep","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"rest":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"rest","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"restore-morph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"restore-morph","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"tools":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709918468192106","icpdsupport/createdBy":"1000330999","icpdsupport/module":"tools","icpdsupport/serviceInstanceId":"1709918468192106"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}}}'
+          volumeSources: '[{"volumeSource":{"secret":{"secretName":"zen-service-broker-secret"}},"visibility":["db2u"]}]'
+        images:
+          db2u: icr.io/db2u/db2u@sha256:c2ef12f6c6ef0a0926f86429855a0e3a52eafbe064d1b48641bf0e8ced89658e
+          db2u-restricted: icr.io/db2u/db2u.restricted@sha256:eeff76daeeac18ae829c4c4220dc34c24b1ed720b59972c771ad077ed0b2e3ee
+          db2wh: icr.io/db2u/db2u.db2wh@sha256:fb7beee2430e784402861a74a8aba8fa5a52325952bc419272eea46764d1a0e6
+          dvapi: icr.io/db2u/db2u.dv.api@sha256:8a8be8f4eb395023019190d7b2e4a72f3b427269c9eb5caee6eaf47f2d26bb25
+          dvcaching: icr.io/db2u/db2u.dv.caching@sha256:dda0f1041d38ce69e6ed5cc9d0df9cd85ffee3adb2164afa81fd0031e1e3dcbd
+          dvutils: icr.io/db2u/db2u.dv.utils@sha256:311d8a6af88813cda82d44dabf23c70697d1226d75d9c370ab00d6512222ed13
+          etcd: icr.io/db2u/etcd@sha256:79b96ccf9c1cd74d5f5cf25ba9c69d83403e1911c27bab873f73e0eeeb43c05c
+          fluentd: icr.io/db2u/db2u.logstreaming.fluentd@sha256:3b1cdd069b70b6e479d5b3597af7296c012dcab0110e6e69fbf7df7ea38eedd2
+          hurricane: icr.io/db2u/db2u.hurricane@sha256:867fce8bb6434f28575c1ab7c18c424b9874fc473d3e03c6e40a2dfb10d6098f
+          instdb: icr.io/db2u/db2u.instdb@sha256:58d9c6b5ff1f4eee4ea8ed4f6ed3d7b8c28b816499fb458b6bcbc766c55d9f03
+          instdb-restricted: icr.io/db2u/db2u.instdb.restricted@sha256:788ef89049050a308297c7a25de87b9dea18bca78c1fece92368ba3a694fd558
+          ldap: icr.io/db2u/db2u.auxiliary.auth@sha256:a7998d1133a813e8dfa173e4ea6aa8c7c0a85a3b9b4f6e0e5d01c56f9d679b3e
+          mustgather: icr.io/db2u/db2u.mustgather@sha256:e90dd95902ec125c5f77f669057b02065b9b7bfd3c1f5caf92a8b7d6a57a6ed9
+          qrep: icr.io/db2u/db2u.qrep@sha256:3d1556910164c291bfc6112c7201291904cedc31f24e2ec8a2bc42c7d4820681
+          rest: icr.io/db2u/db2u.rest@sha256:9f0b42017fbda372ec576a0624ce1c8160e2a4639dc88dee68906dbf75b4963e
+          restricted-update-image: icr.io/db2u/db2u.update.image@sha256:bbcf896804c2ff3c7fa3ec43e8de8858de618bbab9824039ff8f2c70d7350ff4
+          tools: icr.io/db2u/db2u.tools@sha256:95bc29d447a9fba532cebce5ded57ca4aea24d88157dec7efad01fd1d28ff9b5
+          veleroplugin: icr.io/db2u/db2u.veleroplugin@sha256:9d9635407df275318c9ab33022f1da6b2362cb5907f9009944c34e71a9a0ca4b
+          watsonquery: icr.io/db2u/db2u.watsonquery@sha256:59590b9d21a67c1c317e1194c443d6019e4c2359109f86842664d57a611c7bda
+        initialized: true
+        memory: null
+        replicas: 1
+        resource_scaling_policy: static
+        scheduler_name: icd-scheduler-plugin
+        secrets:
+          certs-api-cert: '[secure]'
+          certs-api-key: '[secure]'
+          certs-wv-rest: '[secure]'
+          db2ssl: '[secure]'
+          db2u-lic: '[secure]'
+          instancePassword: '[secure]'
+          sshkeys-db2instusr: '[secure]'
+          sshkeys-db2uadm: '[secure]'
+          sshkeys-db2uhausr: '[secure]'
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: 11.5.8.0-cn5
+    type: db2u
+    version: 11.5.8.0
+  status:
+    components:
+    - kind: account
+      name: account-cp4d-operands-db2oltp-1709918468192106
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1709918468192106-meta
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1709918468192106-backup
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-sshkeys-db2uhausr
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-sshkeys-db2uadm
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-sshkeys-db2instusr
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-ldappassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-ldapblueadminpassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-instancepassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-db2u-lic
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-certs-wv-rest
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709918468192106-certs-db2u-api
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709918468192106-db2uconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709918468192106-db2regconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709918468192106-db2dbmconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709918468192106-db2dbconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709918468192106-db2u-api
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709918468192106-db2u-engn-svc
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709918468192106-db2u-head-engn-svc
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1709918468192106-instdb
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709918468192106-etcd
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1709918468192106-etcd
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709918468192106-db2u-internal
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709918468192106-db2u
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1709918468192106-db2u
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1709918468192106
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1709918468192106-ext
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1709918468192106-restore-morph
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    observed_generation: 3
+    pending_recipe: ""
+    state: OK
+- apiVersion: db2u.databases.ibm.com/v1
+  kind: Formation
+  metadata:
+    annotations:
+      db2u/certs-api-cert: '[secure]'
+      db2u/certs-api-key: '[secure]'
+      db2u/certs-wv-rest: '[secure]'
+      db2u/license: '[secure]'
+      db2u/sshkeys-db2instusr: '[secure]'
+      db2u/sshkeys-db2uadm: '[secure]'
+      db2u/sshkeys-db2uhausr: '[secure]'
+      secret/db2ssl: db2oltp-internal-tls
+    creationTimestamp: "2024-03-08T17:32:35Z"
+    generation: 3
+    labels:
+      formation_id: db2oltp-1709919142244920
+      type: db2u
+    name: db2oltp-1709919142244920
+    namespace: cp4d-operands
+    ownerReferences:
+    - apiVersion: db2u.databases.ibm.com/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Db2uCluster
+      name: db2oltp-1709919142244920
+      uid: 8f7b230a-99ac-4437-b0f6-9c5954c675c3
+    resourceVersion: "62624461"
+    uid: b5576e0a-c063-4637-ad18-a5b5da5d6366
+  spec:
+    account: cp4d-operands
+    backups:
+      enabled: true
+    disablements: null
+    fqdn: ""
+    frozen: false
+    id: db2oltp-1709919142244920
+    kicker: 0
+    resource_configs:
+      etcd-m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: 500Mi
+        dedicated: true
+        disk: null
+        env:
+          crd_group: db2u.databases.ibm.com
+        images:
+          db: ""
+          mgmt: ""
+        initialized: true
+        memory: 500Mi
+        replicas: 1
+        resource_scaling_policy: ""
+        scheduler_name: icd-scheduler-plugin
+        secrets: {}
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: ""
+      m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: null
+        dedicated: false
+        disk: null
+        env:
+          account: '{"imagePullSecrets":["db2u-dockercfg-jmg2g"],"privileged":true}'
+          addOns: '{"rest":{},"graph":{},"qrep":{"license":{}}}'
+          advOpts: '{"db2SecurityPlugin":"cloud_gss_plugin"}'
+          config: '{"dbType":"db2oltp","mln":{"total":1},"ldap":{"enabled":false,"password":"[secure]","blueAdminPassword":"[secure]"},"database":{"name":"AUDBLUDB","settings":{"dftPageSize":"32768"},"ssl":{"allowSslOnly":true,"secretName":"[secure]","certLabel":"CN=zen-ca-cert"}},"instance":{"password":"[secure]","registry":{"DB2AUTH":"OSAUTHDB,ALLOW_LOCAL_FALLBACK,PLUGIN_AUTO_RELOAD","DB2_4K_DEVICE_SUPPORT":"ON","DB2_FMP_RUN_AS_CONNECTED_USER":"NO"},"dbmConfig":{"SRVCON_PW_PLUGIN":"IBMIAMauthpwfile","group_plugin":"IBMIAMauthgroup","srvcon_auth":"GSS_SERVER_ENCRYPT","srvcon_gssplugin_list":"IBMIAMauth"}}}'
+          crd_group: db2u.databases.ibm.com
+          etcdEndPoint: http://c-db2oltp-1709919142244920-etcd-0.c-db2oltp-1709919142244920-etcd:2379,http://c-db2oltp-1709919142244920-etcd-0.c-db2oltp-1709919142244920-etcd:2379,http://c-db2oltp-1709919142244920-etcd-0.c-db2oltp-1709919142244920-etcd:2379
+          podConfig: '{"db2u":{"resource":{"db2u":{"limits":{"cpu":"2100m","memory":"8Gi"}}},"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"db2u","icpdsupport/podSelector":"db2u-log","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"certmanager.k8s.io/disable-auto-restart":"true","cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"VIRTUAL_PROCESSOR_CORE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"etcd":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"etcd","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"graph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"instdb":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"instdb","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"qrep":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"qrep","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"rest":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"rest","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"restore-morph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"restore-morph","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}},"tools":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1709919142244920","icpdsupport/createdBy":"1000330999","icpdsupport/module":"tools","icpdsupport/serviceInstanceId":"1709919142244920"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn5"}}}'
+          volumeSources: '[{"volumeSource":{"secret":{"secretName":"zen-service-broker-secret"}},"visibility":["db2u"]}]'
+        images:
+          db2u: icr.io/db2u/db2u@sha256:c2ef12f6c6ef0a0926f86429855a0e3a52eafbe064d1b48641bf0e8ced89658e
+          db2u-restricted: icr.io/db2u/db2u.restricted@sha256:eeff76daeeac18ae829c4c4220dc34c24b1ed720b59972c771ad077ed0b2e3ee
+          db2wh: icr.io/db2u/db2u.db2wh@sha256:fb7beee2430e784402861a74a8aba8fa5a52325952bc419272eea46764d1a0e6
+          dvapi: icr.io/db2u/db2u.dv.api@sha256:8a8be8f4eb395023019190d7b2e4a72f3b427269c9eb5caee6eaf47f2d26bb25
+          dvcaching: icr.io/db2u/db2u.dv.caching@sha256:dda0f1041d38ce69e6ed5cc9d0df9cd85ffee3adb2164afa81fd0031e1e3dcbd
+          dvutils: icr.io/db2u/db2u.dv.utils@sha256:311d8a6af88813cda82d44dabf23c70697d1226d75d9c370ab00d6512222ed13
+          etcd: icr.io/db2u/etcd@sha256:79b96ccf9c1cd74d5f5cf25ba9c69d83403e1911c27bab873f73e0eeeb43c05c
+          fluentd: icr.io/db2u/db2u.logstreaming.fluentd@sha256:3b1cdd069b70b6e479d5b3597af7296c012dcab0110e6e69fbf7df7ea38eedd2
+          hurricane: icr.io/db2u/db2u.hurricane@sha256:867fce8bb6434f28575c1ab7c18c424b9874fc473d3e03c6e40a2dfb10d6098f
+          instdb: icr.io/db2u/db2u.instdb@sha256:58d9c6b5ff1f4eee4ea8ed4f6ed3d7b8c28b816499fb458b6bcbc766c55d9f03
+          instdb-restricted: icr.io/db2u/db2u.instdb.restricted@sha256:788ef89049050a308297c7a25de87b9dea18bca78c1fece92368ba3a694fd558
+          ldap: icr.io/db2u/db2u.auxiliary.auth@sha256:a7998d1133a813e8dfa173e4ea6aa8c7c0a85a3b9b4f6e0e5d01c56f9d679b3e
+          mustgather: icr.io/db2u/db2u.mustgather@sha256:e90dd95902ec125c5f77f669057b02065b9b7bfd3c1f5caf92a8b7d6a57a6ed9
+          qrep: icr.io/db2u/db2u.qrep@sha256:3d1556910164c291bfc6112c7201291904cedc31f24e2ec8a2bc42c7d4820681
+          rest: icr.io/db2u/db2u.rest@sha256:9f0b42017fbda372ec576a0624ce1c8160e2a4639dc88dee68906dbf75b4963e
+          restricted-update-image: icr.io/db2u/db2u.update.image@sha256:bbcf896804c2ff3c7fa3ec43e8de8858de618bbab9824039ff8f2c70d7350ff4
+          tools: icr.io/db2u/db2u.tools@sha256:95bc29d447a9fba532cebce5ded57ca4aea24d88157dec7efad01fd1d28ff9b5
+          veleroplugin: icr.io/db2u/db2u.veleroplugin@sha256:9d9635407df275318c9ab33022f1da6b2362cb5907f9009944c34e71a9a0ca4b
+          watsonquery: icr.io/db2u/db2u.watsonquery@sha256:59590b9d21a67c1c317e1194c443d6019e4c2359109f86842664d57a611c7bda
+        initialized: true
+        memory: null
+        replicas: 1
+        resource_scaling_policy: static
+        scheduler_name: icd-scheduler-plugin
+        secrets:
+          certs-api-cert: '[secure]'
+          certs-api-key: '[secure]'
+          certs-wv-rest: '[secure]'
+          db2ssl: '[secure]'
+          db2u-lic: '[secure]'
+          instancePassword: '[secure]'
+          sshkeys-db2instusr: '[secure]'
+          sshkeys-db2uadm: '[secure]'
+          sshkeys-db2uhausr: '[secure]'
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 25Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: 11.5.8.0-cn5
+    type: db2u
+    version: 11.5.8.0
+  status:
+    components:
+    - kind: account
+      name: account-cp4d-operands-db2oltp-1709919142244920
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1709919142244920-meta
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1709919142244920-backup
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-sshkeys-db2uhausr
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-sshkeys-db2uadm
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-sshkeys-db2instusr
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-ldappassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-ldapblueadminpassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-instancepassword
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-db2u-lic
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-certs-wv-rest
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1709919142244920-certs-db2u-api
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709919142244920-db2uconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709919142244920-db2regconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709919142244920-db2dbmconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709919142244920-db2dbconfig
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1709919142244920-db2u-api
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709919142244920-db2u-engn-svc
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709919142244920-db2u-head-engn-svc
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1709919142244920-instdb
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709919142244920-etcd
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1709919142244920-etcd
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709919142244920-db2u-internal
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: service
+      name: c-db2oltp-1709919142244920-db2u
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1709919142244920-db2u
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1709919142244920
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1709919142244920-ext
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1709919142244920-restore-morph
+      status:
+        message: ""
+        observed_generation: 3
+        state: OK
+    observed_generation: 3
+    pending_recipe: ""
+    state: OK
+- apiVersion: db2u.databases.ibm.com/v1
+  kind: Formation
+  metadata:
+    annotations:
+      db2u/certs-api-cert: '[secure]'
+      db2u/certs-api-key: '[secure]'
+      db2u/certs-wv-rest: '[secure]'
+      db2u/license: '[secure]'
+      db2u/sshkeys-db2instusr: '[secure]'
+      db2u/sshkeys-db2uadm: '[secure]'
+      db2u/sshkeys-db2uhausr: '[secure]'
+      secret/db2ssl: db2oltp-internal-tls
+    creationTimestamp: "2024-09-28T18:00:37Z"
+    generation: 4
+    labels:
+      formation_id: db2oltp-1727546418222477
+      type: db2u
+    name: db2oltp-1727546418222477
+    namespace: cp4d-operands
+    ownerReferences:
+    - apiVersion: db2u.databases.ibm.com/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Db2uCluster
+      name: db2oltp-1727546418222477
+      uid: 425390f0-7d2f-421d-8d84-f9699c037bc7
+    resourceVersion: "358694689"
+    uid: 77dad579-9cd7-436b-b2a0-adfea18c2f1b
+  spec:
+    account: cp4d-operands
+    backups:
+      enabled: true
+    disablements: null
+    fqdn: ""
+    frozen: false
+    id: db2oltp-1727546418222477
+    kicker: 0
+    resource_configs:
+      etcd-m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: 500Mi
+        dedicated: true
+        disk: null
+        env:
+          crd_group: db2u.databases.ibm.com
+        images:
+          db: ""
+          mgmt: ""
+        initialized: true
+        memory: 500Mi
+        replicas: 1
+        resource_scaling_policy: ""
+        scheduler_name: icd-scheduler-plugin
+        secrets: {}
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: ""
+      m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: null
+        dedicated: false
+        disk: null
+        env:
+          account: '{"imagePullSecrets":["db2u-dockercfg-jmg2g"],"privileged":true}'
+          addOns: '{"rest":{},"graph":{},"qrep":{"license":{}}}'
+          advOpts: '{"db2SecurityPlugin":"cloud_gss_plugin"}'
+          config: '{"dbType":"db2oltp","mln":{"total":1},"ldap":{"enabled":false,"password":"[secure]","blueAdminPassword":"[secure]"},"database":{"name":"AUDBLUDB","dbConfig":{"NUM_DB_BACKUPS":"1"},"settings":{"dftPageSize":"32768"},"ssl":{"allowSslOnly":true,"secretName":"[secure]","certLabel":"CN=zen-ca-cert"}},"instance":{"password":"[secure]","registry":{"DB2AUTH":"OSAUTHDB,ALLOW_LOCAL_FALLBACK,PLUGIN_AUTO_RELOAD","DB2_4K_DEVICE_SUPPORT":"ON","DB2_FMP_RUN_AS_CONNECTED_USER":"NO"},"dbmConfig":{"SRVCON_PW_PLUGIN":"IBMIAMauthpwfile","group_plugin":"IBMIAMauthgroup","srvcon_auth":"GSS_SERVER_ENCRYPT","srvcon_gssplugin_list":"IBMIAMauth"}}}'
+          crd_group: db2u.databases.ibm.com
+          etcdEndPoint: http://c-db2oltp-1727546418222477-etcd-0.c-db2oltp-1727546418222477-etcd:2379,http://c-db2oltp-1727546418222477-etcd-0.c-db2oltp-1727546418222477-etcd:2379,http://c-db2oltp-1727546418222477-etcd-0.c-db2oltp-1727546418222477-etcd:2379
+          podConfig: '{"db2u":{"resource":{"db2u":{"limits":{"cpu":"2100m","memory":"5632Mi"}}},"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"db2u","icpdsupport/podSelector":"db2oltp-log","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"certmanager.k8s.io/disable-auto-restart":"true","cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"VIRTUAL_PROCESSOR_CORE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"etcd":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"etcd","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"graph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"instdb":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"instdb","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"qrep":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"qrep","icpdsupport/podSelector":"db2oltp-qrep-log","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"rest":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"rest","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"restore-morph":{"labels":{"icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"restore-morph","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}},"tools":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2oltp","icpdsupport/app":"db2oltp-1727546418222477","icpdsupport/createdBy":"1000331048","icpdsupport/module":"tools","icpdsupport/serviceInstanceId":"1727546418222477"},"annotations":{"cloudpakId":"c520bfe3b42a4e20a9ead3c0ad1654b7","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productChargedContainers":"All","productID":"c520bfe3b42a4e20a9ead3c0ad1654b7","productMetric":"FREE","productName":"IBM
+            Db2 Extension for IBM Cloud Pak for Data","productVersion":"11.5.8.0-cn6"}}}'
+          volumeSources: '[{"volumeSource":{"secret":{"secretName":"zen-service-broker-secret"}},"visibility":["db2u"]}]'
+        images:
+          db2u: icr.io/db2u/db2u@sha256:551567656b4f3a8f763821ea22338fa348570763c293b423dc71cb898247a6fb
+          db2u-restricted: icr.io/db2u/db2u.restricted@sha256:46f5a234c166e6e8fdf5784ee9eafdea1c459af27723a79fb9de0d0b9b7f7eb3
+          db2wh: icr.io/db2u/db2u.db2wh@sha256:f73b022f00d60d7625be2dae5ff063a860efdec887290e9aac6b0d32680d8fa4
+          dvapi: icr.io/db2u/db2u.dv.api@sha256:081d0e688ff307c9cc018d78ff1eb80e9ae067b2fd5076c881d80ff67155cb80
+          dvcaching: icr.io/db2u/db2u.dv.caching@sha256:fd06e849ff7e7d72ac759c7e9515fffcfdc882c55b1cb869b26db1db9698dcf0
+          dvutils: icr.io/db2u/db2u.dv.utils@sha256:5479fd10ad4b57e6177953102109e008fe82cc39991dadc6ddd9e533c0b9b9b4
+          etcd: icr.io/db2u/etcd@sha256:90b1a091fe5c64303815e5a04a2714d94ee39ad53c839def9f01aaf96f26d76a
+          fluentd: icr.io/db2u/db2u.logstreaming.fluentd@sha256:fbfcd5bdd335220cf4272caed4036a1518ca1e121399489dff528a8989678360
+          hurricane: icr.io/db2u/db2u.hurricane@sha256:8a1f7d2cd9166db4b3d01b1feb1c07c17791d3a35456c24e5d60d1f84ceb53f4
+          instdb: icr.io/db2u/db2u.instdb@sha256:c013869ac44ec03663d1d196c9122b8c944debaba5ad89e8ab6ebd0613280395
+          instdb-restricted: icr.io/db2u/db2u.instdb.restricted@sha256:f268405a6758c187140955514149880965298333e8e0c6a8d2fff8f4325e5fb3
+          ldap: icr.io/db2u/db2u.auxiliary.auth@sha256:040638d3e414dd0bcc4c881dfe735344d71e301d3e164fa3746d194b18e0800d
+          mustgather: icr.io/db2u/db2u.mustgather@sha256:354eef5b611c4ab71c4e18ce98f27d90a2036f76359ad7f55780aacde2a7c31f
+          qrep: icr.io/db2u/db2u.qrep@sha256:4c3fa6357b9f46f86c26fed4357ec2b89c2ae2e848d8e85fdb6adbc7af5b8180
+          rest: icr.io/db2u/db2u.rest@sha256:f8a2192e7abc12c87ab5b4ff2110276e73ef9e3a7b4d4dc718e19e617ee93f7f
+          restricted-update-image: icr.io/db2u/db2u.update.image@sha256:c4dfda0c387c34752fc2467e5c7772c29112ca44725b455df8825ca0cfb76eb4
+          tools: icr.io/db2u/db2u.tools@sha256:03ea8c8aed18ffe333f99efe636118be6c6d719813f99bcd90047231506881b8
+          veleroplugin: icr.io/db2u/db2u.veleroplugin@sha256:1913d9cda015ef99828fd3077b9de1ffaac4bec1ee6dde397b763f7e7dc9b347
+          watsonquery: icr.io/db2u/db2u.watsonquery@sha256:b6f3cd37491e30763eb3c83e0baa5efbe8acdf963c68ce2210ff41fa7776559f
+        initialized: true
+        memory: null
+        replicas: 1
+        resource_scaling_policy: static
+        scheduler_name: icd-scheduler-plugin
+        secrets:
+          certs-api-cert: '[secure]'
+          certs-api-key: '[secure]'
+          certs-wv-rest: '[secure]'
+          db2ssl: '[secure]'
+          db2u-lic: '[secure]'
+          instancePassword: '[secure]'
+          sshkeys-db2instusr: '[secure]'
+          sshkeys-db2uadm: '[secure]'
+          sshkeys-db2uhausr: '[secure]'
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 15Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: 11.5.8.0-cn6
+    type: db2u
+    version: 11.5.8.0
+  status:
+    components:
+    - kind: account
+      name: account-cp4d-operands-db2oltp-1727546418222477
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1727546418222477-meta
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2oltp-1727546418222477-backup
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-sshkeys-db2uhausr
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-sshkeys-db2uadm
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-sshkeys-db2instusr
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-ldappassword
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-ldapblueadminpassword
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-instancepassword
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-db2u-lic
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-certs-wv-rest
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: secret
+      name: c-db2oltp-1727546418222477-certs-db2u-api
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1727546418222477-db2uconfig
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1727546418222477-db2regconfig
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1727546418222477-db2dbmconfig
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1727546418222477-db2dbconfig
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: configmap
+      name: c-db2oltp-1727546418222477-db2u-api
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: service
+      name: c-db2oltp-1727546418222477-db2u-engn-svc
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: service
+      name: c-db2oltp-1727546418222477-db2u-head-engn-svc
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1727546418222477-instdb
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: service
+      name: c-db2oltp-1727546418222477-etcd
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1727546418222477-etcd
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: service
+      name: c-db2oltp-1727546418222477-db2u-internal
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: service
+      name: c-db2oltp-1727546418222477-db2u
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: StatefulSet
+      name: c-db2oltp-1727546418222477-db2u
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1727546418222477
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: networkpolicy
+      name: c-db2oltp-1727546418222477-ext
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    - kind: Job
+      name: c-db2oltp-1727546418222477-restore-morph
+      status:
+        message: ""
+        observed_generation: 4
+        state: OK
+    observed_generation: 4
+    pending_recipe: ""
+    state: OK
+- apiVersion: db2u.databases.ibm.com/v1
+  kind: Formation
+  metadata:
+    annotations:
+      db2u/certs-api-cert: '[secure]'
+      db2u/certs-api-key: '[secure]'
+      db2u/certs-wv-rest: '[secure]'
+      db2u/license: '[secure]'
+      db2u/sshkeys-db2instusr: '[secure]'
+      db2u/sshkeys-db2uadm: '[secure]'
+      db2u/sshkeys-db2uhausr: '[secure]'
+      secret/db2ssl: db2wh-internal-tls
+    creationTimestamp: "2024-03-07T23:10:26Z"
+    generation: 5
+    labels:
+      formation_id: db2wh-1709853004957017
+      type: db2u
+    name: db2wh-1709853004957017
+    namespace: cp4d-operands
+    ownerReferences:
+    - apiVersion: db2u.databases.ibm.com/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Db2uCluster
+      name: db2wh-1709853004957017
+      uid: cb1f7b3c-6875-4a01-85f8-8799e6c44e90
+    resourceVersion: "355937352"
+    uid: 03b06584-73ae-4529-8a5a-c82ab583ced3
+  spec:
+    account: cp4d-operands
+    backups:
+      enabled: true
+    disablements: null
+    fqdn: ""
+    frozen: false
+    id: db2wh-1709853004957017
+    kicker: 0
+    resource_configs:
+      etcd-m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: 500Mi
+        dedicated: true
+        disk: null
+        env:
+          crd_group: db2u.databases.ibm.com
+        images:
+          db: ""
+          mgmt: ""
+        initialized: true
+        memory: 500Mi
+        replicas: 1
+        resource_scaling_policy: ""
+        scheduler_name: icd-scheduler-plugin
+        secrets: {}
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: ""
+      m:
+        affinity:
+          podAntiAffinity: {}
+        cpu: null
+        dedicated: false
+        disk: null
+        env:
+          account: '{"imagePullSecrets":["db2u-dockercfg-jmg2g"],"privileged":true}'
+          addOns: '{"rest":{},"graph":{},"qrep":{"license":{}}}'
+          advOpts: '{"db2SecurityPlugin":"cloud_gss_plugin"}'
+          config: '{"dbType":"db2wh","mln":{"total":1},"ldap":{"enabled":false,"password":"[secure]","blueAdminPassword":"[secure]"},"database":{"name":"MDMBLUDB","settings":{"dftTableOrg":"COLUMN"},"ssl":{"allowSslOnly":true,"secretName":"[secure]","certLabel":"CN=zen-ca-cert"}},"instance":{"password":"[secure]","registry":{"DB2AUTH":"OSAUTHDB,ALLOW_LOCAL_FALLBACK,PLUGIN_AUTO_RELOAD","DB2_4K_DEVICE_SUPPORT":"ON","DB2_FMP_RUN_AS_CONNECTED_USER":"NO","DB2_WORKLOAD":"ANALYTICS"},"dbmConfig":{"SRVCON_PW_PLUGIN":"IBMIAMauthpwfile","group_plugin":"IBMIAMauthgroup","srvcon_auth":"GSS_SERVER_ENCRYPT","srvcon_gssplugin_list":"IBMIAMauth"}}}'
+          crd_group: db2u.databases.ibm.com
+          etcdEndPoint: http://c-db2wh-1709853004957017-etcd-0.c-db2wh-1709853004957017-etcd:2379,http://c-db2wh-1709853004957017-etcd-0.c-db2wh-1709853004957017-etcd:2379,http://c-db2wh-1709853004957017-etcd-0.c-db2wh-1709853004957017-etcd:2379
+          podConfig: '{"db2u":{"resource":{"db2u":{"limits":{"cpu":"8","memory":"24Gi"}}},"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"db2u","icpdsupport/podSelector":"db2u-log","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"certmanager.k8s.io/disable-auto-restart":"true","cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"VIRTUAL_PROCESSOR_CORE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"etcd":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"etcd","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"graph":{"labels":{"icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"instdb":{"labels":{"icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"instdb","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"qrep":{"labels":{"icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"qrep","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"rest":{"labels":{"icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"rest","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"restore-morph":{"labels":{"icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"restore-morph","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}},"tools":{"labels":{"db2u/cpdbr":"db2u","icpdsupport/addOnId":"db2wh","icpdsupport/app":"db2wh-1709853004957017","icpdsupport/createdBy":"1000330999","icpdsupport/module":"tools","icpdsupport/serviceInstanceId":"1709853004957017"},"annotations":{"cloudpakId":"eb9998dcc5d24e3eb5b6fb488f750fe2","cloudpakInstanceId":"cfc89f9c-93d9-42e7-81f3-b354be62c5ab","cloudpakName":"IBM
+            Cloud Pak for Data","productChargedContainers":"All","productID":"eb9998dcc5d24e3eb5b6fb488f750fe2","productMetric":"FREE","productName":"IBM
+            Db2 Warehouse","productVersion":"11.5.8.0-cn5"}}}'
+          volumeSources: '[{"volumeSource":{"secret":{"secretName":"zen-service-broker-secret"}},"visibility":["db2u"]}]'
+        images:
+          db2u: icr.io/db2u/db2u@sha256:551567656b4f3a8f763821ea22338fa348570763c293b423dc71cb898247a6fb
+          db2u-restricted: icr.io/db2u/db2u.restricted@sha256:46f5a234c166e6e8fdf5784ee9eafdea1c459af27723a79fb9de0d0b9b7f7eb3
+          db2wh: icr.io/db2u/db2u.db2wh@sha256:f73b022f00d60d7625be2dae5ff063a860efdec887290e9aac6b0d32680d8fa4
+          dvapi: icr.io/db2u/db2u.dv.api@sha256:081d0e688ff307c9cc018d78ff1eb80e9ae067b2fd5076c881d80ff67155cb80
+          dvcaching: icr.io/db2u/db2u.dv.caching@sha256:fd06e849ff7e7d72ac759c7e9515fffcfdc882c55b1cb869b26db1db9698dcf0
+          dvutils: icr.io/db2u/db2u.dv.utils@sha256:5479fd10ad4b57e6177953102109e008fe82cc39991dadc6ddd9e533c0b9b9b4
+          etcd: icr.io/db2u/etcd@sha256:90b1a091fe5c64303815e5a04a2714d94ee39ad53c839def9f01aaf96f26d76a
+          fluentd: icr.io/db2u/db2u.logstreaming.fluentd@sha256:fbfcd5bdd335220cf4272caed4036a1518ca1e121399489dff528a8989678360
+          hurricane: icr.io/db2u/db2u.hurricane@sha256:8a1f7d2cd9166db4b3d01b1feb1c07c17791d3a35456c24e5d60d1f84ceb53f4
+          instdb: icr.io/db2u/db2u.instdb@sha256:c013869ac44ec03663d1d196c9122b8c944debaba5ad89e8ab6ebd0613280395
+          instdb-restricted: icr.io/db2u/db2u.instdb.restricted@sha256:f268405a6758c187140955514149880965298333e8e0c6a8d2fff8f4325e5fb3
+          ldap: icr.io/db2u/db2u.auxiliary.auth@sha256:040638d3e414dd0bcc4c881dfe735344d71e301d3e164fa3746d194b18e0800d
+          mustgather: icr.io/db2u/db2u.mustgather@sha256:354eef5b611c4ab71c4e18ce98f27d90a2036f76359ad7f55780aacde2a7c31f
+          qrep: icr.io/db2u/db2u.qrep@sha256:4c3fa6357b9f46f86c26fed4357ec2b89c2ae2e848d8e85fdb6adbc7af5b8180
+          rest: icr.io/db2u/db2u.rest@sha256:f8a2192e7abc12c87ab5b4ff2110276e73ef9e3a7b4d4dc718e19e617ee93f7f
+          restricted-update-image: icr.io/db2u/db2u.update.image@sha256:c4dfda0c387c34752fc2467e5c7772c29112ca44725b455df8825ca0cfb76eb4
+          tools: icr.io/db2u/db2u.tools@sha256:03ea8c8aed18ffe333f99efe636118be6c6d719813f99bcd90047231506881b8
+          veleroplugin: icr.io/db2u/db2u.veleroplugin@sha256:1913d9cda015ef99828fd3077b9de1ffaac4bec1ee6dde397b763f7e7dc9b347
+          watsonquery: icr.io/db2u/db2u.watsonquery@sha256:b6f3cd37491e30763eb3c83e0baa5efbe8acdf963c68ce2210ff41fa7776559f
+        initialized: true
+        memory: null
+        replicas: 1
+        resource_scaling_policy: static
+        scheduler_name: icd-scheduler-plugin
+        secrets:
+          certs-api-cert: '[secure]'
+          certs-api-key: '[secure]'
+          certs-wv-rest: '[secure]'
+          db2ssl: '[secure]'
+          db2u-lic: '[secure]'
+          instancePassword: '[secure]'
+          sshkeys-db2instusr: '[secure]'
+          sshkeys-db2uadm: '[secure]'
+          sshkeys-db2uhausr: '[secure]'
+        storage:
+        - claim_name: ""
+          mount_path: ""
+          name: meta
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: data
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: backup
+          spec:
+            accessModes:
+            - ReadWriteMany
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: create
+        - claim_name: ""
+          mount_path: ""
+          name: archivelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: activelogs
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        - claim_name: ""
+          mount_path: ""
+          name: tempts
+          spec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 50Gi
+            storageClassName: managed-nfs-storage
+          storage_config_type: template
+        storage_class: ""
+        version: 11.5.8.0-cn6
+    type: db2u
+    version: 11.5.8.0
+  status:
+    components:
+    - kind: account
+      name: account-cp4d-operands-db2wh-1709853004957017
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2wh-1709853004957017-meta
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: PersistentVolumeClaim
+      name: c-db2wh-1709853004957017-backup
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-sshkeys-db2uhausr
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-sshkeys-db2uadm
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-sshkeys-db2instusr
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-ldappassword
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-ldapblueadminpassword
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-instancepassword
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-db2u-lic
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-certs-wv-rest
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: secret
+      name: c-db2wh-1709853004957017-certs-db2u-api
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: configmap
+      name: c-db2wh-1709853004957017-db2uconfig
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: configmap
+      name: c-db2wh-1709853004957017-db2regconfig
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: configmap
+      name: c-db2wh-1709853004957017-db2dbmconfig
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: configmap
+      name: c-db2wh-1709853004957017-db2dbconfig
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: configmap
+      name: c-db2wh-1709853004957017-db2u-api
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: service
+      name: c-db2wh-1709853004957017-db2u-engn-svc
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: service
+      name: c-db2wh-1709853004957017-db2u-head-engn-svc
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: Job
+      name: c-db2wh-1709853004957017-instdb
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: service
+      name: c-db2wh-1709853004957017-etcd
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: StatefulSet
+      name: c-db2wh-1709853004957017-etcd
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: service
+      name: c-db2wh-1709853004957017-db2u-internal
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: service
+      name: c-db2wh-1709853004957017-db2u
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: StatefulSet
+      name: c-db2wh-1709853004957017-db2u
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: networkpolicy
+      name: c-db2wh-1709853004957017
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: networkpolicy
+      name: c-db2wh-1709853004957017-ext
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    - kind: Job
+      name: c-db2wh-1709853004957017-restore-morph
+      status:
+        message: ""
+        observed_generation: 5
+        state: OK
+    observed_generation: 5
+    pending_recipe: ""
+    state: OK
+kind: List
+metadata:
+  resourceVersion: ""
