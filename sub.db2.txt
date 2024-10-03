@@ -1,0 +1,4 @@
+cp4d               ibm-db2aaservice-cp4d-operator                                   ibm-db2aaservice-cp4d-operator   ibm-db2aaservice-cp4d-operator-catalog        v5.3
+cp4d               ibm-db2oltp-cp4d-operator-catalog-subscription                   ibm-db2oltp-cp4d-operator        ibm-db2oltp-cp4d-operator-catalog             v5.3
+cp4d               ibm-db2u-operator                                                db2u-operator                    ibm-db2uoperator-catalog                      v5.3
+cp4d               ibm-db2wh-cp4d-operator-catalog-subscription                     ibm-db2wh-cp4d-operator          ibm-db2wh-cp4d-operator-catalog               v5.3

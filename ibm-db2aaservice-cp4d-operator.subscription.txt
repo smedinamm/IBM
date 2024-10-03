@@ -1,0 +1,254 @@
+Name:         ibm-db2aaservice-cp4d-operator
+Namespace:    cp4d
+Labels:       operators.coreos.com/ibm-db2aaservice-cp4d-operator.cp4d=
+Annotations:  <none>
+API Version:  operators.coreos.com/v1alpha1
+Kind:         Subscription
+Metadata:
+  Creation Timestamp:  2024-09-10T00:56:05Z
+  Generation:          2
+  Resource Version:    352982461
+  UID:                 d8ede871-bfdb-4f30-9244-92c3a3ad51ce
+Spec:
+  Channel:                v5.3
+  Install Plan Approval:  Automatic
+  Name:                   ibm-db2aaservice-cp4d-operator
+  Source:                 ibm-db2aaservice-cp4d-operator-catalog
+  Source Namespace:       cp4d
+Status:
+  Catalog Health:
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              cloud-native-postgresql-catalog
+      Namespace:         cp4d
+      Resource Version:  351795606
+      UID:               9667532e-b1df-4dba-87c9-25537e4482b7
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              cpd-platform
+      Namespace:         cp4d
+      Resource Version:  351777425
+      UID:               972d3169-51e9-4875-9441-7d283a1720d4
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-ca-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351786497
+      UID:               b223bebb-2391-4542-9f5e-df25400143ba
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-ae-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351796436
+      UID:               1553b8e2-36ca-4b47-b342-7b3392eea2ed
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-ccs-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778303
+      UID:               28848271-edd2-4f00-a5cb-15d227c03ad8
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-datarefinery-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351794505
+      UID:               544173a9-5480-4f46-828f-946e9fb1fb3a
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-datastage-ent-plus-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778298
+      UID:               4734762f-65c3-4635-bb74-f8dcb60fd9a6
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-datastage-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351793065
+      UID:               f016026b-3ccb-4c8f-8557-6cc3613d5bbc
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-wkc-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351786712
+      UID:               b64b55ad-5282-4d50-8abe-8e9285831c6c
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cpd-wspipelines-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778304
+      UID:               fd0f867b-8c08-4e30-b1b8-0b0cf60faa00
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cs-iam-catalog
+      Namespace:         cp4d
+      Resource Version:  351794871
+      UID:               fce57818-5541-48d6-9852-8280616767d5
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-cs-install-catalog
+      Namespace:         cp4d
+      Resource Version:  351794872
+      UID:               c79b98be-4704-4618-9ff9-011561dc552a
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-db2aaservice-cp4d-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351781313
+      UID:               9d0516b9-5053-48de-ac7f-2a3ea4404d75
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-db2oltp-cp4d-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351785616
+      UID:               cba3daa5-c8e3-41a5-9300-9e13b896ef1d
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-db2uoperator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778391
+      UID:               4ece2dd2-03bf-4dd9-a609-5d6815fe1ba0
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-db2wh-cp4d-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778333
+      UID:               678eb845-602c-4cbd-ae66-4ce3352819e3
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-dmc-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351778359
+      UID:               379502cc-0a0d-451f-9e3d-b9bd969111b0
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-elasticsearch-catalog
+      Namespace:         cp4d
+      Resource Version:  351778368
+      UID:               cc59e0a8-ae0a-4de9-bc43-7a6effff7a7f
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-events-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351795143
+      UID:               afe57089-54bf-4d9d-ae40-66784996c13f
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-fdb-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351777668
+      UID:               cc36b4c6-2e51-4f00-945d-863347eb19f2
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-redis-cp-catalog
+      Namespace:         cp4d
+      Resource Version:  351778302
+      UID:               933c957f-7f77-4780-90b9-fb16f2b3538b
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              ibm-zen-operator-catalog
+      Namespace:         cp4d
+      Resource Version:  351795135
+      UID:               336b079b-585b-46d1-84f6-dc4cdad34b6e
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+    Catalog Source Ref:
+      API Version:       operators.coreos.com/v1alpha1
+      Kind:              CatalogSource
+      Name:              opencloud-operators
+      Namespace:         cp4d
+      Resource Version:  351795557
+      UID:               af41ca39-fdb4-48c7-adf6-1524397afbb1
+    Healthy:             true
+    Last Updated:        2024-09-24T01:16:02Z
+  Conditions:
+    Last Transition Time:   2024-09-24T01:16:02Z
+    Message:                all available catalogsources are healthy
+    Reason:                 AllCatalogSourcesHealthy
+    Status:                 False
+    Type:                   CatalogSourcesUnhealthy
+    Last Transition Time:   2024-09-10T00:58:54Z
+    Reason:                 ReferencedInstallPlanNotFound
+    Status:                 True
+    Type:                   InstallPlanMissing
+  Current CSV:              ibm-db2aaservice-cp4d-operator.v5.0.0
+  Install Plan Generation:  31
+  Install Plan Ref:
+    API Version:       operators.coreos.com/v1alpha1
+    Kind:              InstallPlan
+    Name:              install-ltm6t
+    Namespace:         cp4d
+    Resource Version:  330970473
+    UID:               e6bb564f-d314-477f-81ea-69386228fc3d
+  Installed CSV:       ibm-db2aaservice-cp4d-operator.v5.0.0
+  Installplan:
+    API Version:  operators.coreos.com/v1alpha1
+    Kind:         InstallPlan
+    Name:         install-ltm6t
+    Uuid:         e6bb564f-d314-477f-81ea-69386228fc3d
+  Last Updated:   2024-09-24T16:14:57Z
+  State:          AtLatestKnown
+Events:           <none>
