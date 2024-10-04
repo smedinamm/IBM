@@ -1,0 +1,273 @@
+apiVersion: db2u.databases.ibm.com/v1
+kind: Db2uCluster
+metadata:
+  annotations:
+    db2u/certs-api-cert: '[secure]'
+    db2u/certs-api-key: '[secure]'
+    db2u/certs-wv-rest: '[secure]'
+    db2u/license: '[secure]'
+    db2u/sshkeys-db2instusr: '[secure]'
+    db2u/sshkeys-db2uadm: '[secure]'
+    db2u/sshkeys-db2uhausr: '[secure]'
+  creationTimestamp: "2024-09-28T18:00:19Z"
+  generation: 4
+  labels:
+    cpd_db2: db2oltp
+    db2u/cpdbr: db2u
+  name: db2oltp-1727546418222477
+  namespace: cp4d-operands
+  resourceVersion: "358694691"
+  uid: 425390f0-7d2f-421d-8d84-f9699c037bc7
+spec:
+  account:
+    imagePullSecrets:
+    - db2u-dockercfg-jmg2g
+    privileged: true
+  addOns:
+    graph: {}
+    qrep:
+      license: {}
+    rest: {}
+  advOpts:
+    db2SecurityPlugin: cloud_gss_plugin
+  environment:
+    database:
+      dbConfig:
+        NUM_DB_BACKUPS: "1"
+      name: AUDBLUDB
+      settings:
+        dftPageSize: "32768"
+      ssl:
+        allowSslOnly: true
+        certLabel: CN=zen-ca-cert
+        secretName: '[secure]'
+    dbType: db2oltp
+    instance:
+      dbmConfig:
+        SRVCON_PW_PLUGIN: IBMIAMauthpwfile
+        group_plugin: IBMIAMauthgroup
+        srvcon_auth: GSS_SERVER_ENCRYPT
+        srvcon_gssplugin_list: IBMIAMauth
+      password: '[secure]'
+      registry:
+        DB2_4K_DEVICE_SUPPORT: "ON"
+        DB2_FMP_RUN_AS_CONNECTED_USER: "NO"
+        DB2AUTH: OSAUTHDB,ALLOW_LOCAL_FALLBACK,PLUGIN_AUTO_RELOAD
+    ldap:
+      blueAdminPassword: '[secure]'
+      enabled: false
+      password: '[secure]'
+    mln:
+      total: 1
+  license:
+    accept: true
+  podConfig:
+    db2u:
+      annotations:
+        certmanager.k8s.io/disable-auto-restart: "true"
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: VIRTUAL_PROCESSOR_CORE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        db2u/cpdbr: db2u
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: db2u
+        icpdsupport/podSelector: db2oltp-log
+        icpdsupport/serviceInstanceId: "1727546418222477"
+      resource:
+        db2u:
+          limits:
+            cpu: 2100m
+            memory: 5632Mi
+    etcd:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        db2u/cpdbr: db2u
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: etcd
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    graph:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    instdb:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: instdb
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    qrep:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: qrep
+        icpdsupport/podSelector: db2oltp-qrep-log
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    rest:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: rest
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    restore-morph:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: restore-morph
+        icpdsupport/serviceInstanceId: "1727546418222477"
+    tools:
+      annotations:
+        cloudpakId: c520bfe3b42a4e20a9ead3c0ad1654b7
+        cloudpakInstanceId: cfc89f9c-93d9-42e7-81f3-b354be62c5ab
+        cloudpakName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productChargedContainers: All
+        productID: c520bfe3b42a4e20a9ead3c0ad1654b7
+        productMetric: FREE
+        productName: IBM Db2 Extension for IBM Cloud Pak for Data
+        productVersion: 11.5.8.0-cn6
+      labels:
+        db2u/cpdbr: db2u
+        icpdsupport/addOnId: db2oltp
+        icpdsupport/app: db2oltp-1727546418222477
+        icpdsupport/createdBy: "1000331048"
+        icpdsupport/module: tools
+        icpdsupport/serviceInstanceId: "1727546418222477"
+  size: 1
+  storage:
+  - name: meta
+    spec:
+      accessModes:
+      - ReadWriteMany
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: create
+  - name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: template
+  - name: backup
+    spec:
+      accessModes:
+      - ReadWriteMany
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: create
+  - name: archivelogs
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: template
+  - name: activelogs
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: template
+  - name: tempts
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 15Gi
+      storageClassName: managed-nfs-storage
+    type: template
+  version: 11.5.8.0-cn6
+  volumeSources:
+  - visibility:
+    - db2u
+    volumeSource:
+      secret:
+        secretName: zen-service-broker-secret
+status:
+  conditions:
+  - lastTransitionTime: "2024-09-29T02:43:11Z"
+    status: OK
+    type: FormationStatus
+  maintenanceState: None
+  state: Ready
+  version: 11.5.8.0-cn6

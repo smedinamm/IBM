@@ -1,0 +1,1441 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: InstallPlan
+metadata:
+  creationTimestamp: "2024-09-24T01:36:40Z"
+  generateName: install-
+  generation: 1
+  labels:
+    operators.coreos.com/analyticsengine-operator.cp4d: ""
+    operators.coreos.com/cpd-platform-operator.cp4d: ""
+    operators.coreos.com/db2u-operator.cp4d: ""
+    operators.coreos.com/fdb-kubernetes-operator.cp4d: ""
+    operators.coreos.com/ibm-ca-operator.cp4d: ""
+    operators.coreos.com/ibm-cpd-ccs.cp4d: ""
+    operators.coreos.com/ibm-cpd-datarefinery.cp4d: ""
+    operators.coreos.com/ibm-cpd-datastage-operator.cp4d: ""
+    operators.coreos.com/ibm-cpd-wkc.cp4d: ""
+    operators.coreos.com/ibm-cpd-wspipelines.cp4d: ""
+    operators.coreos.com/ibm-dmc-operator.cp4d: ""
+    operators.coreos.com/ibm-elasticsearch-operator.cp4d: ""
+    operators.coreos.com/ibm-opencontent-foundationdb.cp4d: ""
+    operators.coreos.com/ibm-redis-cp.cp4d: ""
+  name: install-4cks2
+  namespace: cp4d
+  ownerReferences:
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: cloud-native-postgresql
+    uid: f1b2c1bc-894a-4d51-9474-2ae88600aa31
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: cpd-operator
+    uid: 6903a262-86f2-481a-922a-3a68531b840e
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: fdb-kubernetes-operator-v3.1-ibm-fdb-operator-catalog-cp4d
+    uid: 1c139b09-1346-44b4-9d41-60656d8d4421
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-ca-operator-catalog-subscription
+    uid: afaea985-5ed4-4af6-898f-02b2a21f8825
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-common-service-operator
+    uid: 353990d3-e59e-4c50-81eb-8aba099c23cf
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-ae-operator
+    uid: d8870827-7e6a-49a8-a496-708c18671c57
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-ccs-operator
+    uid: 3edb2b42-37ec-41b3-a6f2-d9e975e8e3d8
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-datarefinery-operator
+    uid: 60e4a5d4-45d5-41ec-bfa7-995b2aa75972
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-datastage-operator
+    uid: 7fbad239-6e12-44ef-bded-1c48c82faf7f
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-wkc-operator-catalog-subscription
+    uid: d1553d22-8cb2-48c1-a201-abc3f3511689
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-cpd-wspipelines-operator-catalog-subscription
+    uid: e4d775bb-b614-4c21-8719-3bc85684fd7a
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-db2aaservice-cp4d-operator
+    uid: d8ede871-bfdb-4f30-9244-92c3a3ad51ce
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-db2oltp-cp4d-operator-catalog-subscription
+    uid: 8ffadc47-9f9e-4598-a2f8-d0c788db942f
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-db2u-operator
+    uid: 4669aa63-be35-417a-8eda-85db81dfefd7
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-db2wh-cp4d-operator-catalog-subscription
+    uid: 5e026ceb-947c-47ab-8893-82e3d42e48ad
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-dmc-operator-subscription
+    uid: d234dbec-8f30-4600-ae4b-dfb8825d1733
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-elasticsearch-operator-v1.1-ibm-elasticsearch-catalog-cp4d
+    uid: dd1e4fcc-15a7-4997-918d-2ca0a13d64af
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-fdb-operator
+    uid: ffd9194d-6f7e-40ed-b69e-7bec0f4c9bf3
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-namespace-scope-operator
+    uid: d721019f-de55-4b47-aa57-61b9e27961d2
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-platformui-operator
+    uid: ff9710b6-db10-47d1-a07e-f9d398bb7447
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: ibm-redis-cp-operator
+    uid: 7d4f758f-98b1-4e93-9ce2-ba4ad45ab948
+  - apiVersion: operators.coreos.com/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Subscription
+    name: operand-deployment-lifecycle-manager-app
+    uid: 8ae3047f-8c26-4d53-93af-f0b0a64cf067
+  resourceVersion: "351828154"
+  uid: 40ca1988-96e4-4beb-ac23-6eedbcab0244
+spec:
+  approval: Automatic
+  approved: true
+  clusterServiceVersionNames:
+  - db2u-operator.v5.3.0
+  - ibm-cpd-ae.v5.5.0
+  - ibm-cpd-wkc.v1.8.5
+  - ibm-redis-cp.v1.1.8
+  - ibm-elasticsearch-operator.v1.1.2071
+  - ibm-cpd-ccs.v8.5.0
+  - ibm-opencontent-foundationdb.v3.1.9
+  - ibm-databases-dmc.v4.3.0
+  - fdb-kubernetes-operator.v3.1.9
+  - ibm-ca-operator.v25.4.0
+  - ibm-cpd-wspipelines.v8.5.0
+  - ibm-cpd-datastage-operator.v5.5.0
+  - ibm-cpd-datarefinery.v8.5.0
+  - cpd-platform-operator.v5.5.0
+  generation: 45
+status:
+  bundleLookups:
+  - catalogSourceRef:
+      name: ibm-db2uoperator-catalog
+      namespace: cp4d
+    identifier: db2u-operator.v5.3.0
+    path: icr.io/cpopen/ibm-db2uoperator-bundle@sha256:fd9e432b21552288e79e9fb261b4683bcbed053438267ad9367b47eb20376cef
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"BigSQL","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uCluster","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uEngine","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uHadr","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Db2uInstance","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"Formation","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2u.databases.ibm.com","kind":"FormationLock","version":"v1"}},{"type":"olm.gvk","value":{"group":"db2ubnr.databases.ibm.com","kind":"Db2uBackup","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2ubnr.databases.ibm.com","kind":"Db2uRestore","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"db2ulog.databases.ibm.com","kind":"Db2uLogStream","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"db2u-operator","version":"5.3.0"}}]}'
+    replaces: db2u-operator.v5.0.0
+  - catalogSourceRef:
+      name: ibm-cpd-ae-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-ae.v5.5.0
+    path: icr.io/cpopen/ibm-cpd-analyticsengine-operator-bundle@sha256:864fe16115fa467ea268dc8544b5002ec36e30fac3bdaca3e0050f576f590872
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"ae.cpd.ibm.com","kind":"AnalyticsEngine","version":"v1"}},{"type":"olm.package","value":{"packageName":"analyticsengine-operator","version":"5.5.0"}}]}'
+    replaces: ibm-cpd-ae.v5.1.0
+  - catalogSourceRef:
+      name: ibm-cpd-wkc-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-wkc.v1.8.5
+    path: icr.io/cpopen/ibm-cpd-wkc-operator-bundle@sha256:c8323b4189ddde7d5e33592ab5f3e6b5ff451283c09fe93aca3659fa16ea03db
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"wkc.cpd.ibm.com","kind":"WKC","version":"v1beta1"}},{"type":"olm.package","value":{"packageName":"ibm-cpd-wkc","version":"1.8.5"}}]}'
+    replaces: ibm-cpd-wkc.v1.8.1
+  - catalogSourceRef:
+      name: ibm-redis-cp-catalog
+      namespace: cp4d
+    identifier: ibm-redis-cp.v1.1.8
+    path: icr.io/cpopen/ibm-redis-cp-operator-bundle@sha256:9290cff8e3edd171a5bb662446090079cc4f2cacdf99f72b4abeccc4ef636e94
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"redis.ibm.com","kind":"Rediscp","version":"v1"}},{"type":"olm.package","value":{"packageName":"ibm-redis-cp","version":"1.1.8"}}]}'
+    replaces: ibm-redis-cp.v1.1.4
+  - catalogSourceRef:
+      name: ibm-elasticsearch-catalog
+      namespace: cp4d
+    identifier: ibm-elasticsearch-operator.v1.1.2071
+    path: icr.io/cpopen/opencontent-elasticsearch-operator-bundle@sha256:6a024e0def7ca4dfc9c3c02224c4acce4801d49da5dc0805d3a79540ff7e8189
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"elasticsearch.opencontent.ibm.com","kind":"ElasticsearchCluster","version":"v1"}},{"type":"olm.package","value":{"packageName":"ibm-elasticsearch-operator","version":"1.1.2071"}}]}'
+    replaces: ibm-elasticsearch-operator.v1.1.1845
+  - catalogSourceRef:
+      name: ibm-cpd-ccs-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-ccs.v8.5.0
+    path: icr.io/cpopen/ibm-cpd-ccs-operator-bundle@sha256:015d5758ec26e4c9a1c93e2258a2c9f0d3b8d92c4d420ff1a9e25491ef98c938
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"ccs.cpd.ibm.com","kind":"CCS","version":"v1beta1"}},{"type":"olm.gvk","value":{"group":"runtimes.ibm.com","kind":"RuntimeAssembly","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"ibm-cpd-ccs","version":"8.5.0"}},{"type":"olm.package.required","value":{"packageName":"ibm-elasticsearch-operator","versionRange":"\u003e=1.1.1502
+      \u003c1.2.0"}},{"type":"olm.package.required","value":{"packageName":"ibm-elasticsearch-operator","versionRange":"\u003e=1.1.1502
+      \u003c1.2.0"}}]}'
+    replaces: ibm-cpd-ccs.v8.1.0
+  - catalogSourceRef:
+      name: ibm-fdb-operator-catalog
+      namespace: cp4d
+    identifier: ibm-opencontent-foundationdb.v3.1.9
+    path: icr.io/cpopen/fdb-ibm-operator-bundle@sha256:e96c2ecc74527dea388e25492b855216d70d443f01e3b35392fdbaef42a7dbc2
+    properties: '{"properties":[{"type":"olm.package","value":{"packageName":"ibm-opencontent-foundationdb","version":"3.1.9"}},{"type":"olm.gvk","value":{"group":"foundationdb.opencontent.ibm.com","kind":"FdbCluster","version":"v1"}},{"type":"olm.gvk","value":{"group":"foundationdb.opencontent.ibm.com","kind":"FdbControllerConfig","version":"v1"}},{"type":"olm.package.required","value":{"packageName":"fdb-kubernetes-operator","versionRange":"\u003e=3.1.9
+      \u003c3.9.0"}}]}'
+    replaces: ibm-opencontent-foundationdb.v3.1.6
+  - catalogSourceRef:
+      name: ibm-dmc-operator-catalog
+      namespace: cp4d
+    identifier: ibm-databases-dmc.v4.3.0
+    path: icr.io/cpopen/ibm-dmc-operator-bundle@sha256:8780be1df48e8c005716ed3022ea4deae998a73a13c6656f80272f3df6150f34
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"dmc.databases.ibm.com","kind":"Dmc","version":"v1"}},{"type":"olm.gvk","value":{"group":"dmc.databases.ibm.com","kind":"Dmc4ocp","version":"v1"}},{"type":"olm.gvk","value":{"group":"dmc.databases.ibm.com","kind":"Dmcaddon","version":"v1"}},{"type":"olm.package","value":{"packageName":"ibm-dmc-operator","version":"4.3.0"}}]}'
+    replaces: ibm-databases-dmc.v4.0.0
+  - catalogSourceRef:
+      name: ibm-fdb-operator-catalog
+      namespace: cp4d
+    identifier: fdb-kubernetes-operator.v3.1.9
+    path: icr.io/cpopen/fdb-apple-operator-bundle@sha256:4b950c7cb3d483b8d972ac2ff65d9aad13ea0beb0dcc35f359e43b68b76db067
+    properties: '{"properties":[{"type":"olm.package","value":{"packageName":"fdb-kubernetes-operator","version":"3.1.9"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBCluster","version":"v1beta2"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBRestore","version":"v1beta1"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBRestore","version":"v1beta2"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBBackup","version":"v1beta1"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBBackup","version":"v1beta2"}},{"type":"olm.gvk","value":{"group":"apps.foundationdb.org","kind":"FoundationDBCluster","version":"v1beta1"}}]}'
+    replaces: fdb-kubernetes-operator.v3.1.6
+  - catalogSourceRef:
+      name: ibm-ca-operator-catalog
+      namespace: cp4d
+    identifier: ibm-ca-operator.v25.4.0
+    path: icr.io/cpopen/ibm-ca-operator-bundle@sha256:a4f035abc9b9c6179dd0e558840edd053e97dc71024ab2b9f78693fceaf07c3b
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"ca.cpd.ibm.com","kind":"CAService","version":"v1"}},{"type":"olm.gvk","value":{"group":"ca.cpd.ibm.com","kind":"CAServiceInstance","version":"v1"}},{"type":"olm.package","value":{"packageName":"ibm-ca-operator","version":"25.4.0"}}]}'
+    replaces: ibm-ca-operator.v25.0.0
+  - catalogSourceRef:
+      name: ibm-cpd-wspipelines-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-wspipelines.v8.5.0
+    path: icr.io/cpopen/ibm-cpd-wspipelines-operator-bundle@sha256:ee340ba32d60bca0f23b8075bfde839c8204f0240421e7f27c4f1751b9a3c4f9
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"wspipelines.cpd.ibm.com","kind":"WSPipelines","version":"v1beta1"}},{"type":"olm.package","value":{"packageName":"ibm-cpd-wspipelines","version":"8.5.0"}}]}'
+    replaces: ibm-cpd-wspipelines.v8.1.0
+  - catalogSourceRef:
+      name: ibm-cpd-datastage-ent-plus-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-datastage-operator.v5.5.0
+    path: icr.io/cpopen/ds-operator-bundle@sha256:0848a8a3f137223841d6428e5b9f395ce18f2529ad2bc9e498f225a5cc350b71
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"ds.cpd.ibm.com","kind":"DataStage","version":"v1"}},{"type":"olm.gvk","value":{"group":"ds.cpd.ibm.com","kind":"DataStage","version":"v1alpha1"}},{"type":"olm.gvk","value":{"group":"ds.cpd.ibm.com","kind":"PXRuntime","version":"v1"}},{"type":"olm.gvk","value":{"group":"ds.cpd.ibm.com","kind":"PXRuntime","version":"v1alpha1"}},{"type":"olm.package","value":{"packageName":"ibm-cpd-datastage-operator","version":"5.5.0"}}]}'
+    replaces: ibm-cpd-datastage-operator.v5.1.0
+  - catalogSourceRef:
+      name: ibm-cpd-datarefinery-operator-catalog
+      namespace: cp4d
+    identifier: ibm-cpd-datarefinery.v8.5.0
+    path: icr.io/cpopen/ibm-cpd-datarefinery-operator-bundle@sha256:d068de8815da657a1a997cb076262a4028b0ae0479e13cf32e9328de05429006
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"datarefinery.cpd.ibm.com","kind":"DataRefinery","version":"v1beta1"}},{"type":"olm.package","value":{"packageName":"ibm-cpd-datarefinery","version":"8.5.0"}}]}'
+    replaces: ibm-cpd-datarefinery.v8.1.0
+  - catalogSourceRef:
+      name: cpd-platform
+      namespace: cp4d
+    identifier: cpd-platform-operator.v5.5.0
+    path: icr.io/cpopen/ibm-cpd-platform-operator-bundle@sha256:de34de016bbf87330111297562af45a63e5f30d94a2ceb597b01b18b3f5e1f4f
+    properties: '{"properties":[{"type":"olm.gvk","value":{"group":"cpd.ibm.com","kind":"Ibmcpd","version":"v1"}},{"type":"olm.gvk.required","value":{"group":"operator.ibm.com","kind":"CommonService","version":"v3"}},{"type":"olm.package","value":{"packageName":"cpd-platform-operator","version":"5.5.0"}},{"type":"olm.package.required","value":{"packageName":"ibm-common-service-operator","versionRange":"\u003c5.0.0"}},{"type":"olm.gvk.required","value":{"group":"operator.ibm.com","version":"v3","kind":"CommonService"}},{"type":"olm.package.required","value":{"packageName":"ibm-common-service-operator","versionRange":"\u003c5.0.0"}}]}'
+    replaces: cpd-platform-operator.v5.1.0
+  catalogSources:
+  - ibm-redis-cp-catalog
+  - ibm-cpd-datastage-ent-plus-operator-catalog
+  - cpd-platform
+  - ibm-cpd-ccs-operator-catalog
+  - ibm-fdb-operator-catalog
+  - ibm-dmc-operator-catalog
+  - ibm-ca-operator-catalog
+  - ibm-db2uoperator-catalog
+  - ibm-cpd-ae-operator-catalog
+  - ibm-cpd-wkc-operator-catalog
+  - ibm-elasticsearch-catalog
+  - ibm-cpd-wspipelines-operator-catalog
+  - ibm-cpd-datarefinery-operator-catalog
+  conditions:
+  - lastTransitionTime: "2024-09-24T01:37:17Z"
+    lastUpdateTime: "2024-09-24T01:37:17Z"
+    status: "True"
+    type: Installed
+  phase: Complete
+  plan:
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: ""
+      kind: Service
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-day2-ops-controller-manager-metrics-service
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: bigsqls.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2ulogstreams.db2ulog.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2ubackups.db2ubnr.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: ""
+      kind: ConfigMap
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-day2-ops-manager-config
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-day2-ops-metrics-reader
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2uinstances.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: formations.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: formationlocks.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2uhadrs.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2uclusters.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2uengines.db2u.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2urestores.db2ubnr.databases.ibm.com
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-db2u-operator-5955dd8f6f
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-db2u-operator-5955dd8f6f
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-6c7dc565c5
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-6c7dc565c5
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-day2-ops-controller-manager
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-db2u-day2-ops-controller-manager-7d47b7b599
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-db2u-day2-ops-controller-manager-7d47b7b599
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-c69c7cbb6
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: db2u-operator.v5.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      manifest: '{"kind":"ConfigMap","name":"3384b75f04f23af9a50a0125d1c1b47b964742ac29dca849a4beee75583651a","namespace":"cp4d","catalogSourceName":"ibm-db2uoperator-catalog","catalogSourceNamespace":"cp4d","replaces":"db2u-operator.v5.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"BigSQL\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uEngine\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uHadr\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Db2uInstance\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"Formation\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2u.databases.ibm.com\",\"kind\":\"FormationLock\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uBackup\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ubnr.databases.ibm.com\",\"kind\":\"Db2uRestore\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"db2ulog.databases.ibm.com\",\"kind\":\"Db2uLogStream\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"db2u-operator\",\"version\":\"5.3.0\"}}]}"}'
+      name: db2u-operator.v5.3.0-c69c7cbb6
+      sourceName: ibm-db2uoperator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-ae.v5.5.0
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: analyticsengines.ae.cpd.ibm.com
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-ae-operator-serviceaccount
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-ae-operator-serviceaccount
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-ae.v5.5.0-ibm-cpd-ae-operator-serviceaccount-d96976886
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ae.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"723f5db039b3164cb2c5204bf555ffb4bea330995f4bcb8b1fb91b6a05d12d0","namespace":"cp4d","catalogSourceName":"ibm-cpd-ae-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ae.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ae.cpd.ibm.com\",\"kind\":\"AnalyticsEngine\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"analyticsengine-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-ae.v5.5.0-ibm-cpd-ae-operator-serviceaccount-d96976886
+      sourceName: ibm-cpd-ae-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc.v1.8.5
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: wkc.wkc.cpd.ibm.com
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc-operator-serviceaccount
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc-operator-metrics-reader
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc-operator-serviceaccount
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc.v1.8.5-ibm-cpd-wkc-operator-serviceaccount-57749bf8b
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wkc.v1.8.5
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"e925b8ddf93fb1a5058530f7375188869d534b868300b5f09f509f7e2a695db","namespace":"cp4d","catalogSourceName":"ibm-cpd-wkc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wkc.v1.8.1","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wkc.cpd.ibm.com\",\"kind\":\"WKC\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wkc\",\"version\":\"1.8.5\"}}]}"}'
+      name: ibm-cpd-wkc.v1.8.5-ibm-cpd-wkc-operator-serviceaccount-57749bf8b
+      sourceName: ibm-cpd-wkc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: ibm-redis-cp.v1.1.8
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: ibm-redis-cp-operator-serviceaccount
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: rediscps.redis.ibm.com
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: ibm-redis-cp-operator-serviceaccount
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: ibm-redis-cp.v1.1.8-ibm-redis-cp-operator-serviceacc-6f5dcfc86f
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-redis-cp.v1.1.8
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"e9ddaa236ee3f775e50efc4b9658a8c8d4bfff752453cb0d464725637847148","namespace":"cp4d","catalogSourceName":"ibm-redis-cp-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-redis-cp.v1.1.4","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"redis.ibm.com\",\"kind\":\"Rediscp\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-redis-cp\",\"version\":\"1.1.8\"}}]}"}'
+      name: ibm-redis-cp.v1.1.8-ibm-redis-cp-operator-serviceacc-6f5dcfc86f
+      sourceName: ibm-redis-cp-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: ibm-elasticsearch-operator.v1.1.2071
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: ibm-elasticsearch-operator-ibm-cpo-elasticsearch-sa
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: elasticsearchclusters.elasticsearch.opencontent.ibm.com
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: ibm-elasticsearch-operator-ibm-cpo-elasticsearch-sa
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: ibm-elasticsearch-operator.v1.1.2071-ibm-elasticsearc-fb4cb985d
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-elasticsearch-operator.v1.1.2071
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"a9e51f0153dc1710cf0346cfa14ebf338f2c9c486211a41d30ee4a0597a29a5","namespace":"cp4d","catalogSourceName":"ibm-elasticsearch-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-elasticsearch-operator.v1.1.1845","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"elasticsearch.opencontent.ibm.com\",\"kind\":\"ElasticsearchCluster\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"version\":\"1.1.2071\"}}]}"}'
+      name: ibm-elasticsearch-operator.v1.1.2071-ibm-elasticsearc-fb4cb985d
+      sourceName: ibm-elasticsearch-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: ibm-cpd-ccs.v8.5.0
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: ccs.ccs.cpd.ibm.com
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: runtimeassemblies.runtimes.ibm.com
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: ibm-cpd-ccs-operator-serviceaccount
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: ibm-cpd-ccs.v8.5.0-ibm-cpd-ccs-operator-serviceaccou-7f5db75dc9
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-ccs.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"95256929fe937d8847153c2cc46d942d15fddc36fbaaff179c30aaa42392b96","namespace":"cp4d","catalogSourceName":"ibm-cpd-ccs-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-ccs.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ccs.cpd.ibm.com\",\"kind\":\"CCS\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"runtimes.ibm.com\",\"kind\":\"RuntimeAssembly\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-ccs\",\"version\":\"8.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-elasticsearch-operator\",\"versionRange\":\"\\u003e=1.1.1502
+        \\u003c1.2.0\"}}]}"}'
+      name: ibm-cpd-ccs.v8.5.0-ibm-cpd-ccs-operator-serviceaccou-7f5db75dc9
+      sourceName: ibm-cpd-ccs-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: ibm-opencontent-foundationdb.v3.1.9
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: fdbclusters.foundationdb.opencontent.ibm.com
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: fdbcontrollerconfigs.foundationdb.opencontent.ibm.com
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: ""
+      kind: ConfigMap
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: ibm-fdb-controller-config
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: ibm-fdb-controller-manager
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: ibm-opencontent-foundationdb.v3.1.9-ibm-fdb-controll-56dd6447b5
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-opencontent-foundationdb.v3.1.9
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"c470e06a912c074cdbabcca9688a852603dd5484f1ca920969458bea21aed1f","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-opencontent-foundationdb.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-opencontent-foundationdb\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbCluster\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"foundationdb.opencontent.ibm.com\",\"kind\":\"FdbControllerConfig\",\"version\":\"v1\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"versionRange\":\"\\u003e=3.1.9
+        \\u003c3.9.0\"}}]}"}'
+      name: ibm-opencontent-foundationdb.v3.1.9-ibm-fdb-controll-56dd6447b5
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: ibm-databases-dmc.v4.3.0
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: dmcs.dmc.databases.ibm.com
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: ibm-dmc-operator-sa
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: dmc4ocps.dmc.databases.ibm.com
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: dmcaddons.dmc.databases.ibm.com
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: ibm-dmc-operator-sa
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: ibm-databases-dmc.v4.3.0-ibm-dmc-operator-sa-6565567bf7
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-databases-dmc.v4.3.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"3ca88ee805c83c5ad809708f614151193ead2050c0939a0cd295cc3ab27d906","namespace":"cp4d","catalogSourceName":"ibm-dmc-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-databases-dmc.v4.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmc4ocp\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"dmc.databases.ibm.com\",\"kind\":\"Dmcaddon\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-dmc-operator\",\"version\":\"4.3.0\"}}]}"}'
+      name: ibm-databases-dmc.v4.3.0-ibm-dmc-operator-sa-6565567bf7
+      sourceName: ibm-dmc-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: fdb-kubernetes-operator.v3.1.9
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: foundationdbbackups.apps.foundationdb.org
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: foundationdbclusters.apps.foundationdb.org
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: foundationdbrestores.apps.foundationdb.org
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: apple-fdb-controller-manager
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: fdb-kubernetes-operator.v3.1.9-apple-fdb-controller--857467d44b
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: fdb-kubernetes-operator.v3.1.9
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"c1df5b4fab75bdd879301040ce56ba7ea481544da028e1251fb8e27c3eb3fa9","namespace":"cp4d","catalogSourceName":"ibm-fdb-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"fdb-kubernetes-operator.v3.1.6","properties":"{\"properties\":[{\"type\":\"olm.package\",\"value\":{\"packageName\":\"fdb-kubernetes-operator\",\"version\":\"3.1.9\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBRestore\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBBackup\",\"version\":\"v1beta2\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"apps.foundationdb.org\",\"kind\":\"FoundationDBCluster\",\"version\":\"v1beta1\"}}]}"}'
+      name: fdb-kubernetes-operator.v3.1.9-apple-fdb-controller--857467d44b
+      sourceName: ibm-fdb-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: ibm-ca-operator.v25.4.0
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: caserviceinstances.ca.cpd.ibm.com
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: caservices.ca.cpd.ibm.com
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: ibm-ca-operator-manager-serviceaccount
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: ibm-ca-operator.v25.4.0-ibm-ca-operator-manager-servi-98f458944
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-ca-operator.v25.4.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"bd19ba95f45ffff51c12cb45f59c13db9352dbbfc16de320ab1d21c098c0608","namespace":"cp4d","catalogSourceName":"ibm-ca-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-ca-operator.v25.0.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAService\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ca.cpd.ibm.com\",\"kind\":\"CAServiceInstance\",\"version\":\"v1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-ca-operator\",\"version\":\"25.4.0\"}}]}"}'
+      name: ibm-ca-operator.v25.4.0-ibm-ca-operator-manager-servi-98f458944
+      sourceName: ibm-ca-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines.v8.5.0
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: wspipelines.wspipelines.cpd.ibm.com
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines-operator-serviceaccount
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines-operator-serviceaccount
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines.v8.5.0-ibm-cpd-wspipelines-opera-68db7c7fd9
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines.v8.5.0-ibm-cpd-wspipelines-opera-68db7c7fd9
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines.v8.5.0-69cbb858d9
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-wspipelines.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      manifest: '{"kind":"ConfigMap","name":"2a1348fb5d2e80e650cc1bdc8b41c01d0aa9b1684a8a0e18148bda259230686","namespace":"cp4d","catalogSourceName":"ibm-cpd-wspipelines-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-wspipelines.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"wspipelines.cpd.ibm.com\",\"kind\":\"WSPipelines\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-wspipelines\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-wspipelines.v8.5.0-69cbb858d9
+      sourceName: ibm-cpd-wspipelines-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-datastage-operator.v5.5.0
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: ""
+      kind: Service
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ds-operator-controller-manager-metrics-service
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ds-operator-metrics-reader
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: datastages.ds.cpd.ibm.com
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: pxruntimes.ds.cpd.ibm.com
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-datastage-operator-sa
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-datastage-operator.v5.5.0-ibm-cpd-datastage--65668db6f5
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datastage-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"71717a93ab28b62406aeddc9ca44bf50c6a04ebb6514cca8fccfb8ae50830bd","namespace":"cp4d","catalogSourceName":"ibm-cpd-datastage-ent-plus-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datastage-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"DataStage\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1\"}},{\"type\":\"olm.gvk\",\"value\":{\"group\":\"ds.cpd.ibm.com\",\"kind\":\"PXRuntime\",\"version\":\"v1alpha1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datastage-operator\",\"version\":\"5.5.0\"}}]}"}'
+      name: ibm-cpd-datastage-operator.v5.5.0-ibm-cpd-datastage--65668db6f5
+      sourceName: ibm-cpd-datastage-ent-plus-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datarefinery.v8.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"5940e960141f09b9fc622a742b81f935574d6642bcf179f3dc900f5b6f28358","namespace":"cp4d","catalogSourceName":"ibm-cpd-datarefinery-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datarefinery.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"datarefinery.cpd.ibm.com\",\"kind\":\"DataRefinery\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datarefinery\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-datarefinery.v8.5.0
+      sourceName: ibm-cpd-datarefinery-operator-catalog
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: ibm-cpd-datarefinery.v8.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"5940e960141f09b9fc622a742b81f935574d6642bcf179f3dc900f5b6f28358","namespace":"cp4d","catalogSourceName":"ibm-cpd-datarefinery-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datarefinery.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"datarefinery.cpd.ibm.com\",\"kind\":\"DataRefinery\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datarefinery\",\"version\":\"8.5.0\"}}]}"}'
+      name: datarefinery.datarefinery.cpd.ibm.com
+      sourceName: ibm-cpd-datarefinery-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datarefinery.v8.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"5940e960141f09b9fc622a742b81f935574d6642bcf179f3dc900f5b6f28358","namespace":"cp4d","catalogSourceName":"ibm-cpd-datarefinery-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datarefinery.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"datarefinery.cpd.ibm.com\",\"kind\":\"DataRefinery\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datarefinery\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-datarefinery-operator-serviceaccount
+      sourceName: ibm-cpd-datarefinery-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datarefinery.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"5940e960141f09b9fc622a742b81f935574d6642bcf179f3dc900f5b6f28358","namespace":"cp4d","catalogSourceName":"ibm-cpd-datarefinery-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datarefinery.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"datarefinery.cpd.ibm.com\",\"kind\":\"DataRefinery\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datarefinery\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-datarefinery.v8.5.0-ibm-cpd-datarefinery-ope-7f4df66f57
+      sourceName: ibm-cpd-datarefinery-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: ibm-cpd-datarefinery.v8.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"5940e960141f09b9fc622a742b81f935574d6642bcf179f3dc900f5b6f28358","namespace":"cp4d","catalogSourceName":"ibm-cpd-datarefinery-operator-catalog","catalogSourceNamespace":"cp4d","replaces":"ibm-cpd-datarefinery.v8.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"datarefinery.cpd.ibm.com\",\"kind\":\"DataRefinery\",\"version\":\"v1beta1\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"ibm-cpd-datarefinery\",\"version\":\"8.5.0\"}}]}"}'
+      name: ibm-cpd-datarefinery.v8.5.0-ibm-cpd-datarefinery-ope-7f4df66f57
+      sourceName: ibm-cpd-datarefinery-operator-catalog
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: operators.coreos.com
+      kind: ClusterServiceVersion
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator.v5.5.0
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1alpha1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: ""
+      kind: Service
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator-controller-manager-metrics-service
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: ibmcpds.cpd.ibm.com
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: ""
+      kind: ServiceAccount
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-sa
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: Role
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator.v5.5.0-cpd-platform-sa-8454669cb5
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator.v5.5.0-cpd-platform-sa-8454669cb5
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator.v5.5.0-5768ddc66c
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  - resolving: cpd-platform-operator.v5.5.0
+    resource:
+      group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      manifest: '{"kind":"ConfigMap","name":"abbe6735bb07b2b50700c3323ddba7b6c6b9afed1b31e7d5f3fcf578cd93422","namespace":"cp4d","catalogSourceName":"cpd-platform","catalogSourceNamespace":"cp4d","replaces":"cpd-platform-operator.v5.1.0","properties":"{\"properties\":[{\"type\":\"olm.gvk\",\"value\":{\"group\":\"cpd.ibm.com\",\"kind\":\"Ibmcpd\",\"version\":\"v1\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"kind\":\"CommonService\",\"version\":\"v3\"}},{\"type\":\"olm.package\",\"value\":{\"packageName\":\"cpd-platform-operator\",\"version\":\"5.5.0\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}},{\"type\":\"olm.gvk.required\",\"value\":{\"group\":\"operator.ibm.com\",\"version\":\"v3\",\"kind\":\"CommonService\"}},{\"type\":\"olm.package.required\",\"value\":{\"packageName\":\"ibm-common-service-operator\",\"versionRange\":\"\\u003c5.0.0\"}}]}"}'
+      name: cpd-platform-operator.v5.5.0-5768ddc66c
+      sourceName: cpd-platform
+      sourceNamespace: cp4d
+      version: v1
+    status: Present
+  startTime: "2024-09-24T01:37:17Z"

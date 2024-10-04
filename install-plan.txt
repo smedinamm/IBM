@@ -1,0 +1,15 @@
+NAMESPACE          NAME            CSV                                           APPROVAL    APPROVED
+cp4d               install-4cks2   db2u-operator.v5.3.0                          Automatic   true
+cp4d               install-6v9jx   ibm-cpd-wspipelines.v8.1.0                    Automatic   true
+cp4d               install-77dx4   operand-deployment-lifecycle-manager.v4.2.3   Automatic   true
+cp4d               install-g7kfz   ibm-common-service-operator.v4.6.0            Automatic   true
+cp4d               install-tgpbx   operand-deployment-lifecycle-manager.v4.3.0   Automatic   true
+cpd-scheduler      install-75mlq   ibm-cpd-scheduling-operator.v1.17.0           Automatic   true
+cpd-scheduler      install-7nxzf   ibm-cpd-scheduling-operator.v1.19.0           Automatic   true
+cpd-scheduler      install-ljqzh   ibm-cpd-scheduling-operator.v1.22.0           Automatic   true
+ibm-cert-manager   install-8ff7l   ibm-cert-manager-operator.v4.2.0              Automatic   true
+ibm-cert-manager   install-hq5tg   ibm-cert-manager-operator.v4.2.3              Automatic   true
+ibm-cert-manager   install-vc8mx   ibm-cert-manager-operator.v4.2.1              Automatic   true
+ibm-licensing      install-6spkd   ibm-licensing-operator.v4.2.0                 Automatic   true
+ibm-licensing      install-bljt6   ibm-licensing-operator.v4.2.1                 Automatic   true
+ibm-licensing      install-c7s5n   ibm-licensing-operator.v4.2.3                 Automatic   true

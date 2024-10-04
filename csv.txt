@@ -1,0 +1,24 @@
+NAME                                          DISPLAY                                                                VERSION    REPLACES                                      PHASE
+cloud-native-postgresql.v1.18.10              EDB Postgres for Kubernetes                                            1.18.10    cloud-native-postgresql.v1.18.7               Succeeded
+cpd-platform-operator.v5.5.0                  Cloud Pak for Data Platform Operator                                   5.5.0      cpd-platform-operator.v5.1.0                  Succeeded
+db2u-operator.v5.3.0                          IBM Db2                                                                5.3.0      db2u-operator.v5.0.0                          Succeeded
+fdb-kubernetes-operator.v3.1.9                FoundationDB Kubernetes                                                3.1.9      fdb-kubernetes-operator.v3.1.6                Succeeded
+ibm-ca-operator.v25.4.0                       IBM Cognos Analytics Service                                           25.4.0     ibm-ca-operator.v25.0.0                       Succeeded
+ibm-cert-manager-operator.v4.2.3              IBM Cert Manager                                                       4.2.3      ibm-cert-manager-operator.v4.2.1              Succeeded
+ibm-common-service-operator.v4.6.0            IBM Cloud Pak foundational services                                    4.6.0      ibm-common-service-operator.v4.3.1            Succeeded
+ibm-cpd-ae.v5.5.0                             IBM Analytics Engine Powered by Apache Spark Service                   5.5.0      ibm-cpd-ae.v5.1.0                             Succeeded
+ibm-cpd-ccs.v8.5.0                            Common Core Services                                                   8.5.0      ibm-cpd-ccs.v8.1.0                            Succeeded
+ibm-cpd-datarefinery.v8.5.0                   IBM Data Refinery                                                      8.5.0      ibm-cpd-datarefinery.v8.1.0                   Succeeded
+ibm-cpd-datastage-operator.v5.5.0             IBM DataStage                                                          5.5.0      ibm-cpd-datastage-operator.v5.1.0             Succeeded
+ibm-cpd-wkc.v1.8.5                            WKC Services                                                           1.8.5      ibm-cpd-wkc.v1.8.1                            Succeeded
+ibm-cpd-wspipelines.v8.5.0                    Watson Pipelines                                                       8.5.0      ibm-cpd-wspipelines.v8.1.0                    Succeeded
+ibm-databases-dmc.v4.3.0                      IBM Db2 Data Management Console                                        4.3.0      ibm-databases-dmc.v4.0.0                      Succeeded
+ibm-db2aaservice-cp4d-operator.v5.0.0         IBM® Db2 as a Service Operator Extension for IBM® Cloud Pak for Data   5.0.0                                                    Succeeded
+ibm-db2oltp-cp4d-operator.v5.0.0              IBM® Db2 Operator Extension for IBM® Cloud Pak for Data                5.0.0                                                    Succeeded
+ibm-db2wh-cp4d-operator.v5.0.0                IBM® Db2 Warehouse Operator Extension for IBM® Cloud Pak for Data      5.0.0                                                    Succeeded
+ibm-elasticsearch-operator.v1.1.2071          IBM OpenContent Elasticsearch                                          1.1.2071   ibm-elasticsearch-operator.v1.1.1845          Succeeded
+ibm-namespace-scope-operator.v4.2.3           IBM NamespaceScope Operator                                            4.2.3      ibm-namespace-scope-operator.v4.2.1           Succeeded
+ibm-opencontent-foundationdb.v3.1.9           IBM Opencontent FoundationDB                                           3.1.9      ibm-opencontent-foundationdb.v3.1.6           Succeeded
+ibm-redis-cp.v1.1.8                           ibm-redis-cp-operator                                                  1.1.8      ibm-redis-cp.v1.1.4                           Succeeded
+ibm-zen-operator.v5.1.3                       IBM Zen Service                                                        5.1.3      ibm-zen-operator.v5.1.1                       Succeeded
+operand-deployment-lifecycle-manager.v4.3.0   Operand Deployment Lifecycle Manager                                   4.3.0      operand-deployment-lifecycle-manager.v4.2.3   Succeeded
