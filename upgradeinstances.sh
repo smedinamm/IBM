@@ -1,6 +1,6 @@
 ------upgrade instances cognos -----
 cpd-cli config users list --output=table
-export API_KEY=gVtQnrUPQgHYWMcnBXl7Z0sTJOD4QpaPSDsrsBV1
+export API_KEY=dzQsjCRGfs4Uic96ryrVoqypukDpCYujTlKISLfZ
 export CPD_USERNAME=admin
 export LOCAL_USER=root
 export CPD_PROFILE_NAME=default
@@ -69,23 +69,23 @@ oc -n ${PROJECT_CPD_INST_OPERANDS} get pxruntime \
 
 -----------------------------------
 
-for cluster in $(oc get cluster.postgresql -o name -n <cpd-namespace>);
-do oc get $cluster -n <cpd-namespace> -ojsonpath='{.status.licenseStatus.licenseExpiration},{"\n"}{.status.licenseStatus.licenseStatus}{"\n"}';
+for cluster in $(oc get cluster.postgresql -o name -n cp4d-operands);
+do oc get $cluster -n cp4d-operands -ojsonpath='{.status.licenseStatus.licenseExpiration},{"\n"}{.status.licenseStatus.licenseStatus}{"\n"}';
 done
 #Option 2: Manual License Key Update
 namespace=$(oc get job -A | grep create-postgres-license-config | awk '{print $1}')
 
 oc get job create-postgres-license-config -n $namespace -o yaml | \
 sed -e 's/operator.ibm.com\/opreq-control: "true"/operator.ibm.com\/opreq-control: "false"/' \
-    -e 's|\(image: \).*|\1"cp.icr.io/cp/cpd/edb-postgres-license-provider@sha256:c1670e7dd93c1e65a6659ece644e44aa5c2150809ac1089e2fd6be37dceae4ce"|' \
+    -e 's|\(image: \).*|\1"cp.icr.io/cp/cpd/edb-postgres-license-provider@"sha256:5ea15c640c66100179c9f33161aa8af774075ba33a8463a837d75f4937f5bbb4"|' \
     -e '/controller-uid:/d' | \
 oc replace --force -f - && \
 oc wait --for=condition=complete job/create-postgres-license-config -n $namespace
 
-oc get cluster <edb-cluster-name> -n <edb-cluster-namespace>  -o jsonpath='{.status.licenseStatus.licenseExpiration}, {"\n"}{.status.licenseStatus.licenseStatus}{"\n"}'
+oc get clusters.postgresql.k8s.enterprisedb.io zen-metastore-edb -n cp4d-operands  -o jsonpath='{.status.licenseStatus.licenseExpiration}, {"\n"}{.status.licenseStatus.licenseStatus}{"\n"}'
 
 ##cambio de imagen
-podman login cp.icr.io -u cp -p '<entitlement-key>'
+podman login cp.icr.io -u cp -p 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE2NTA2NDE0NDAsImp0aSI6IjIyNDc4YzU2NGI5YjQzMjFhZGQ1OTFiZThkYTE0NzUyIn0.DjP--bsdDUoJLOuUkVZngs4GIfV-7iotGSjeyql4Cs8'
 podman pull cp.icr.io/cp/cpd/edb-postgres-license-provider@sha256:c1670e7dd93c1e65a6659ece644e44aa5c2150809ac1089e2fd6be37dceae4ce
 IMAGE_ID=bf14e5dbbf3d
 podman images |grep edb-postgres-license-provider

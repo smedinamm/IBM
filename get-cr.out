@@ -1,0 +1,87 @@
+[INFO] 2024-10-15T18:13:05.980556Z Checking architecture: amd64
+[INFO] 2024-10-15T18:13:05.980583Z Checking podman or docker
+[INFO] 2024-10-15T18:13:06.003624Z Dockerexe: podman
+[INFO] 2024-10-15T18:13:06.003645Z User-specified workspace: /opt/registry/cpd-cli/cpd-cli-workspace
+[INFO] 2024-10-15T18:13:06.034612Z Container olm-utils-play-v2 is running already. Image: icr.io/cpopen/cpd/olm-utils-v2:latest
+[INFO] 2024-10-15T18:13:06.062301Z Processing subcommand get-cr-status
+[INFO] 2024-10-15T18:13:06.062336Z Run command: podman exec -it olm-utils-play-v2 get-cr-status --cpd_instance_ns=cp4d-operands
+Execute script: python3 /opt/ansible/bin/get_cr_status.py --cpd_instance_ns cp4d-operands
+
+Running the get_cr_status.py script. Start of the log.
+================================================================
+
+[INFO] Getting the status of all installed components.
+
+[INFO] Component 'ibm-cert-manager' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'ibm-licensing' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'ibm_events_operator' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'db2u' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'postgresql' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_elasticsearch' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_redis' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_rabbitmq' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'fdb_k8s' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'mongodb' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_minio' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_etcd' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'opencontent_auditwebhook' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'watson_gateway' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'data_governor' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'model_train' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'wxd_optimizerplus' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'wxo_digital_employee' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'wxo_apicatalog' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Component 'wxo_components' does not have either 'cr_kind', 'cr_api', or 'cr_api_version' defined in global.yaml, skipping.
+
+[INFO] Output the result in the JSON format:
+
+{"cpfs": [{"CR-kind": "CommonService", "CR-name": "common-service", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T18:01:34Z", "Version": "N/A", "Status": "Succeeded"}], "zen": [{"CR-kind": "ZenService", "CR-name": "lite-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T18:20:19Z", "Version": "5.1.7", "Status": "Completed", "Reconciled-version": "5.1.7", "Operator-info": "zen operator 5.1.7 build 8"}], "cpd_platform": [{"CR-kind": "Ibmcpd", "CR-name": "ibmcpd-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T17:31:40Z", "Version": "4.8.6", "Status": "Completed", "Reconciled-version": "4.8.6", "Operator-info": "cpdPlatform operator 5.6.0 build 2"}], "ccs": [{"CR-kind": "CCS", "CR-name": "ccs-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:04Z", "Version": "8.6.0", "Status": "Completed", "Reconciled-version": "8.6.0", "Operator-info": 73}], "analyticsengine": [{"CR-kind": "AnalyticsEngine", "CR-name": "analyticsengine-sample", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:28Z", "Version": "4.8.6", "Status": "Completed", "Reconciled-version": "4.8.6", "Operator-info": 1170}], "datarefinery": [{"CR-kind": "DataRefinery", "CR-name": "datarefinery-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:32:27Z", "Version": "8.6.0", "Status": "Completed", "Reconciled-version": "8.6.0", "Operator-info": "169"}], "dmc": [{"CR-kind": "Dmcaddon", "CR-name": "dmc-addon", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:01:41Z", "Version": "4.8.6", "Status": "Completed"}], "db2aaservice": [{"CR-kind": "Db2aaserviceService", "CR-name": "db2aaservice-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:37Z", "Version": "4.8.5", "Status": "Completed", "Reconciled-version": "4.8.5+11.5.9.0+2434", "Operator-info": "4.8.5+11.5.9.0+2434"}], "wkc": [{"CR-kind": "WKC", "CR-name": "wkc-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:05:56Z", "Version": "4.8.6", "Status": "Completed"}], "cognos_analytics": [{"CR-kind": "CAService", "CR-name": "ca-addon-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:05:50Z", "Version": "25.4.0", "Status": "Completed", "Reconciled-version": "25.4.0", "Operator-info": "25.4.0+20240306.163655.1081"}], "datastage_ent": [{"CR-kind": "DataStage", "CR-name": "datastage", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:07Z", "Version": "4.8.6", "Status": "Completed"}], "datastage_ent_plus": [{"CR-kind": "DataStage", "CR-name": "datastage", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:07Z", "Version": "4.8.6", "Status": "Completed"}], "db2oltp": [{"CR-kind": "Db2oltpService", "CR-name": "db2oltp-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:59:49Z", "Version": "4.8.5", "Status": "Completed", "Reconciled-version": "4.8.5+11.5.9.0+2434", "Operator-info": "4.8.5+11.5.9.0+2434"}], "db2wh": [{"CR-kind": "Db2whService", "CR-name": "db2wh-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T19:06:02Z", "Version": "4.8.5", "Status": "Completed", "Reconciled-version": "4.8.5+11.5.9.0+2434", "Operator-info": "4.8.5+11.5.9.0+2434"}], "ibm_redis_cp": [{"CR-kind": "Rediscp", "CR-name": "ibm-dmc-1728608471331478-rediscp", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-11T01:02:33Z", "Version": "1.1.4", "Status": "Completed", "Reconciled-version": "1.1.4", "Operator-info": "ibm-redis-cp operator v1.2.0"}], "ws_pipelines": [{"CR-kind": "WSPipelines", "CR-name": "wspipelines-cr", "Namespace": "cp4d-operands", "Creationtimestamp": "2024-10-10T23:02:36Z", "Version": "4.8.6", "Status": "Completed", "Reconciled-version": "4.8.6", "Operator-info": 922}]} 
+
+[INFO] Output the result in the below chart:
+
+Component           CR-kind              CR-name                           Namespace      Status     Version    Creationtimestamp     Reconciled-version    Operator-info
+------------------  -------------------  --------------------------------  -------------  ---------  ---------  --------------------  --------------------  ----------------------------------
+cpfs                CommonService        common-service                    cp4d-operands  Succeeded  N/A        2024-10-10T18:01:34Z  N/A                   N/A
+zen                 ZenService           lite-cr                           cp4d-operands  Completed  5.1.7      2024-10-10T18:20:19Z  5.1.7                 zen operator 5.1.7 build 8
+cpd_platform        Ibmcpd               ibmcpd-cr                         cp4d-operands  Completed  4.8.6      2024-10-10T17:31:40Z  4.8.6                 cpdPlatform operator 5.6.0 build 2
+ccs                 CCS                  ccs-cr                            cp4d-operands  Completed  8.6.0      2024-10-10T19:06:04Z  8.6.0                 73
+analyticsengine     AnalyticsEngine      analyticsengine-sample            cp4d-operands  Completed  4.8.6      2024-10-10T19:06:28Z  4.8.6                 1170
+datarefinery        DataRefinery         datarefinery-cr                   cp4d-operands  Completed  8.6.0      2024-10-10T19:32:27Z  8.6.0                 169
+dmc                 Dmcaddon             dmc-addon                         cp4d-operands  Completed  4.8.6      2024-10-10T19:01:41Z  N/A                   N/A
+db2aaservice        Db2aaserviceService  db2aaservice-cr                   cp4d-operands  Completed  4.8.5      2024-10-10T19:06:37Z  4.8.5+11.5.9.0+2434   4.8.5+11.5.9.0+2434
+wkc                 WKC                  wkc-cr                            cp4d-operands  Completed  4.8.6      2024-10-10T19:05:56Z  N/A                   N/A
+cognos_analytics    CAService            ca-addon-cr                       cp4d-operands  Completed  25.4.0     2024-10-10T19:05:50Z  25.4.0                25.4.0+20240306.163655.1081
+datastage_ent       DataStage            datastage                         cp4d-operands  Completed  4.8.6      2024-10-10T19:06:07Z  N/A                   N/A
+datastage_ent_plus  DataStage            datastage                         cp4d-operands  Completed  4.8.6      2024-10-10T19:06:07Z  N/A                   N/A
+db2oltp             Db2oltpService       db2oltp-cr                        cp4d-operands  Completed  4.8.5      2024-10-10T19:59:49Z  4.8.5+11.5.9.0+2434   4.8.5+11.5.9.0+2434
+db2wh               Db2whService         db2wh-cr                          cp4d-operands  Completed  4.8.5      2024-10-10T19:06:02Z  4.8.5+11.5.9.0+2434   4.8.5+11.5.9.0+2434
+ibm_redis_cp        Rediscp              ibm-dmc-1728608471331478-rediscp  cp4d-operands  Completed  1.1.4      2024-10-11T01:02:33Z  1.1.4                 ibm-redis-cp operator v1.2.0
+ws_pipelines        WSPipelines          wspipelines-cr                    cp4d-operands  Completed  4.8.6      2024-10-10T23:02:36Z  4.8.6                 922 
+
+The get_cr_status.py script ran successfully. End of the log.
+================================================================
+
+[SUCCESS] The status of custom resources was saved to '/opt/registry/cpd-cli-workspace/work/status.csv'.
+
+[32m[SUCCESS] 2024-10-15T18:13:07.308837Z You may find output and logs in the /opt/registry/cpd-cli-workspace/work directory.
+[0m[32m[SUCCESS] 2024-10-15T18:13:07.309199Z The get-cr-status command ran successfully.
+[0m

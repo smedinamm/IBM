@@ -1,0 +1,14 @@
+
+ Namespace           Service type           Version              ID                  Name                                 Provision status      Upgrade version option 
+ ---------           ------------           -------              --                  ----                                 ----------------      ---------------------- 
+ cp4d-operands       volumes                -                    1728943682506424    cp4d-operands::datarefinerylibvol    PROVISIONED           [] 
+ cp4d-operands       volumes                -                    1728695604003610    cp4d-operands::iaewdpthirdpartylib   PROVISIONED           [] 
+ cp4d-operands       cognos-analytics-app   25.4.0               1728674703666893    Cognos Analytics in cp4d-operands    UPGRADED              [] 
+ cp4d-operands       dmc                    4.8.6                1728608471331478    data-management-console              PROVISIONED           [] 
+ cp4d-operands       db2oltp                11.5.8.0-cn6-amd64   1728607917188913    Db2-1-CSBLUDB                        UPGRADED              [11.5.9.0-amd64] 
+ cp4d-operands       db2oltp                11.5.8.0-cn6-amd64   1728607815034223    Db2-1-AUDBLUDB                       UPGRADED              [11.5.9.0-amd64] 
+ cp4d-operands       db2wh                  11.5.8.0-cn6-amd64   1728607604607106    Db2 Warehouse-1-MDMBLUDB             UPGRADE_IN_PROGRESS   [11.5.9.0-amd64] 
+ cp4d-operands       spark                  4.8.6                1728589907468385    ProfHbIntrnl                         UPGRADED              [] 
+ cp4d-operands       volumes                -                    1728589863063625    cp4d-operands::ProfStgIntrnl         PROVISIONED           [] 
+ cp4d-operands       datastage              4.8.6                1728588938213526    ds-px-default                        PROVISIONED           [] 
+

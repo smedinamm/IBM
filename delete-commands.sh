@@ -1,3 +1,4 @@
+#!/bin/bash
 ${OC_LOGIN}
 oc get pv | grep Released | awk '{print $1}' | xargs oc delete pv
 oc get scc | grep ${PROJECT_CPD_INST_OPERANDS} | awk '{print $1}' | xargs oc delete scc
